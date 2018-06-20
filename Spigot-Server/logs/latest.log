@@ -1,53 +1,63 @@
-[13:27:37] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@611889f4: startup date [Wed Jun 20 13:27:37 CDT 2018]; root of context hierarchy
-[13:27:37] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
-[13:27:37] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
-[13:27:37] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+[18:00:20] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@611889f4: startup date [Wed Jun 20 18:00:20 CDT 2018]; root of context hierarchy
+[18:00:21] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[18:00:21] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[18:00:21] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-[13:27:38] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
-[13:27:38] [main/INFO]: HHH000206: hibernate.properties not found
-[13:27:38] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
-[13:27:38] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
-[13:27:39] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
-[13:27:40] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
-[13:27:40] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
-[13:27:40] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
-[13:27:40] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-[13:27:40] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6dc2e473'
-[13:27:40] [main/INFO]: [STDOUT]: GETTING PLAYER
-[13:27:40] [main/INFO]: [STDOUT]: RESULT IS NULL
-[13:27:40] [pool-3-thread-1/INFO]: [STDOUT]: RESULT IS NULL
-[13:27:40] [main/INFO]: [STDOUT]: RP RECORD
-[13:27:40] [main/INFO]: [STDOUT]: INIT CS
-[13:27:40] [main/INFO]: [STDOUT]: INIT NMS
-[13:27:40] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server
-[13:27:40] [main/INFO]: Not R
-[13:27:40] [main/INFO]: End of not R
-[13:27:40] [main/INFO]: Line 118
-[13:27:40] [main/INFO]: TEST
-[13:27:40] [main/INFO]: Server Ping Player Sample Count: 12
-[13:27:40] [main/INFO]: MCS: false
-[13:27:40] [main/INFO]: MCSS: false
-[13:27:40] [main/INFO]: MCS: false
-[13:27:40] [main/INFO]: MCSS: false
-[13:27:40] [main/INFO]: MCS: false
-[13:27:40] [main/INFO]: MCSS: false
-[13:27:41] [main/INFO]: Line 162
-[13:27:41] [main/INFO]: About to call an() a
-[13:27:41] [main/INFO]: Using default channel type
-[13:27:41] [main/INFO]: Finished an.a
-[13:27:41] [main/INFO]: Plist: false
-[13:27:41] [main/INFO]: Plist: false
-[13:27:41] [main/INFO]: Plist: false
-[13:27:41] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
-[13:27:42] [main/INFO]: Preparing spawn area: 98%
-[13:27:42] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
-[13:27:43] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
-[13:27:43] [main/INFO]: Context setup complete...Redspigot is now starting...
-[13:27:43] [main/INFO]: GETTING COLOURED CONSOLE SENDER
-[13:27:43] [main/INFO]: Converter: false
-[13:27:43] [main/INFO]: INITIALIZING CONFIG: spring.json
-[13:27:43] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
-[13:27:43] [main/INFO]: 1
-[13:27:43] [main/INFO]: false
-[13:27:43] [main/INFO]: 1
+[18:00:21] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[18:00:21] [main/INFO]: HHH000206: hibernate.properties not found
+[18:00:21] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[18:00:21] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[18:00:22] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[18:00:23] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
+[18:00:23] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[18:00:23] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+[18:00:23] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+[18:00:23] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@76e2a621'
+[18:00:23] [main/INFO]: [STDOUT]: GETTING PLAYER
+[18:00:24] [main/INFO]: [STDOUT]: RESULT IS NULL
+[18:00:24] [pool-3-thread-1/INFO]: [STDOUT]: RESULT IS NULL
+[18:00:24] [main/INFO]: [STDOUT]: RP RECORD
+[18:00:24] [main/INFO]: [STDOUT]: INIT CS
+[18:00:24] [main/INFO]: [STDOUT]: INIT NMS
+[18:00:24] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server
+[18:00:24] [main/INFO]: Not R
+[18:00:24] [main/INFO]: End of not R
+[18:00:24] [main/INFO]: Line 118
+[18:00:24] [main/INFO]: Server Ping Player Sample Count: 12
+[18:00:24] [main/INFO]: MCS: false
+[18:00:24] [main/INFO]: MCSS: false
+[18:00:24] [main/INFO]: MCS: false
+[18:00:24] [main/INFO]: MCSS: false
+[18:00:24] [main/INFO]: MCS: false
+[18:00:24] [main/INFO]: MCSS: false
+[18:00:24] [main/INFO]: Line 162
+[18:00:24] [main/INFO]: About to call an() a
+[18:00:24] [main/INFO]: Using default channel type
+[18:00:24] [main/INFO]: Finished an.a
+[18:00:24] [main/INFO]: Plist: false
+[18:00:25] [main/INFO]: Plist: false
+[18:00:25] [main/INFO]: Plist: false
+[18:00:25] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
+[18:00:26] [main/INFO]: Preparing spawn area: 56%
+[18:00:26] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
+[18:00:26] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
+[18:00:27] [main/INFO]: Context setup complete...Redspigot is now starting...
+[18:00:27] [main/INFO]: GETTING COLOURED CONSOLE SENDER
+[18:00:27] [main/INFO]: Converter: false
+[18:00:27] [main/INFO]: INITIALIZING CONFIG: spring.json
+[18:00:27] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
+[18:00:27] [main/INFO]: 1
+[18:00:27] [main/INFO]: false
+[18:00:27] [main/INFO]: 1
+[18:00:50] [User Authenticator #1/INFO]: UUID of player Redmancometh is c060be9e-43b6-4deb-884d-6fab2e11682b
+[18:00:50] [Server thread/INFO]: LOGIN: CraftPlayer{name=Redmancometh}
+[18:00:50] [Server thread/INFO]: Redmancometh[/127.0.0.1:64506] logged in with entity id 162 at ([world]216.69999998807907, 71.0, 462.3897306983775)
+[18:00:55] [Server thread/INFO]: Redmancometh lost connection: 
+[18:00:55] [Server thread/INFO]: 
+[18:00:57] [User Authenticator #2/INFO]: UUID of player Redmancometh is c060be9e-43b6-4deb-884d-6fab2e11682b
+[18:00:57] [Server thread/INFO]: LOGIN: CraftPlayer{name=Redmancometh}
+[18:00:57] [Server thread/INFO]: Redmancometh[/127.0.0.1:64519] logged in with entity id 402 at ([world]223.07771192416638, 70.0, 458.9015960559866)
+[18:01:12] [Server thread/INFO]: /127.0.0.1:64505 lost connection: 
+[18:01:18] [Server thread/INFO]: Redmancometh lost connection: 
+[18:01:18] [Server thread/INFO]: 

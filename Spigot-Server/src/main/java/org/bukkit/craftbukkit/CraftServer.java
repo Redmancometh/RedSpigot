@@ -192,6 +192,9 @@ public class CraftServer implements Server {
 	private CraftIconCache icon;
 	@Autowired
 	private PluginController pluginController;
+	@Autowired
+	@Qualifier("world-container")
+	private File container;
 	public CraftScoreboardManager scoreboardManager;
 	private int monsterSpawn = -1;
 	private int animalSpawn = -1;
@@ -199,7 +202,6 @@ public class CraftServer implements Server {
 	private int ambientSpawn = -1;
 	public int chunkGCPeriod = -1;
 	public int chunkGCLoadThresh = 0;
-	private File container;
 	private WarningState warningState = WarningState.DEFAULT;
 	public boolean playerCommandState;
 	private boolean printSaveWarning;
@@ -215,16 +217,12 @@ public class CraftServer implements Server {
 	}
 
 	public void initialize() {
-		System.out.println(console == null);
-		System.out.println(console.getPropertyManager() == null);
 		online.setValue(console.getPropertyManager().getBoolean("online-mode", true));
 		Bukkit.setServer(this);
 
 		// Register all the Enchantments and PotionTypes now so we can stop new
 		// registration immediately after
 		Enchantments.DAMAGE_ALL.getClass();
-		org.bukkit.enchantments.Enchantment.stopAcceptingRegistrations();
-
 		Potion.setPotionBrewer(new CraftPotionBrewer());
 		MobEffects.BLINDNESS.getClass();
 		PotionEffectType.stopAcceptingRegistrations();
@@ -672,10 +670,9 @@ public class CraftServer implements Server {
 			generator = getGenerator(name);
 		}
 
-		Convertable converter = new WorldLoaderServer(getWorldContainer(), getHandle().getServer().dataConverterManager);
-		if (converter.isConvertable(name)) {
+		if (console.convertable.isConvertable(name)) {
 			getLogger().info("Converting world '" + name + "'");
-			converter.convert(name, new IProgressUpdate() {
+			console.convertable.convert(name, new IProgressUpdate() {
 				private long b = System.currentTimeMillis();
 
 				public void a(String s) {
@@ -1283,14 +1280,6 @@ public class CraftServer implements Server {
 
 	@Override
 	public File getWorldContainer() {
-		if (this.getServer().universe != null) {
-			return this.getServer().universe;
-		}
-
-		if (container == null) {
-			container = new File(configuration.getString("settings.world-container", "."));
-		}
-
 		return container;
 	}
 

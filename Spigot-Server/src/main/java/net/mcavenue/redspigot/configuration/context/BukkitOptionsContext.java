@@ -19,12 +19,14 @@ import joptsimple.OptionSet;
 public class BukkitOptionsContext {
 	// Hackish but shouldn't cause any issues.
 	public static String[] args;
-	@Bean
+	@Bean("option-set")
 	@DependsOn("opt-parser")
 	public OptionSet options(OptionParser parser) {
+		Logger.getLogger(this.getClass().getName()).info("START OF OPTIONS");
 		OptionSet options = null;
 		try {
 			options = parser.parse(args);
+			Logger.getLogger(this.getClass().getName()).info("Parsed options: "+options);
 		} catch (joptsimple.OptionException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, ex.getLocalizedMessage());
 		}

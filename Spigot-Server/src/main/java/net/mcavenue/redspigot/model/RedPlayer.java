@@ -9,12 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
 import net.mcavenue.redspigot.util.Defaultable;
 
 @Entity
+@Table(name = "red_player")
 public class RedPlayer implements Serializable, Defaultable {
 
 	private static final long serialVersionUID = -5653731552221349210L;

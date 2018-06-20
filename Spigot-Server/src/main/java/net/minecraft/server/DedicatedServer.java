@@ -147,7 +147,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		int i = this.propertyManager.getInt("gamemode", EnumGamemode.SURVIVAL.getId());
 
 		this.t = WorldSettings.a(i);
-		java.util.logging.Logger.getLogger(this.getClass().getName()).info("TEST");
 		LOGGER.info("Default game type: " + this.t);
 		InetAddress inetaddress = null;
 

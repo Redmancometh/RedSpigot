@@ -28,6 +28,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.base64.Base64;
+import joptsimple.OptionSet;
 import net.minecraft.server.MinecraftServer;
 
 /**
@@ -153,8 +154,9 @@ public class CraftConfigContext {
 	}
 
 	@Bean(name = "bukkit-conf-file")
-	public File bukkitConfFile(MinecraftServer server) {
-		return (File) server.getOptions().valueOf("bukkit-settings");
+	@DependsOn("option-set")
+	public File bukkitConfFile(MinecraftServer server, @Qualifier("option-set") OptionSet options) {
+		return (File) options.valueOf("bukkit-settings");
 	}
 
 	@Bean(name = "bukkit-cfg")

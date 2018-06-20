@@ -56,12 +56,14 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final File a = new File("usercache.json");
-	public Convertable convertable;
 	private final MojangStatisticsGenerator m = new MojangStatisticsGenerator("server", this, aw());
 	public File universe;
 	public final ICommandHandler b;
 	private ServerConnection p; // Spigot
 	private final Random r = new Random();
+	@Autowired
+	@Qualifier("world-load-server")
+	public Convertable convertable;
 	@Autowired
 	public DataConverterManager dataConverterManager;
 	@Autowired
