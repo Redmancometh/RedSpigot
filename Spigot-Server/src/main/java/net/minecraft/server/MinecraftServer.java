@@ -179,7 +179,8 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 	public abstract boolean init() throws IOException;
 
 	protected void a(String s) {
-		if (this.getConvertable().isConvertable(s)) {
+		java.util.logging.Logger.getLogger("CONVERTABLE: " + (convertable == null));
+		if (convertable.isConvertable(s)) {
 			MinecraftServer.LOGGER.info("Converting map!");
 			this.b("menu.convertingLevel");
 			this.getConvertable().convert(s, new IProgressUpdate() {
@@ -207,6 +208,15 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 		this.S = s;
 	}
 
+	
+	/**
+	 * TODO: Next place to pull off to it's own configuration. This one is a fuckin doozy
+	 * @param s
+	 * @param s1
+	 * @param i
+	 * @param worldtype
+	 * @param s2
+	 */
 	public void a(String s, String s1, long i, WorldType worldtype, String s2) {
 		this.a(s);
 		this.b("menu.loadingLevel");

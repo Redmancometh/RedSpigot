@@ -1,7 +1,7 @@
 package net.minecraft.server;
 
 import com.google.common.collect.Lists;
-import net.mcavenue.redspigot.controllers.InitializationController;
+import net.mcavenue.redspigot.event.EventManager;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
 
 import java.io.File;
@@ -37,6 +37,8 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 	private RemoteControlListener p;
 	@Autowired
 	public PropertyManager propertyManager;
+	@Autowired
+	private EventManager events;
 	// I neither know nor care why there were 2 seperate logging systems.
 	@Autowired
 	@Qualifier("mc-logger")
@@ -48,42 +50,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 	public DedicatedServer() {
 		super();
 	}
+	@Autowired
+	@Qualifier("main-thread")
+	private Thread mainThread;
 
 	/**
 	 * TODO: This should be like 15 methods, and almost all of them can go in
 	 * configuration
 	 */
 	public boolean init() throws IOException { // CraftBukkit - decompile error
-		Thread thread = new Thread("Server console handler") {
-			public void run() {
-				jline.console.ConsoleReader bufferedreader = reader;
-				// CraftBukkit end
-				String s;
-				try {
-					// CraftBukkit start - JLine disabling compatibility
-					while (!isStopped() && isRunning()) {
-						// TODO: Fix this stupid jline shit. Autowire in a cfg
-						if (InitializationController.useJline) {
-							s = bufferedreader.readLine(">", null);
-						} else {
-							s = bufferedreader.readLine();
-						}
-						if (s != null && s.trim().length() > 0) { // Trim to
-																	// filter
-																	// lines
-																	// which are
-																	// just
-																	// spaces
-							issueCommand(s, DedicatedServer.this);
-						}
-						// CraftBukkit end
-					}
-				} catch (IOException ioexception) {
-					LOGGER.severe("Exception handling console input: \n" + ioexception.fillInStackTrace().toString());
-				}
-
-			}
-		};
 
 		// CraftBukkit start - TODO: handle command-line logging arguments
 		java.util.logging.Logger global = java.util.logging.Logger.getLogger(this.getClass().getName());
@@ -99,15 +74,12 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 				logger.removeAppender(appender);
 			}
 		}
-
 		new Thread(new org.bukkit.craftbukkit.util.TerminalConsoleWriterThread(System.out, this.reader)).start();
-
 		System.setOut(new PrintStream(new LoggerOutputStream(logger, Level.INFO), true));
 		System.setErr(new PrintStream(new LoggerOutputStream(logger, Level.WARN), true));
 		// CraftBukkit end
-
-		thread.setDaemon(true);
-		thread.start();
+		mainThread.setDaemon(true);
+		mainThread.start();
 		LOGGER.info("Starting minecraft server version 1.12.2");
 		if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
 			LOGGER.info("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
@@ -211,12 +183,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		if (!NameReferencingFileConverter.a(this.propertyManager)) {
 			return false;
 		} else {
-			this.convertable = new WorldLoaderServer(server.getWorldContainer(), this.dataConverterManager); // CraftBukkit
-																												// -
-																												// moved
-																												// from
-																												// MinecraftServer
-																												// constructor
 			long j = System.nanoTime();
 
 			if (this.S() == null) {
@@ -227,7 +193,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 			String s1 = this.propertyManager.getString("level-type", "DEFAULT");
 			String s2 = this.propertyManager.getString("generator-settings", "");
 			long k = (new Random()).nextLong();
-
 			if (!s.isEmpty()) {
 				try {
 					long l = Long.parseLong(s);
@@ -239,13 +204,10 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 					k = (long) s.hashCode();
 				}
 			}
-
 			WorldType worldtype = WorldType.getType(s1);
-
 			if (worldtype == null) {
 				worldtype = WorldType.NORMAL;
 			}
-
 			this.getEnableCommandBlock();
 			this.q();
 			this.getSnooperEnabled();
@@ -304,15 +266,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 					return false;
 				}
 			}
-
-			if (false && this.aT() > 0L) { // Spigot - disable
-				Thread thread1 = new Thread(new ThreadWatchdog(this));
-
-				thread1.setName("Server Watchdog");
-				thread1.setDaemon(true);
-				thread1.start();
-			}
-
 			Items.a.a(CreativeModeTab.g, NonNullList.a());
 			return true;
 		}
@@ -427,17 +380,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 
 			// CraftBukkit start - ServerCommand for preprocessing
 			ServerCommandEvent event = new ServerCommandEvent(console, servercommand.command);
+			// RedSpigot pass to Java 8 consumers
+			events.callEvent(event);
 			server.getPluginManager().callEvent(event);
 			if (event.isCancelled())
 				continue;
 			servercommand = new ServerCommand(event.getCommand(), servercommand.source);
-
-			// this.getCommandHandler().a(servercommand.source,
-			// servercommand.command); // Called in dispatchServerCommand
 			server.dispatchServerCommand(console, servercommand);
 			// CraftBukkit end
 		}
-
 		SpigotTimings.serverCommandTimer.stopTiming(); // Spigot
 	}
 
@@ -649,11 +600,9 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		// CraftBukkit start - Whole method
 		StringBuilder result = new StringBuilder();
 		org.bukkit.plugin.Plugin[] plugins = server.getPluginManager().getPlugins();
-
 		result.append(server.getName());
 		result.append(" on Bukkit ");
 		result.append(server.getBukkitVersion());
-
 		if (plugins.length > 0 && server.getQueryPlugins()) {
 			result.append(": ");
 

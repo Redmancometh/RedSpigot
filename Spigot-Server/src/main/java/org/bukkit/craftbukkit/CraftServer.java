@@ -225,8 +225,6 @@ public class CraftServer implements Server {
 		Enchantments.DAMAGE_ALL.getClass();
 		Potion.setPotionBrewer(new CraftPotionBrewer());
 		MobEffects.BLINDNESS.getClass();
-		PotionEffectType.stopAcceptingRegistrations();
-
 		// Migrate aliases from old file and add previously implicit $1- to pass
 		// all arguments
 		pluginManager.useTimings(configuration.getBoolean("settings.plugin-profiling"));

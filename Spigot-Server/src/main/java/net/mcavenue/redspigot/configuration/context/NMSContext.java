@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import jline.console.ConsoleReader;
 import net.mcavenue.redspigot.controllers.InitializationController;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
+import net.minecraft.server.Convertable;
 import net.minecraft.server.DataConverterManager;
 import net.minecraft.server.DataConverterRegistry;
 import net.minecraft.server.DedicatedServer;
@@ -32,17 +34,53 @@ import net.minecraft.server.PropertyManager;
 import net.minecraft.server.ServerPing;
 import net.minecraft.server.UserCache;
 import net.minecraft.server.WorldServer;
+import org.springframework.context.annotation.DependsOn;
 
 @Configuration
 /*
- * TODO: Reorganize the Contexts into categorized folders. We want it all split up
- * for later when we have pre-spring load Configuration changes.
+ * TODO: Reorganize the Contexts into categorized folders. We want it all split
+ * up for later when we have pre-spring load Configuration changes.
  */
 public class NMSContext {
 
 	@Bean(name = " world-servers")
 	public List<WorldServer> worldServers() {
 		return new ArrayList<WorldServer>();
+	}
+
+	@Bean(name = "main-thread")
+	public Thread mainThread(Logger logger, DedicatedServer server, ConsoleReader reader) {
+		Thread thread = new Thread("Server console handler") {
+			public void run() {
+				jline.console.ConsoleReader bufferedreader = reader;
+				// CraftBukkit end
+				String s;
+				try {
+					// CraftBukkit start - JLine disabling compatibility
+					while (!server.isStopped() && server.isRunning()) {
+						// TODO: Fix this stupid jline shit. Autowire in a cfg
+						if (InitializationController.useJline) {
+							s = bufferedreader.readLine(">", null);
+						} else {
+							s = bufferedreader.readLine();
+						}
+						if (s != null && s.trim().length() > 0) { // Trim to
+																	// filter
+																	// lines
+																	// which are
+																	// just
+																	// spaces
+							server.issueCommand(s, server);
+						}
+						// CraftBukkit end
+					}
+				} catch (IOException ioexception) {
+					logger.severe("Exception handling console input: \n" + ioexception.fillInStackTrace().toString());
+				}
+
+			}
+		};
+		return thread;
 	}
 
 	@Bean

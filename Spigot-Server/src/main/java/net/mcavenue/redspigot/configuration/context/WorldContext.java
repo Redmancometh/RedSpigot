@@ -8,16 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import net.minecraft.server.Convertable;
+import net.minecraft.server.DataConverterManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.WorldLoaderServer;
 
 @Configuration
 public class WorldContext {
 
-	@Bean
-	@Qualifier("world-load-server")
-	public Convertable worldLoadServer(@Qualifier("world-container") File worldContainer, MinecraftServer server) {
-		Convertable converter = new WorldLoaderServer(worldContainer, server.dataConverterManager);
+	@Bean("world-load-server")
+	public Convertable worldLoadServer(@Qualifier("world-container") File worldContainer, DataConverterManager dataConverterManager) {
+		Convertable converter = new WorldLoaderServer(worldContainer, dataConverterManager);
 		return converter;
 	}
 

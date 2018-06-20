@@ -13,15 +13,12 @@
 config-version: 11
 settings:
   debug: false
+  save-user-cache-on-stop-only: false
+  bungeecord: false
   late-bind: false
   user-cache-size: 1000
-  bungeecord: false
-  save-user-cache-on-stop-only: false
-  filter-creative-items: true
-  moved-wrongly-threshold: 0.0625
-  moved-too-quickly-multiplier: 10.0
-  sample-count: 12
   player-shuffle: 0
+  sample-count: 12
   int-cache-limit: 1024
   item-dirty-ticks: 20
   timeout-time: 60
@@ -35,6 +32,9 @@ settings:
       max: 2048.0
     attackDamage:
       max: 2048.0
+  filter-creative-items: true
+  moved-wrongly-threshold: 0.0625
+  moved-too-quickly-multiplier: 10.0
 messages:
   whitelist: You are not whitelisted on this server!
   unknown-command: Unknown command. Type "/help" for help.
@@ -42,9 +42,6 @@ messages:
   outdated-client: Outdated client! Please use {0}
   outdated-server: Outdated server! I'm still on {0}
   restart: Server is restarting
-stats:
-  disable-saving: false
-  forced-stats: {}
 commands:
   replace-commands:
   - setblock
@@ -52,10 +49,13 @@ commands:
   - testforblock
   - tellraw
   tab-complete: 0
-  silent-commandblock-console: false
   log: true
   spam-exclusions:
   - /skill
+  silent-commandblock-console: false
+stats:
+  disable-saving: false
+  forced-stats: {}
 advancements:
   disable-saving: false
   disabled:
@@ -63,6 +63,22 @@ advancements:
 world-settings:
   default:
     verbose: true
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    arrow-despawn-rate: 1200
+    view-distance: 10
+    seed-village: 10387312
+    seed-feature: 14357617
+    seed-monument: 10387313
+    seed-slime: 987234911
+    dragon-death-sound-radius: 0
+    enable-zombie-pigmen-portal-spawns: true
+    nerf-spawner-mobs: false
+    wither-spawn-sound-radius: 0
+    hanging-tick-frequency: 100
+    zombie-aggressive-towards-villager: true
+    item-despawn-rate: 6000
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -106,19 +122,3 @@ world-settings:
       entity: 50
     squid-spawn-range:
       min: 45.0
-    merge-radius:
-      exp: 3.0
-      item: 2.5
-    arrow-despawn-rate: 1200
-    view-distance: 10
-    enable-zombie-pigmen-portal-spawns: true
-    wither-spawn-sound-radius: 0
-    hanging-tick-frequency: 100
-    zombie-aggressive-towards-villager: true
-    dragon-death-sound-radius: 0
-    seed-village: 10387312
-    seed-feature: 14357617
-    seed-monument: 10387313
-    seed-slime: 987234911
-    item-despawn-rate: 6000
-    nerf-spawner-mobs: false
