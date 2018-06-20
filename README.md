@@ -1,39 +1,10 @@
-Spigot
+RedSpigot
 ======
 
-High performance Minecraft server implementation
-
+Spigot rewritten with Spring and some fancy features.
 
 How To
 -----------
-
-Init a Craftbukkit and Bukkit module : `git submodule update --init`
-
-Apply Patches : `./applyPatches.sh`
-
-### Create patch for server ###
-
-`cd Spigot-Server`
-
-Add your file for commit : `git add <file>`
-
-Commit : `git commit -m <msg>`
-
-`cd ..`
-
-Create Patch `./rebuildPatches.sh`
-
-### Create patch for API ###
-
-`cd Spigot-API`
-
-Add your file for commit : `git add <file>`
-
-Commit : `git commit -m <msg>`
-
-`cd ..`
-
-Create Patch `./rebuildPatches.sh`
 
 
 
@@ -41,7 +12,6 @@ Create Patch `./rebuildPatches.sh`
 Compilation
 -----------
 
-We use maven to handle our dependencies.
+mvn clean install package -DskipTests 
 
-* Install [Maven 3](http://maven.apache.org/download.html)
-* Clone this repo and: `mvn clean install`
+Tests are skipped for now, as new tests need to be written for the DI style codebase.
