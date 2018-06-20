@@ -1,0 +1,13 @@
+[21:24:09] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6283d8b8: startup date [Sun Jun 17 21:24:09 CDT 2018]; root of context hierarchy
+[21:24:09] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[21:24:09] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[21:24:09] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[21:24:10] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[21:24:10] [main/INFO]: HHH000206: hibernate.properties not found
+[21:24:10] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[21:24:10] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[21:24:11] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[21:24:11] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'initializationController': Unsatisfied dependency expressed through field 'nmsServer'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dedi-server' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Unsatisfied dependency expressed through method 'server' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'player-list': Unsatisfied dependency expressed through field 'server'; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'dedi-server': Requested bean is currently in creation: Is there an unresolvable circular reference?
+[21:24:11] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'

@@ -1,0 +1,91 @@
+[21:22:29] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6283d8b8: startup date [Sun Jun 17 21:22:29 CDT 2018]; root of context hierarchy
+[21:22:30] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[21:22:30] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[21:22:30] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[21:22:30] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[21:22:30] [main/INFO]: HHH000206: hibernate.properties not found
+[21:22:30] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[21:22:31] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[21:22:32] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[21:22:33] [main/INFO]: [STDOUT]: Post construct permissions controller
+[21:22:34] [main/INFO]: [STDOUT]: INIT CS
+[21:22:34] [main/INFO]: [STDOUT]: INIT NMS
+[21:22:34] [main/INFO]: Starting minecraft server version 1.12.2
+[21:22:34] [main/INFO]: Loading properties
+[21:22:34] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server
+[21:22:34] [main/INFO]: Default game type: SURVIVAL
+[21:22:34] [main/INFO]: Debug logging is disabled
+[21:22:34] [main/INFO]: Server Ping Player Sample Count: 12
+[21:22:34] [main/INFO]: Using 4 threads for Netty based IO
+[21:22:34] [main/INFO]: MCS: false
+[21:22:34] [main/INFO]: MCSS: false
+[21:22:34] [main/INFO]: MCS: false
+[21:22:34] [main/INFO]: MCSS: false
+[21:22:34] [main/INFO]: MCS: false
+[21:22:34] [main/INFO]: MCSS: false
+[21:22:34] [main/INFO]: Generating keypair
+[21:22:34] [main/INFO]: Starting Minecraft server on *:25565
+[21:22:34] [main/INFO]: Using default channel type
+[21:22:34] [main/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[21:22:34] [main/INFO]: Preparing level "world"
+[21:22:34] [main/INFO]: -------- World Settings For [world] --------
+[21:22:34] [main/INFO]: Cactus Growth Modifier: 100%
+[21:22:34] [main/INFO]: Cane Growth Modifier: 100%
+[21:22:34] [main/INFO]: Melon Growth Modifier: 100%
+[21:22:34] [main/INFO]: Mushroom Growth Modifier: 100%
+[21:22:34] [main/INFO]: Pumpkin Growth Modifier: 100%
+[21:22:34] [main/INFO]: Sapling Growth Modifier: 100%
+[21:22:34] [main/INFO]: Wheat Growth Modifier: 100%
+[21:22:34] [main/INFO]: NetherWart Growth Modifier: 100%
+[21:22:34] [main/INFO]: Vine Growth Modifier: 100%
+[21:22:34] [main/INFO]: Cocoa Growth Modifier: 100%
+[21:22:34] [main/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+[21:22:34] [main/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[21:22:34] [main/INFO]: Mob Spawn Range: 4
+[21:22:34] [main/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+[21:22:34] [main/INFO]: Random Lighting Updates: false
+[21:22:34] [main/INFO]: Structure Info Saving: true
+[21:22:34] [main/INFO]: Max TNT Explosions: 100
+[21:22:34] [main/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[21:22:34] [main/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617 Monument: 10387313 Slime: 987234911
+[21:22:34] [main/INFO]: Experience Merge Radius: 3.0
+[21:22:34] [main/INFO]: Nerfing mobs spawned from spawners: false
+[21:22:34] [main/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[21:22:34] [main/INFO]: Zombie Aggressive Towards Villager: true
+[21:22:34] [main/INFO]: View Distance: 10
+[21:22:34] [main/INFO]: Item Merge Radius: 2.5
+[21:22:34] [main/INFO]: Item Despawn Rate: 6000
+[21:22:34] [main/INFO]: Arrow Despawn Rate: 1200
+[21:22:34] [main/INFO]: Plist: true
+[21:22:34] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[21:22:34] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[21:22:34] [main/WARN]: Exception in thread "main" 
+[21:22:34] [main/WARN]: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:138)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1698)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[21:22:34] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[21:22:34] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[21:22:34] [main/WARN]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[21:22:34] [main/WARN]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[21:22:34] [main/WARN]: Caused by: java.lang.NullPointerException
+[21:22:34] [main/WARN]: 	at net.minecraft.server.MinecraftServer.a(MinecraftServer.java:333)
+[21:22:34] [main/WARN]: 	at net.minecraft.server.DedicatedServer.init(DedicatedServer.java:248)
+[21:22:34] [main/WARN]: 	at net.mcavenue.redspigot.controllers.ServerController.start(ServerController.java:36)
+[21:22:34] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:22:34] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[21:22:34] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:22:34] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:365)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:308)
+[21:22:34] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:135)
+[21:22:34] [main/WARN]: 	... 13 more

@@ -1,29 +1,24 @@
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.spigotmc</groupId>
-    <artifactId>spigot-parent</artifactId>
-    <version>1.12-RED</version>
-    <packaging>pom</packaging>
+	<groupId>org.spigotmc</groupId>
+	<artifactId>spigot-parent</artifactId>
+	<version>1.12-RED</version>
+	<packaging>pom</packaging>
 
-    <name>Spigot-Parent</name>
-    <description>Parent project for all Spigot modules.</description>
-    <url>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot</url>
+	<name>Spigot-Parent</name>
+	<description>Parent project for all Spigot modules.</description>
+	<url>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot</url>
 
-    <modules>
-        <module>Spigot-Server</module>
-        <module>Spigot-API</module>
-    </modules>
+	<modules>
+		<module>Spigot-Server</module>
+		<module>Spigot-API</module>
+	</modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <parent>
-    	<groupId>com.redmancometh</groupId>
-    	<artifactId>BloomParent</artifactId>
-    	<version>1.0</version>
-    	<relativePath>../</relativePath>
-    </parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>

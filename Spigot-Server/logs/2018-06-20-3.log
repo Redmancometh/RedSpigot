@@ -1,0 +1,3 @@
+[06:03:34] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3f6b0be5: startup date [Wed Jun 20 06:03:34 CDT 2018]; root of context hierarchy
+[06:03:35] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: @Bean method 'saveCommandsConfig' must not be private or final; change the method's modifiers to continue
+Offending resource: class path resource [net/mcavenue/redspigot/configuration/context/CraftConfigContext.class]

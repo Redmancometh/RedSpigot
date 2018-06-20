@@ -1,0 +1,75 @@
+[05:11:23] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[05:11:23] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[05:11:23] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[05:11:23] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[05:11:23] [main/INFO]: HHH000206: hibernate.properties not found
+[05:11:23] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[05:11:23] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[05:11:24] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[05:11:25] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
+[05:11:25] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[05:11:25] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+[05:11:25] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+[05:11:25] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@57ed02e6'
+[05:11:25] [main/INFO]: [STDOUT]: GETTING PLAYER
+[05:11:26] [main/INFO]: [STDOUT]: RESULT IS NULL
+[05:11:26] [pool-2-thread-1/INFO]: [STDOUT]: RESULT IS NULL
+[05:11:26] [main/INFO]: [STDOUT]: RP RECORD
+[05:11:26] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'serverController': Unsatisfied dependency expressed through field 'playerList'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'player-list': Unsatisfied dependency expressed through field 'cserver'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cServer': Unsatisfied dependency expressed through field 'online'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'net.mcavenue.redspigot.util.BooleanWrapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=online)}
+[05:11:26] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[05:11:26] [main/INFO]: [STDERR]: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'serverController': Unsatisfied dependency expressed through field 'playerList'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'player-list': Unsatisfied dependency expressed through field 'cserver'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cServer': Unsatisfied dependency expressed through field 'online'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'net.mcavenue.redspigot.util.BooleanWrapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=online)}
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[05:11:26] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[05:11:26] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'player-list': Unsatisfied dependency expressed through field 'cserver'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cServer': Unsatisfied dependency expressed through field 'online'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'net.mcavenue.redspigot.util.BooleanWrapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=online)}
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+[05:11:26] [main/INFO]: [STDERR]: 	... 14 more
+[05:11:26] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cServer': Unsatisfied dependency expressed through field 'online'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'net.mcavenue.redspigot.util.BooleanWrapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=online)}
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+[05:11:26] [main/INFO]: [STDERR]: 	... 27 more
+[05:11:26] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'net.mcavenue.redspigot.util.BooleanWrapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=online)}
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+[05:11:26] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+[05:11:26] [main/INFO]: [STDERR]: 	... 40 more

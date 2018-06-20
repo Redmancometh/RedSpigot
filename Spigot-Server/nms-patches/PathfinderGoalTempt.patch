@@ -1,0 +1,43 @@
+--- a/net/minecraft/server/PathfinderGoalTempt.java
++++ b/net/minecraft/server/PathfinderGoalTempt.java
+@@ -2,6 +2,12 @@
+ 
+ import com.google.common.collect.Sets;
+ import java.util.Set;
++// CraftBukkit start
++import org.bukkit.craftbukkit.entity.CraftLivingEntity;
++import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.event.entity.EntityTargetEvent;
++import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
++// CraftBukkit end
+ 
+ public class PathfinderGoalTempt extends PathfinderGoal {
+ 
+@@ -12,7 +18,7 @@
+     private double e;
+     private double f;
+     private double g;
+-    private EntityHuman target;
++    private EntityLiving target; // CraftBukkit
+     private int i;
+     private boolean j;
+     private final Set<Item> k;
+@@ -39,7 +45,17 @@
+             return false;
+         } else {
+             this.target = this.a.world.findNearbyPlayer(this.a, 10.0D);
+-            return this.target == null ? false : this.a(this.target.getItemInMainHand()) || this.a(this.target.getItemInOffHand());
++            // CraftBukkit start
++            boolean tempt = this.target == null ? false : this.a(this.target.getItemInMainHand()) || this.a(this.target.getItemInOffHand());
++            if (tempt) {
++                EntityTargetLivingEntityEvent event = CraftEventFactory.callEntityTargetLivingEvent(this.a, this.target, EntityTargetEvent.TargetReason.TEMPT);
++                if (event.isCancelled()) {
++                    return false;
++                }
++                this.target = (event.getTarget() == null) ? null : ((CraftLivingEntity) event.getTarget()).getHandle();
++            }
++            return tempt;
++            // CraftBukkit end
+         }
+     }
+ 

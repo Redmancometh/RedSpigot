@@ -1,0 +1,67 @@
+[19:56:31] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6283d8b8: startup date [Sun Jun 17 19:56:31 CDT 2018]; root of context hierarchy
+[19:56:32] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[19:56:32] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[19:56:32] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[19:56:32] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[19:56:32] [main/INFO]: HHH000206: hibernate.properties not found
+[19:56:32] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[19:56:33] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[19:56:33] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[19:56:35] [main/INFO]: [STDOUT]: Post construct permissions controller
+[19:56:35] [main/INFO]: [STDOUT]: PLAYERLIST INSTANTIATED
+[19:56:35] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'serverController': Unsatisfied dependency expressed through field 'playerlist'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'player-list' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.PlayerList]: Factory method 'list' threw exception; nested exception is java.lang.NullPointerException
+[19:56:35] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[19:56:35] [main/INFO]: [STDERR]: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'serverController': Unsatisfied dependency expressed through field 'playerlist'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'player-list' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.PlayerList]: Factory method 'list' threw exception; nested exception is java.lang.NullPointerException
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[19:56:35] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'player-list' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.PlayerList]: Factory method 'list' threw exception; nested exception is java.lang.NullPointerException
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:587)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1254)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1103)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:541)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+[19:56:35] [main/INFO]: [STDERR]: 	... 14 more
+[19:56:35] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.PlayerList]: Factory method 'list' threw exception; nested exception is java.lang.NullPointerException
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:579)
+[19:56:35] [main/INFO]: [STDERR]: 	... 26 more
+[19:56:35] [main/INFO]: [STDERR]: Caused by: java.lang.NullPointerException
+[19:56:35] [main/INFO]: [STDERR]: 	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:202)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.minecraft.server.PlayerList.<init>(PlayerList.java:86)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.minecraft.server.DedicatedPlayerList.<init>(SourceFile:14)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext.list(NMSContext.java:49)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$21b39273.CGLIB$list$0(<generated>)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$21b39273$$FastClassBySpringCGLIB$$b1dd6f96.invoke(<generated>)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:361)
+[19:56:35] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$21b39273.list(<generated>)
+[19:56:35] [main/INFO]: [STDERR]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[19:56:35] [main/INFO]: [STDERR]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[19:56:35] [main/INFO]: [STDERR]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[19:56:35] [main/INFO]: [STDERR]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[19:56:35] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[19:56:35] [main/INFO]: [STDERR]: 	... 27 more
+[19:56:35] [Thread-2/INFO]: Stopping server

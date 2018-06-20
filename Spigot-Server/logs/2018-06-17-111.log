@@ -1,0 +1,55 @@
+[19:59:04] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6283d8b8: startup date [Sun Jun 17 19:59:04 CDT 2018]; root of context hierarchy
+[19:59:05] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[19:59:05] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[19:59:05] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[19:59:05] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[19:59:05] [main/INFO]: HHH000206: hibernate.properties not found
+[19:59:05] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[19:59:06] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[19:59:06] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[19:59:08] [main/INFO]: [STDOUT]: Post construct permissions controller
+[19:59:08] [main/INFO]: [STDOUT]: Context setup complete...Redspigot is now starting...
+[19:59:08] [main/INFO]: [STDOUT]: Converter: false
+[19:59:08] [main/INFO]: Starting minecraft server version 1.12.2
+[19:59:08] [main/INFO]: Loading properties
+[19:59:08] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server
+[19:59:08] [main/INFO]: Default game type: SURVIVAL
+[19:59:08] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[19:59:08] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[19:59:08] [main/WARN]: Exception in thread "main" 
+[19:59:08] [main/WARN]: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:138)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1698)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[19:59:08] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[19:59:08] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[19:59:08] [main/WARN]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[19:59:08] [main/WARN]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[19:59:08] [main/WARN]: Caused by: java.lang.NullPointerException
+[19:59:08] [main/WARN]: 	at org.bukkit.Bukkit.getLogger(Bukkit.java:543)
+[19:59:08] [main/WARN]: 	at org.spigotmc.SpigotConfig.debug(SpigotConfig.java:387)
+[19:59:08] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[19:59:08] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[19:59:08] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[19:59:08] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[19:59:08] [main/WARN]: 	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:110)
+[19:59:08] [main/WARN]: 	at org.spigotmc.SpigotConfig.init(SpigotConfig.java:76)
+[19:59:08] [main/WARN]: 	at net.minecraft.server.DedicatedServer.init(DedicatedServer.java:155)
+[19:59:08] [main/WARN]: 	at net.mcavenue.redspigot.controllers.ServerController.start(ServerController.java:30)
+[19:59:08] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[19:59:08] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[19:59:08] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[19:59:08] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:365)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:308)
+[19:59:08] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:135)
+[19:59:08] [main/WARN]: 	... 13 more

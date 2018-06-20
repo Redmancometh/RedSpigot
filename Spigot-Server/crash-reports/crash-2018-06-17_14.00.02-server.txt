@@ -1,0 +1,43 @@
+---- Minecraft Crash Report ----
+// Oops.
+
+Time: 6/17/18 2:00 PM
+Description: Exception in server tick loop
+
+java.lang.UnsupportedOperationException: Cannot redefine singleton Server
+	at org.bukkit.Bukkit.setServer(Bukkit.java:79)
+	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:200)
+	at net.minecraft.server.PlayerList.<init>(PlayerList.java:78)
+	at net.minecraft.server.DedicatedPlayerList.<init>(SourceFile:14)
+	at net.minecraft.server.DedicatedServer.init(DedicatedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:574)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_171, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 130480856 bytes (124 MB) / 173015040 bytes (165 MB) up to 1897922560 bytes (1810 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	CraftBukkit Information: 
+   Running: CraftBukkit version null (MC: 1.12.2) (Implementing API version Unknown-Version) 
+   Failed to handle CraftCrashReport:
+java.lang.NullPointerException
+	at net.minecraft.server.MinecraftServer.getOnlineMode(MinecraftServer.java:1249)
+	at org.bukkit.craftbukkit.CraftCrashReport.call(CraftCrashReport.java:21)
+	at net.minecraft.server.CrashReportSystemDetails.a(SourceFile:78)
+	at net.minecraft.server.CrashReport.h(CrashReport.java:128)
+	at net.minecraft.server.CrashReport.<init>(CrashReport.java:35)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	Profiler Position: N/A (disabled)
+	Is Modded: Definitely; Server brand changed to 'Spigot'
+	Type: Dedicated Server (map_server.txt)

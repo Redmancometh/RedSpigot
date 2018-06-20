@@ -1,0 +1,74 @@
+[17:55:36] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3b6ddd1d: startup date [Mon Jun 18 17:55:36 CDT 2018]; root of context hierarchy
+[17:55:37] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[17:55:37] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[17:55:37] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[17:55:37] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[17:55:37] [main/INFO]: HHH000206: hibernate.properties not found
+[17:55:37] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[17:55:38] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[17:55:38] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[17:55:40] [main/INFO]: [STDOUT]: INIT CS
+[17:55:40] [main/INFO]: [STDOUT]: INIT NMS
+[17:55:40] [main/WARN]: java.lang.Throwable
+[17:55:40] [main/WARN]: 	at net.minecraft.server.DedicatedServer.init(DedicatedServer.java:103)
+[17:55:40] [main/WARN]: 	at net.mcavenue.redspigot.controllers.ServerController.start(ServerController.java:37)
+[17:55:40] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[17:55:40] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[17:55:40] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[17:55:40] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:365)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:308)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:135)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1698)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[17:55:40] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[17:55:40] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[17:55:40] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[17:55:40] [main/WARN]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[17:55:40] [main/WARN]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[17:55:40] [main/INFO]: Starting minecraft server version 1.12.2
+[17:55:40] [main/INFO]: Loading properties
+[17:55:40] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server
+[17:55:40] [main/INFO]: Not R
+[17:55:40] [main/INFO]: End of not R
+[17:55:40] [main/INFO]: Line 118
+[17:55:40] [main/INFO]: TEST
+[17:55:40] [main/INFO]: Default game type: SURVIVAL
+[17:55:40] [main/INFO]: Server Ping Player Sample Count: 12
+[17:55:40] [main/INFO]: MCS: false
+[17:55:40] [main/INFO]: MCSS: false
+[17:55:40] [main/INFO]: MCS: false
+[17:55:40] [main/INFO]: MCSS: false
+[17:55:40] [main/INFO]: MCS: false
+[17:55:40] [main/INFO]: MCSS: false
+[17:55:40] [main/INFO]: Generating keypair
+[17:55:40] [main/INFO]: Starting Minecraft server on *:25565
+[17:55:40] [main/INFO]: Line 162
+[17:55:40] [main/INFO]: About to call an() a
+[17:55:40] [main/INFO]: Using default channel type
+[17:55:40] [main/INFO]: Finished an.a
+[17:55:40] [main/INFO]: Preparing level "world"
+[17:55:41] [main/INFO]: Plist: false
+[17:55:41] [main/INFO]: Plist: false
+[17:55:41] [main/INFO]: Plist: false
+[17:55:41] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
+[17:55:42] [main/INFO]: Preparing spawn area: 90%
+[17:55:42] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
+[17:55:42] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
+[17:55:42] [main/INFO]: Done (2.267s)! For help, type "help" or "?"
+[17:55:42] [main/INFO]: Context setup complete...Redspigot is now starting...
+[17:55:42] [main/INFO]: GETTING COLOURED CONSOLE SENDER
+[17:55:42] [main/INFO]: Converter: false
+[17:55:42] [main/INFO]: INITIALIZING CONFIG: spring.json
+[17:55:42] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
+[17:55:42] [main/INFO]: 1
+[17:55:42] [main/INFO]: false
+[17:55:42] [main/INFO]: 1

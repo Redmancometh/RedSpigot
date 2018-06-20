@@ -1,0 +1,56 @@
+[20:13:05] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6283d8b8: startup date [Sun Jun 17 20:13:05 CDT 2018]; root of context hierarchy
+[20:13:06] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[20:13:06] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[20:13:06] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[20:13:06] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[20:13:06] [main/INFO]: HHH000206: hibernate.properties not found
+[20:13:06] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[20:13:07] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[20:13:08] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[20:13:09] [main/INFO]: [STDOUT]: Post construct permissions controller
+[20:13:09] [main/INFO]: [STDOUT]: Context setup complete...Redspigot is now starting...
+[20:13:09] [main/INFO]: [STDOUT]: Converter: false
+[20:13:09] [main/INFO]: Starting minecraft server version 1.12.2
+[20:13:09] [main/INFO]: Loading properties
+[20:13:09] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\BloomParent\Spigot\Spigot-Server
+[20:13:09] [main/INFO]: Default game type: SURVIVAL
+[20:13:09] [main/INFO]: SERVER NULL: true
+[20:13:09] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[20:13:09] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[20:13:09] [main/WARN]: Exception in thread "main" 
+[20:13:09] [main/WARN]: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverController': Invocation of init method failed; nested exception is java.lang.NullPointerException
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:138)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1698)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[20:13:09] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[20:13:09] [main/WARN]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[20:13:09] [main/WARN]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[20:13:09] [main/WARN]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[20:13:09] [main/WARN]: Caused by: java.lang.NullPointerException
+[20:13:09] [main/WARN]: 	at org.bukkit.Bukkit.getLogger(Bukkit.java:562)
+[20:13:09] [main/WARN]: 	at org.spigotmc.SpigotConfig.debug(SpigotConfig.java:387)
+[20:13:09] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[20:13:09] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[20:13:09] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[20:13:09] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[20:13:09] [main/WARN]: 	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:110)
+[20:13:09] [main/WARN]: 	at org.spigotmc.SpigotConfig.init(SpigotConfig.java:76)
+[20:13:09] [main/WARN]: 	at net.minecraft.server.DedicatedServer.init(DedicatedServer.java:155)
+[20:13:09] [main/WARN]: 	at net.mcavenue.redspigot.controllers.ServerController.start(ServerController.java:28)
+[20:13:09] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[20:13:09] [main/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[20:13:09] [main/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[20:13:09] [main/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:365)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:308)
+[20:13:09] [main/WARN]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:135)
+[20:13:09] [main/WARN]: 	... 13 more
