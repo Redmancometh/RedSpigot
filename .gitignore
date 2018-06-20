@@ -21,6 +21,9 @@ dependency-reduced-pom.xml
 build/
 bin/
 dist/
+logs/
+world/
+world_the_end/
 manifest.mf
 
 # Mac filesystem dust
@@ -31,3 +34,4 @@ manifest.mf
 *.ipr
 *.iws
 .idea/
+*.mca
