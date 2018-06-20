@@ -31,9 +31,3 @@ manifest.mf
 *.ipr
 *.iws
 .idea/
-
-# other stuff
-Spigot-API
-Spigot-Server
-Bukkit
-CraftBukkit
