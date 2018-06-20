@@ -5,7 +5,7 @@
 
     <groupId>org.spigotmc</groupId>
     <artifactId>spigot-parent</artifactId>
-    <version>dev-SNAPSHOT</version>
+    <version>1.12-RED</version>
     <packaging>pom</packaging>
 
     <name>Spigot-Parent</name>
@@ -20,4 +20,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <parent>
+    	<groupId>com.redmancometh</groupId>
+    	<artifactId>BloomParent</artifactId>
+    	<version>1.0</version>
+    	<relativePath>../</relativePath>
+    </parent>
 </project>
