@@ -1,0 +1,16 @@
+{
+    "allow-flight": false,
+    "pvp": true,
+    "spawn-npcs": true,
+    "spawn-animals": true,
+    "force-gamemode": true,
+    "generate-structures": true,
+    "online-mode": true,
+    "prevent-proxy-connections": false,
+    "resource-pack": "",
+    "motd": "Welcome to my server!",
+    "server-ip": "localhost",
+    "spigot-config-dir": "directory",
+    "difficulty": 0,
+    "player-idle-timeout": 0
+}

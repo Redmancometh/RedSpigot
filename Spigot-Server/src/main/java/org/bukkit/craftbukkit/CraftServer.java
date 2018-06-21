@@ -121,6 +121,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.craftbukkit.util.CraftNamespacedKey;
 import org.bukkit.event.server.TabCompleteEvent;
 
+import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
 import net.mcavenue.redspigot.controllers.PluginController;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
 import net.mcavenue.redspigot.util.BooleanWrapper;
@@ -196,6 +197,8 @@ public class CraftServer implements Server {
 	@Qualifier("world-container")
 	private File container;
 	public CraftScoreboardManager scoreboardManager;
+	@Autowired
+	private ServerConfig srvCfg;
 	private int monsterSpawn = -1;
 	private int animalSpawn = -1;
 	private int waterAnimalSpawn = -1;
@@ -217,7 +220,7 @@ public class CraftServer implements Server {
 	}
 
 	public void initialize() {
-		online.setValue(console.getPropertyManager().getBoolean("online-mode", true));
+		online.setValue(srvCfg.isOnlineMode());
 		Bukkit.setServer(this);
 
 		// Register all the Enchantments and PotionTypes now so we can stop new
@@ -396,37 +399,37 @@ public class CraftServer implements Server {
 	// so if that changes this will need to as well
 	@Override
 	public int getPort() {
-		return this.getConfigInt("server-port", 25565);
+		return srvCfg.getServerPort();
 	}
 
 	@Override
 	public int getViewDistance() {
-		return this.getConfigInt("view-distance", 10);
+		return srvCfg.getViewDistance();
 	}
 
 	@Override
 	public String getIp() {
-		return this.getConfigString("server-ip", "");
+		return srvCfg.getServerIp();
 	}
 
 	@Override
 	public String getServerName() {
-		return this.getConfigString("server-name", "Unknown Server");
+		return srvCfg.getServerName();
 	}
 
 	@Override
 	public String getServerId() {
-		return this.getConfigString("server-id", "unnamed");
+		return srvCfg.getServerId();
 	}
 
 	@Override
 	public String getWorldType() {
-		return this.getConfigString("level-type", "DEFAULT");
+		return srvCfg.getWorldConfig().getLevelType();
 	}
 
 	@Override
 	public boolean getGenerateStructures() {
-		return this.getConfigBoolean("generate-structures", true);
+		return srvCfg.getWorldConfig().isGenerateStructures();
 	}
 
 	@Override
@@ -436,11 +439,11 @@ public class CraftServer implements Server {
 
 	@Override
 	public boolean getAllowNether() {
-		return this.getConfigBoolean("allow-nether", true);
+		return srvCfg.getWorldConfig().isAllowNether();
 	}
 
 	public boolean getWarnOnOverload() {
-		return this.configuration.getBoolean("settings.warn-on-overload");
+		return true;
 	}
 
 	public boolean getQueryPlugins() {
@@ -449,20 +452,7 @@ public class CraftServer implements Server {
 
 	@Override
 	public boolean hasWhitelist() {
-		return this.getConfigBoolean("white-list", false);
-	}
-
-	// NOTE: Temporary calls through to server.properies until its replaced
-	private String getConfigString(String variable, String defaultValue) {
-		return this.console.getPropertyManager().getString(variable, defaultValue);
-	}
-
-	private int getConfigInt(String variable, int defaultValue) {
-		return this.console.getPropertyManager().getInt(variable, defaultValue);
-	}
-
-	private boolean getConfigBoolean(String variable, boolean defaultValue) {
-		return this.console.getPropertyManager().getBoolean(variable, defaultValue);
+		return srvCfg.isWhitelist();
 	}
 
 	// End Temporary calls
@@ -993,7 +983,7 @@ public class CraftServer implements Server {
 
 	@Override
 	public int getSpawnRadius() {
-		return ((DedicatedServer) console).propertyManager.getInt("spawn-protection", 16);
+		return srvCfg.getGameplayConfig().getSpawnProtection();
 	}
 
 	@Override
@@ -1215,7 +1205,6 @@ public class CraftServer implements Server {
 	@Override
 	public void setWhitelist(boolean value) {
 		playerList.setHasWhitelist(value);
-		console.getPropertyManager().setProperty("white-list", value);
 	}
 
 	@Override

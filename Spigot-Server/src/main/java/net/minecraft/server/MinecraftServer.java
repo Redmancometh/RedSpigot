@@ -41,6 +41,7 @@ import org.apache.logging.log4j.Logger;
 // CraftBukkit start
 import jline.console.ConsoleReader;
 import joptsimple.OptionSet;
+import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
 import net.mcavenue.redspigot.controllers.InitializationController;
 import net.mcavenue.redspigot.world.RedWorldManager;
 
@@ -96,8 +97,12 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 	@Autowired
 	@Qualifier("server-version")
 	private String serverVersion;
+	@Autowired
+	private ServerConfig srvCfg;
 	private String serverIp;
 	private int u = -1;
+	@Autowired
+	@Qualifier("world-server-array")
 	public WorldServer[] worldServer;
 	private boolean isRunning = true;
 	private boolean isStopped;
@@ -155,7 +160,6 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 		io.netty.util.ResourceLeakDetector.setEnabled(false);
 		this.e = Proxy.NO_PROXY;
 		this.b = this.i();
-		this.dataConverterManager = dataconvertermanager;
 		this.setOptions(options);
 		if (System.console() == null && System.getProperty("jline.terminal") == null) {
 			System.setProperty("jline.terminal", "jline.UnsupportedTerminal");
@@ -169,7 +173,6 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 																				// main
 	}
 
-	public abstract PropertyManager getPropertyManager();
 	// CraftBukkit end
 
 	protected CommandDispatcher i() {
@@ -178,8 +181,7 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 
 	public abstract boolean init() throws IOException;
 
-	protected void a(String s) {
-		java.util.logging.Logger.getLogger("CONVERTABLE: " + (convertable == null));
+	public void a(String s) {
 		if (convertable.isConvertable(s)) {
 			MinecraftServer.LOGGER.info("Converting map!");
 			this.b("menu.convertingLevel");
@@ -188,7 +190,6 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 
 				public void a(String s) {
 				}
-
 				public void a(int i) {
 					if (System.currentTimeMillis() - this.b >= 1000L) {
 						this.b = System.currentTimeMillis();
@@ -196,21 +197,20 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 					}
 
 				}
-
 				public void c(String s) {
 				}
 			});
 		}
-
 	}
 
-	protected synchronized void b(String s) {
+	public synchronized void b(String s) {
 		this.S = s;
 	}
 
-	
 	/**
-	 * TODO: Next place to pull off to it's own configuration. This one is a fuckin doozy
+	 * TODO: Next place to pull off to it's own configuration. This one is a
+	 * fuckin doozy
+	 * 
 	 * @param s
 	 * @param s1
 	 * @param i
@@ -218,11 +218,12 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 	 * @param s2
 	 */
 	public void a(String s, String s1, long i, WorldType worldtype, String s2) {
+		/**
+		 * Start world stuff
+		 */
 		this.a(s);
 		this.b("menu.loadingLevel");
-		this.worldServer = new WorldServer[3];
 		int worldCount = 3;
-
 		for (int j = 0; j < worldCount; ++j) {
 			WorldServer world;
 			byte dimension = 0;
@@ -251,6 +252,9 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 			worldsettings.setGeneratorSettings(s2);
 
 			if (j == 0) {
+				/**
+				 * World without conversion
+				 */
 				IDataManager idatamanager = new ServerNBTManager(server.getWorldContainer(), s1, true, this.dataConverterManager);
 				WorldData worlddata = idatamanager.getWorldData();
 				if (worlddata == null) {
@@ -271,6 +275,9 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 				world.a(worldsettings);
 				this.server.scoreboardManager = new org.bukkit.craftbukkit.scoreboard.CraftScoreboardManager(this, world.getScoreboard());
 			} else {
+				/**
+				 * World conversion
+				 */
 				String dim = "DIM" + dimension;
 
 				File newWorld = new File(new File(name), dim);
@@ -334,7 +341,6 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 			}
 
 			worlds.add(world);
-			System.out.println("Plist: " + (getPlayerList() == null));
 			getPlayerList().setPlayerFileData(worlds.toArray(new WorldServer[worlds.size()]));
 		}
 		// CraftBukkit end
@@ -941,10 +947,10 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 	}
 
 	public boolean isDebugging() {
-		return this.getPropertyManager().getBoolean("debug", false); // CraftBukkit
-																		// -
-																		// don't
-																		// hardcode
+		return srvCfg.isDebug(); // CraftBukkit
+									// -
+									// don't
+									// hardcode
 	}
 
 	public void g(String s) {
@@ -1128,6 +1134,12 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 		return this.P;
 	}
 
+	/**
+	 * TODO: Broken fix later.
+	 * 
+	 * @param s
+	 * @param s1
+	 */
 	public void setResourcePack(String s, String s1) {
 		this.O = s;
 		this.P = s1;

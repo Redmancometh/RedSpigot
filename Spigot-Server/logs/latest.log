@@ -1,52 +1,64 @@
-[18:22:50] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@611889f4: startup date [Wed Jun 20 18:22:50 CDT 2018]; root of context hierarchy
-[18:22:51] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
-[18:22:51] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
-[18:22:51] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+[23:37:44] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@611889f4: startup date [Wed Jun 20 23:37:44 CDT 2018]; root of context hierarchy
+[23:37:45] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[23:37:45] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[23:37:45] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-[18:22:51] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
-[18:22:51] [main/INFO]: HHH000206: hibernate.properties not found
-[18:22:51] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
-[18:22:51] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
-[18:22:52] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
-[18:22:53] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
-[18:22:53] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
-[18:22:54] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
-[18:22:54] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-[18:22:54] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@8c18bde'
-[18:22:54] [main/INFO]: [STDOUT]: GETTING PLAYER
-[18:22:54] [main/INFO]: [STDOUT]: RESULT IS NULL
-[18:22:54] [pool-3-thread-1/INFO]: [STDOUT]: RESULT IS NULL
-[18:22:54] [main/INFO]: [STDOUT]: RP RECORD
-[18:22:54] [main/INFO]: [STDOUT]: INIT CS
-[18:22:54] [main/INFO]: [STDOUT]: INIT NMS
-[18:22:54] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server
-[18:22:54] [main/INFO]: Not R
-[18:22:54] [main/INFO]: End of not R
-[18:22:54] [main/INFO]: Line 118
-[18:22:54] [main/INFO]: Server Ping Player Sample Count: 12
-[18:22:54] [main/INFO]: MCS: false
-[18:22:54] [main/INFO]: MCSS: false
-[18:22:54] [main/INFO]: MCS: false
-[18:22:54] [main/INFO]: MCSS: false
-[18:22:54] [main/INFO]: MCS: false
-[18:22:54] [main/INFO]: MCSS: false
-[18:22:54] [main/INFO]: Line 162
-[18:22:54] [main/INFO]: About to call an() a
-[18:22:54] [main/INFO]: Using default channel type
-[18:22:54] [main/INFO]: Finished an.a
-[18:22:55] [main/INFO]: Plist: false
-[18:22:55] [main/INFO]: Plist: false
-[18:22:55] [main/INFO]: Plist: false
-[18:22:55] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
-[18:22:56] [main/INFO]: Preparing spawn area: 86%
-[18:22:56] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
-[18:22:56] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
-[18:22:56] [main/INFO]: Context setup complete...Redspigot is now starting...
-[18:22:56] [main/INFO]: GETTING COLOURED CONSOLE SENDER
-[18:22:56] [main/INFO]: Converter: false
-[18:22:57] [main/INFO]: INITIALIZING CONFIG: spring.json
-[18:22:57] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
-[18:22:57] [main/INFO]: 1
-[18:22:57] [main/INFO]: false
-[18:22:57] [main/INFO]: 1
+[23:37:45] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[23:37:45] [main/INFO]: HHH000206: hibernate.properties not found
+[23:37:45] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[23:37:45] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[23:37:46] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[23:37:48] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
+[23:37:48] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[23:37:48] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+[23:37:48] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+[23:37:48] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6ee1ddcf'
+[23:37:48] [main/INFO]: [STDOUT]: GETTING PLAYER
+[23:37:48] [main/INFO]: [STDOUT]: RESULT IS NULL
+[23:37:48] [pool-3-thread-1/INFO]: [STDOUT]: RESULT IS NULL
+[23:37:48] [main/INFO]: [STDOUT]: INIT CS
+[23:37:48] [main/INFO]: [STDOUT]: INIT NMS
+[23:37:48] [pool-3-thread-2/INFO]: [STDOUT]: RP RECORD
+[23:37:48] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server
+[23:37:48] [main/INFO]: Server Ping Player Sample Count: 12
+[23:37:48] [main/INFO]: MCS: false
+[23:37:48] [main/INFO]: MCSS: false
+[23:37:48] [main/INFO]: MCS: false
+[23:37:48] [main/INFO]: MCSS: false
+[23:37:48] [main/INFO]: MCS: false
+[23:37:48] [main/INFO]: MCSS: false
+[23:37:48] [main/INFO]: Line 162
+[23:37:48] [main/INFO]: About to call an() a
+[23:37:48] [main/INFO]: Using default channel type
+[23:37:48] [main/INFO]: Finished an.a
+[23:37:49] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
+[23:37:50] [main/INFO]: Preparing spawn area: 80%
+[23:37:50] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
+[23:37:51] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
+[23:37:51] [main/INFO]: Context setup complete...Redspigot is now starting...
+[23:37:51] [main/INFO]: GETTING COLOURED CONSOLE SENDER
+[23:37:51] [main/INFO]: Converter: false
+[23:37:51] [main/INFO]: CFG: 
+
+[23:37:51] [main/INFO]: ServerConfig(debug=false, whitelist=false, snooperEnabled=false, useNativeTransport=false, enableQuery=false, enableRcon=false, enableCommandBlock=false, announceAchievements=false, announceAdvancements=false, broadcastConsoleToOps=true, broadcastRconToOps=false, onlineMode=true, preventProxyConnections=false, resourcePack=, serverName=Redmans Server, serverId=unnamed, motd=Welcome to my server!, serverIp=localhost, spigotConfigDir=directory, viewDistance=6, maxPlayers=20, playerIdleTimeout=0, opPermissionLevel=4, networkCompressionThreshold=256, serverPort=25565, maxTickTime=5, worldConfig=WorldConfiguration(maxWorldSize=10000, maxBuildHeight=256, generateStructures=true, allowNether=true, allowEnd=true, levelType=DEFAULT, levelSeed=, levelName=world, generatorSettings=), gameplayConfig=GameplayConfiguration(hardcore=false, forceGamemode=true, allowFlight=false, pvp=true, spawnNpcs=true, spawnAnimals=true, spawnMonsters=true, spawnProtection=0, gamemode=0, difficulty=0))
+[23:37:51] [main/INFO]: Welcome to my server!
+[23:37:51] [main/INFO]: INITIALIZING CONFIG: spring.json
+[23:37:51] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
+[23:37:51] [main/INFO]: 1
+[23:37:51] [main/INFO]: false
+[23:37:51] [main/INFO]: 1
+[23:38:12] [User Authenticator #1/INFO]: UUID of player Redmancometh is c060be9e-43b6-4deb-884d-6fab2e11682b
+[23:38:13] [Server thread/INFO]: LOGIN: CraftPlayer{name=Redmancometh}
+[23:38:13] [Server thread/INFO]: Redmancometh[/127.0.0.1:53784] logged in with entity id 174 at ([world]252.85350638646386, 70.0, 442.30000001192093)
+[23:38:24] [Server thread/INFO]: Redmancometh issued server command: /timings on
+[23:38:33] [Server thread/INFO]: 
+[23:38:37] [Server thread/INFO]: Redmancometh issued server command: /timings on
+[23:38:40] [Server thread/INFO]: Redmancometh issued server command: /timings paste
+[23:39:01] [Server thread/INFO]: Redmancometh issued server command: /burn
+[23:39:03] [Server thread/INFO]: Redmancometh issued server command: /fire
+[23:39:05] [Server thread/INFO]: Redmancometh issued server command: /gm 1
+[23:39:06] [Server thread/INFO]: Redmancometh issued server command: /gamemode 1
+[23:39:06] [Server thread/INFO]: 
+[23:39:15] [Server thread/INFO]: Redmancometh lost connection: 
+[23:39:15] [Server thread/INFO]: 

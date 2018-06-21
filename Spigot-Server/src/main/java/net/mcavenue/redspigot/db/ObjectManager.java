@@ -3,8 +3,6 @@ package net.mcavenue.redspigot.db;
 import org.bukkit.craftbukkit.util.SpecialFuture;
 import org.bukkit.entity.Player;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import lombok.Getter;
 import net.mcavenue.redspigot.exception.ObjectNotPresentException;
 import net.mcavenue.redspigot.util.Defaultable;
 
@@ -16,7 +14,6 @@ public class ObjectManager<T extends Defaultable<?>> implements BaseObjectManage
 
 	@Autowired
 	private MasterDatabase masterDB;
-	@Getter
 	private String name;
 	public ObjectManager(Class<T> type, String name) {
 		this.type = type;
@@ -160,5 +157,21 @@ public class ObjectManager<T extends Defaultable<?>> implements BaseObjectManage
 			ex.printStackTrace();
 		}
 		return null;
+	}
+
+	public MasterDatabase getMasterDB() {
+		return masterDB;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setMasterDB(MasterDatabase masterDB) {
+		this.masterDB = masterDB;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

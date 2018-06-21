@@ -1,9 +1,6 @@
 package net.mcavenue.redspigot.configuration.context;
-import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import net.mcavenue.redspigot.db.BaseObjectManager;
 import net.mcavenue.redspigot.db.MasterDatabase;
 import net.mcavenue.redspigot.db.ObjectManager;
 import net.mcavenue.redspigot.model.RedPlayer;

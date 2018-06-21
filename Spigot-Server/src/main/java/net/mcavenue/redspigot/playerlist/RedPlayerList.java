@@ -2,26 +2,29 @@ package net.mcavenue.redspigot.playerlist;
 
 import com.mojang.authlib.GameProfile;
 
+import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
 import net.minecraft.server.DedicatedServer;
 import net.minecraft.server.PlayerList;
 
 import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class RedPlayerList extends PlayerList {
 
 	private static final Logger f = LogManager.getLogger();
-
+	@Autowired
+	private ServerConfig cfg;
 	public RedPlayerList() {
 		super();
 
 	}
 
 	public void initializeList(DedicatedServer dedicatedserver) {
-		this.a(dedicatedserver.a("view-distance", 10));
-		this.maxPlayers = dedicatedserver.a("max-players", 20);
-		this.setHasWhitelist(dedicatedserver.a("white-list", false));
+		this.a(cfg.getViewDistance());
+		this.maxPlayers = cfg.getMaxPlayers();
+		this.setHasWhitelist(cfg.isWhitelist());
 		if (!dedicatedserver.R()) {
 			this.getProfileBans().a(true);
 			this.getIPBans().a(true);
@@ -41,7 +44,6 @@ public class RedPlayerList extends PlayerList {
 
 	public void setHasWhitelist(boolean flag) {
 		super.setHasWhitelist(flag);
-		this.getServer().a("white-list", (Object) Boolean.valueOf(flag));
 		this.getServer().a();
 	}
 

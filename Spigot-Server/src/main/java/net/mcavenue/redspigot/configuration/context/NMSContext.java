@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Scope;
 
 import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfileRepository;
@@ -19,9 +20,11 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
 import jline.console.ConsoleReader;
+import joptsimple.OptionSet;
+import net.mcavenue.redspigot.configuration.ConfigManager;
+import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
 import net.mcavenue.redspigot.controllers.InitializationController;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
-import net.minecraft.server.Convertable;
 import net.minecraft.server.DataConverterManager;
 import net.minecraft.server.DataConverterRegistry;
 import net.minecraft.server.DedicatedServer;
@@ -34,18 +37,46 @@ import net.minecraft.server.PropertyManager;
 import net.minecraft.server.ServerPing;
 import net.minecraft.server.UserCache;
 import net.minecraft.server.WorldServer;
-import org.springframework.context.annotation.DependsOn;
 
 @Configuration
 /*
  * TODO: Reorganize the Contexts into categorized folders. We want it all split
  * up for later when we have pre-spring load Configuration changes.
+ * 
+ * 
+ * Also a lot of this stuff should be moved into a more specialized class. These
+ * configs shouldn't be 1000 lines.
+ * 
  */
 public class NMSContext {
+
+	@Bean("server-config-man")
+	public ConfigManager<ServerConfig> srvConfig() {
+		ConfigManager<ServerConfig> cfg = new ConfigManager("bukkit.json", ServerConfig.class);
+		cfg.init();
+		return cfg;
+	}
+
+	@Bean
+	@Scope("prototype")
+	/**
+	 * Prototype scope so that it fetches every time the bean is used.
+	 * 
+	 * @param srvCfg
+	 * @return
+	 */
+	public ServerConfig cfg(@Qualifier("server-config-man") ConfigManager<ServerConfig> srvCfg) {
+		return srvCfg.getConfig();
+	}
 
 	@Bean(name = " world-servers")
 	public List<WorldServer> worldServers() {
 		return new ArrayList<WorldServer>();
+	}
+
+	@Bean(name = "world-server-array")
+	public WorldServer[] worldServerArray() {
+		return new WorldServer[3];
 	}
 
 	@Bean(name = "main-thread")
@@ -111,10 +142,64 @@ public class NMSContext {
 	 * @return
 	 */
 	@Bean(name = "dedi-server")
-	public DedicatedServer server() {
+	@DependsOn("property-manager")
+	public DedicatedServer server(ServerConfig cfg, @Qualifier("resource-pack-sha1") String resourcePack) {
 		DispenserRegistry.c();
 		DedicatedServer server = new DedicatedServer();
+		// For some reason the property manager was not being injected property
+		// into the DedicatedServer instance
+		// TODO: Make this autowire in properly. For now this fix is fine though
+		setConfiguration(server, cfg, resourcePack);
 		return server;
+	}
+
+	@Bean("resource-pack-sha1")
+	public String resourcePack(PropertyManager propertyManager, Logger logger) {
+		if (propertyManager.a("resource-pack-hash")) {
+			if (propertyManager.a("resource-pack-sha1")) {
+				logger.info("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+			} else {
+				logger.info("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+				propertyManager.getString("resource-pack-sha1", propertyManager.getString("resource-pack-hash", ""));
+				propertyManager.b("resource-pack-hash");
+			}
+		}
+		String s = propertyManager.getString("resource-pack-sha1", "");
+		if (!s.isEmpty() && !DedicatedServer.l.matcher(s).matches()) {
+			logger.info("Invalid sha1 for ressource-pack-sha1");
+		}
+		if (!propertyManager.getString("resource-pack", "").isEmpty() && s.isEmpty()) {
+			logger.info(
+					"You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+		}
+		return s;
+	}
+
+	private void setConfiguration(DedicatedServer server, ServerConfig cfg, String resourcePack) {
+		server.setSpawnAnimals(cfg.getGameplayConfig().isSpawnAnimals());
+		server.setSpawnNPCs(cfg.getGameplayConfig().isSpawnNpcs());
+		server.setPVP(cfg.getGameplayConfig().isPvp());
+		server.setAllowFlight(cfg.getGameplayConfig().isAllowFlight());
+		// TODO: Fix
+		server.setResourcePack(cfg.getResourcePack(), resourcePack);
+		server.setMotd(cfg.getMotd());
+		server.setForceGamemode(cfg.getGameplayConfig().isForceGamemode());
+		server.setIdleTimeout(cfg.getPlayerIdleTimeout());
+		server.setGenerateStructures(cfg.getWorldConfig().isGenerateStructures());
+		/**
+		 * Something tells me this R shit and the multi calls don't need to be
+		 * there.
+		 */
+		if (server.R())
+			server.c("127.0.0.1");
+		else {
+			server.setOnlineMode(cfg.isOnlineMode());
+			server.e(cfg.isPreventProxyConnections());
+			server.c(cfg.getServerIp());
+		}
+		server.setOnlineMode(cfg.isOnlineMode());
+		server.e(cfg.isPreventProxyConnections());
+		server.c(cfg.getServerIp());
 	}
 
 	@Bean(name = "player-list")
@@ -122,9 +207,11 @@ public class NMSContext {
 		return new RedPlayerList();
 	}
 
-	@Bean
-	public PropertyManager properties(DedicatedServer server) {
-		return new PropertyManager(server.getOptions());
+	@Bean(name = "property-manager")
+	public PropertyManager properties(OptionSet options) {
+		for (int x = 0; x < 500; x++)
+			System.out.println((File) options.valueOf("config"));
+		return new PropertyManager(options);
 	}
 
 	@Bean(name = "tickable-list")
