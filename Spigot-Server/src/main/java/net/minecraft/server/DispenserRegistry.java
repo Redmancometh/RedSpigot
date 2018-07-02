@@ -2,6 +2,8 @@ package net.minecraft.server;
 
 import com.mojang.authlib.GameProfile;
 
+import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.ItemRegistry;
 import net.mcavenue.redspigot.registries.MobEffectRegistry;
 import net.minecraft.server.BiomeBase;
 import net.minecraft.server.BlockPosition;
@@ -56,7 +58,13 @@ public class DispenserRegistry {
 	public static boolean b;
 	private static final Logger d = LogManager.getLogger();
 	@Autowired
+	private ItemRegistry items;
+	@Autowired
 	public MobEffectRegistry effectRegistry;
+	@Autowired
+	private BlockRegistry blockRegistry;
+	@Autowired
+	private Blocks blocks;
 	public static boolean a() {
 		return DispenserRegistry.c;
 	}
@@ -471,14 +479,14 @@ public class DispenserRegistry {
 					if (!org.bukkit.craftbukkit.event.CraftEventFactory.callBlockIgniteEvent(world, blockposition.getX(), blockposition.getY(),
 							blockposition.getZ(), isourceblock.getBlockPosition().getX(), isourceblock.getBlockPosition().getY(),
 							isourceblock.getBlockPosition().getZ()).isCancelled()) {
-						world.setTypeUpdate(blockposition, Blocks.FIRE.getBlockData());
+						world.setTypeUpdate(blockposition, blocks.FIRE.getBlockData());
 						if (itemstack.isDamaged(1, world.random, (EntityPlayer) null)) {
 							itemstack.setCount(0);
 						}
 					}
 					// CraftBukkit end
-				} else if (world.getType(blockposition).getBlock() == Blocks.TNT) {
-					Blocks.TNT.postBreak(world, blockposition, Blocks.TNT.getBlockData().set(BlockTNT.EXPLODE, Boolean.valueOf(true)));
+				} else if (world.getType(blockposition).getBlock() == blocks.TNT) {
+					blocks.TNT.postBreak(world, blockposition, blocks.TNT.getBlockData().set(BlockTNT.EXPLODE, Boolean.valueOf(true)));
 					world.setAir(blockposition);
 				} else {
 					this.b = false;
@@ -555,7 +563,7 @@ public class DispenserRegistry {
 				}
 			}
 		});
-		BlockDispenser.REGISTRY.a(Item.getItemOf(Blocks.TNT), new DispenseBehaviorItem() {
+		BlockDispenser.REGISTRY.a(items.getItemOf(blocks.TNT), new DispenseBehaviorItem() {
 			protected ItemStack b(ISourceBlock isourceblock, ItemStack itemstack) {
 				World world = isourceblock.getWorld();
 				BlockPosition blockposition = isourceblock.getBlockPosition().shift((EnumDirection) isourceblock.e().get(BlockDispenser.FACING));
@@ -608,7 +616,7 @@ public class DispenserRegistry {
 				World world = isourceblock.getWorld();
 				EnumDirection enumdirection = (EnumDirection) isourceblock.e().get(BlockDispenser.FACING);
 				BlockPosition blockposition = isourceblock.getBlockPosition().shift(enumdirection);
-				BlockSkull blockskull = Blocks.SKULL;
+				BlockSkull blockskull = blocks.SKULL;
 
 				// CraftBukkit start
 				org.bukkit.block.Block bukkitBlock = world.getWorld().getBlockAt(isourceblock.getBlockPosition().getX(),
@@ -666,7 +674,7 @@ public class DispenserRegistry {
 							}
 
 							((TileEntitySkull) tileentity).setRotation(enumdirection.opposite().get2DRotationValue() * 4);
-							Blocks.SKULL.a(world, blockposition, (TileEntitySkull) tileentity);
+							blocks.SKULL.a(world, blockposition, (TileEntitySkull) tileentity);
 						}
 
 						itemstack.subtract(1);
@@ -678,11 +686,11 @@ public class DispenserRegistry {
 				return itemstack;
 			}
 		});
-		BlockDispenser.REGISTRY.a(Item.getItemOf(Blocks.PUMPKIN), new DispenserRegistry.b() {
+		BlockDispenser.REGISTRY.a(items.getItemOf(blocks.PUMPKIN), new DispenserRegistry.b() {
 			protected ItemStack b(ISourceBlock isourceblock, ItemStack itemstack) {
 				World world = isourceblock.getWorld();
 				BlockPosition blockposition = isourceblock.getBlockPosition().shift((EnumDirection) isourceblock.e().get(BlockDispenser.FACING));
-				BlockPumpkin blockpumpkin = (BlockPumpkin) Blocks.PUMPKIN;
+				BlockPumpkin blockpumpkin = (BlockPumpkin) blocks.PUMPKIN;
 
 				// CraftBukkit start
 				org.bukkit.block.Block bukkitBlock = world.getWorld().getBlockAt(isourceblock.getBlockPosition().getX(),
@@ -734,7 +742,7 @@ public class DispenserRegistry {
 		for (int j = 0; j < i; ++j) {
 			EnumColor enumcolor = aenumcolor[j];
 
-			BlockDispenser.REGISTRY.a(Item.getItemOf(BlockShulkerBox.a(enumcolor)), new DispenserRegistry.c(null));
+			BlockDispenser.REGISTRY.a(items.getItemOf(BlockShulkerBox.a(enumcolor)), new DispenserRegistry.c(null));
 		}
 
 	}
@@ -746,11 +754,11 @@ public class DispenserRegistry {
 			DispenserRegistry.c = true;
 			d();
 			SoundEffect.b();
-			Block.w();
+			blocks.w();
 			BlockFire.e();
 			effectRegistry.registerPotionEffects();
 			Enchantment.g();
-			Item.t();
+			items.t();
 			PotionRegistry.b();
 			PotionBrewer.a();
 			EntityTypes.c();

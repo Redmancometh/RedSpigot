@@ -62,7 +62,7 @@ public abstract class Entity implements ICommandListener {
 	@Autowired
 	protected Blocks blocks;
 	@Autowired
-	private BlockRegistry blockRegistry;
+	protected BlockRegistry blockRegistry;
 
 	protected CraftEntity bukkitEntity;
 

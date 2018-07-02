@@ -7,10 +7,6 @@ import javax.annotation.Nullable;
 
 // CraftBukkit start
 import java.util.AbstractList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.ListIterator;
-
 import com.google.common.collect.ImmutableList;
 import org.bukkit.craftbukkit.block.CraftBlock;
 import org.bukkit.event.block.BlockPistonRetractEvent;
@@ -200,7 +196,7 @@ public class BlockPiston extends BlockDirectional {
 			}
 
 			world.setTypeAndData(blockposition,
-					Blocks.PISTON_EXTENSION.getBlockData().set(BlockPistonMoving.FACING, enumdirection).set(BlockPistonMoving.TYPE,
+					blocks.PISTON_EXTENSION.getBlockData().set(BlockPistonMoving.FACING, enumdirection).set(BlockPistonMoving.TYPE,
 							this.sticky ? BlockPistonExtension.EnumPistonType.STICKY : BlockPistonExtension.EnumPistonType.DEFAULT),
 					3);
 			world.setTileEntity(blockposition, BlockPistonMoving.a(this.fromLegacyData(j), enumdirection, false, true));
@@ -211,7 +207,7 @@ public class BlockPiston extends BlockDirectional {
 				Block block = iblockdata1.getBlock();
 				boolean flag1 = false;
 
-				if (block == Blocks.PISTON_EXTENSION) {
+				if (block == blocks.PISTON_EXTENSION) {
 					TileEntity tileentity1 = world.getTileEntity(blockposition1);
 
 					if (tileentity1 instanceof TileEntityPiston) {
@@ -225,7 +221,7 @@ public class BlockPiston extends BlockDirectional {
 				}
 
 				if (!flag1 && a(iblockdata1, world, blockposition1, enumdirection.opposite(), false, enumdirection)
-						&& (iblockdata1.o() == EnumPistonReaction.NORMAL || block == Blocks.PISTON || block == Blocks.STICKY_PISTON)) { // CraftBukkit
+						&& (iblockdata1.o() == EnumPistonReaction.NORMAL || block == blocks.PISTON || block == blocks.STICKY_PISTON)) { // CraftBukkit
 																																		// -
 																																		// remove
 																																		// 'block.getMaterial()
@@ -255,18 +251,18 @@ public class BlockPiston extends BlockDirectional {
 		return j > 5 ? null : EnumDirection.fromType1(j);
 	}
 
-	public static boolean a(IBlockData iblockdata, World world, BlockPosition blockposition, EnumDirection enumdirection, boolean flag,
+	public boolean a(IBlockData iblockdata, World world, BlockPosition blockposition, EnumDirection enumdirection, boolean flag,
 			EnumDirection enumdirection1) {
 		Block block = iblockdata.getBlock();
 
-		if (block == Blocks.OBSIDIAN) {
+		if (block == blocks.OBSIDIAN) {
 			return false;
 		} else if (!world.getWorldBorder().a(blockposition)) {
 			return false;
 		} else if (blockposition.getY() >= 0 && (enumdirection != EnumDirection.DOWN || blockposition.getY() != 0)) {
 			if (blockposition.getY() <= world.getHeight() - 1
 					&& (enumdirection != EnumDirection.UP || blockposition.getY() != world.getHeight() - 1)) {
-				if (block != Blocks.PISTON && block != Blocks.STICKY_PISTON) {
+				if (block != blocks.PISTON && block != blocks.STICKY_PISTON) {
 					if (iblockdata.b(world, blockposition) == -1.0F) {
 						return false;
 					}
@@ -349,12 +345,12 @@ public class BlockPiston extends BlockDirectional {
 
 			if (event.isCancelled()) {
 				for (BlockPosition b : broken) {
-					world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
+					world.notify(b, super.blocks.AIR.getBlockData(), world.getType(b), 3);
 				}
 				for (BlockPosition b : moved) {
-					world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
+					world.notify(b, super.blocks.AIR.getBlockData(), world.getType(b), 3);
 					b = b.shift(enumdirection1);
-					world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
+					world.notify(b, super.blocks.AIR.getBlockData(), world.getType(b), 3);
 				}
 				return false;
 			}
@@ -368,7 +364,7 @@ public class BlockPiston extends BlockDirectional {
 				blockposition2 = (BlockPosition) list1.get(k);
 				iblockdata = world.getType(blockposition2);
 				iblockdata.getBlock().b(world, blockposition2, iblockdata, 0);
-				world.setTypeAndData(blockposition2, Blocks.AIR.getBlockData(), 4);
+				world.setTypeAndData(blockposition2, super.blocks.AIR.getBlockData(), 4);
 				--j;
 				aiblockdata[j] = iblockdata;
 			}
@@ -376,9 +372,9 @@ public class BlockPiston extends BlockDirectional {
 			for (k = list.size() - 1; k >= 0; --k) {
 				blockposition2 = (BlockPosition) list.get(k);
 				iblockdata = world.getType(blockposition2);
-				world.setTypeAndData(blockposition2, Blocks.AIR.getBlockData(), 2);
+				world.setTypeAndData(blockposition2, super.blocks.AIR.getBlockData(), 2);
 				blockposition2 = blockposition2.shift(enumdirection1);
-				world.setTypeAndData(blockposition2, Blocks.PISTON_EXTENSION.getBlockData().set(BlockPiston.FACING, enumdirection), 4);
+				world.setTypeAndData(blockposition2, super.blocks.PISTON_EXTENSION.getBlockData().set(BlockPiston.FACING, enumdirection), 4);
 				world.setTileEntity(blockposition2, BlockPistonMoving.a((IBlockData) arraylist.get(k), enumdirection, flag, false));
 				--j;
 				aiblockdata[j] = iblockdata;
@@ -391,9 +387,9 @@ public class BlockPiston extends BlockDirectional {
 						? BlockPistonExtension.EnumPistonType.STICKY
 						: BlockPistonExtension.EnumPistonType.DEFAULT;
 
-				iblockdata = Blocks.PISTON_HEAD.getBlockData().set(BlockPistonExtension.FACING, enumdirection).set(BlockPistonExtension.TYPE,
+				iblockdata = super.blocks.PISTON_HEAD.getBlockData().set(BlockPistonExtension.FACING, enumdirection).set(BlockPistonExtension.TYPE,
 						blockpistonextension_enumpistontype);
-				IBlockData iblockdata1 = Blocks.PISTON_EXTENSION.getBlockData().set(BlockPistonMoving.FACING, enumdirection).set(
+				IBlockData iblockdata1 = super.blocks.PISTON_EXTENSION.getBlockData().set(BlockPistonMoving.FACING, enumdirection).set(
 						BlockPistonMoving.TYPE,
 						this.sticky ? BlockPistonExtension.EnumPistonType.STICKY : BlockPistonExtension.EnumPistonType.DEFAULT);
 
@@ -412,7 +408,7 @@ public class BlockPiston extends BlockDirectional {
 			}
 
 			if (flag) {
-				world.applyPhysics(blockposition3, Blocks.PISTON_HEAD, false);
+				world.applyPhysics(blockposition3, super.blocks.PISTON_HEAD, false);
 			}
 
 			return true;

@@ -18,14 +18,13 @@ public class Block {
 
 	private static final MinecraftKey a = new MinecraftKey("air");
 	@Autowired
-	private BlockRegistry REGISTRY;
+	protected BlockRegistry REGISTRY;
 	@Autowired
-	private Blocks blocks;
+	protected Blocks blocks;
 	@Autowired
-	private ItemRegistry items;
+	protected ItemRegistry items;
 	@Autowired
-	private BlockItemRegistry blockItems;
-
+	protected BlockItemRegistry blockItems;
 	public static final RegistryBlockID<IBlockData> REGISTRY_ID = new RegistryBlockID();
 	public static final AxisAlignedBB j = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 	@Nullable
@@ -52,21 +51,6 @@ public class Block {
 
 	public Block asBlock(@Nullable Item item) {
 		return item instanceof ItemBlock ? ((ItemBlock) item).getBlock() : blocks.AIR;
-	}
-
-	@Nullable
-	public Block getByName(String s) {
-		MinecraftKey minecraftkey = new MinecraftKey(s);
-
-		if (REGISTRY.d(minecraftkey)) {
-			return (Block) REGISTRY.get(minecraftkey);
-		} else {
-			try {
-				return (Block) REGISTRY.getId(Integer.parseInt(s));
-			} catch (NumberFormatException numberformatexception) {
-				return null;
-			}
-		}
 	}
 
 	@Deprecated

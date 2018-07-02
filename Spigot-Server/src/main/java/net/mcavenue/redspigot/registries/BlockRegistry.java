@@ -1,5 +1,7 @@
 package net.mcavenue.redspigot.registries;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.server.Block;
 import net.minecraft.server.IBlockData;
 import net.minecraft.server.MinecraftKey;
@@ -17,6 +19,20 @@ public class BlockRegistry extends RegistryBlocks<MinecraftKey, Block> {
 
 	public int getId(Block block) {
 		return a(block); // CraftBukkit - decompile error
+	}
+
+	@Nullable
+	public Block getByName(String s) {
+		MinecraftKey minecraftkey = new MinecraftKey(s);
+		if (d(minecraftkey)) {
+			return (Block) get(minecraftkey);
+		} else {
+			try {
+				return (Block) getId(Integer.parseInt(s));
+			} catch (NumberFormatException numberformatexception) {
+				return null;
+			}
+		}
 	}
 
 	@SuppressWarnings("deprecation")

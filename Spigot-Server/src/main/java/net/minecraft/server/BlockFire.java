@@ -23,7 +23,7 @@ public class BlockFire extends Block {
     private final Map<Block, Integer> B = Maps.newIdentityHashMap();
 
     public IBlockData updateState(IBlockData iblockdata, IBlockAccess iblockaccess, BlockPosition blockposition) {
-        return !iblockaccess.getType(blockposition.down()).q() && !Blocks.FIRE.c(iblockaccess, blockposition.down()) ? iblockdata.set(BlockFire.NORTH, Boolean.valueOf(this.c(iblockaccess, blockposition.north()))).set(BlockFire.EAST, Boolean.valueOf(this.c(iblockaccess, blockposition.east()))).set(BlockFire.SOUTH, Boolean.valueOf(this.c(iblockaccess, blockposition.south()))).set(BlockFire.WEST, Boolean.valueOf(this.c(iblockaccess, blockposition.west()))).set(BlockFire.UPPER, Boolean.valueOf(this.c(iblockaccess, blockposition.up()))) : this.getBlockData();
+        return !iblockaccess.getType(blockposition.down()).q() && !blocks.FIRE.c(iblockaccess, blockposition.down()) ? iblockdata.set(BlockFire.NORTH, Boolean.valueOf(this.c(iblockaccess, blockposition.north()))).set(BlockFire.EAST, Boolean.valueOf(this.c(iblockaccess, blockposition.east()))).set(BlockFire.SOUTH, Boolean.valueOf(this.c(iblockaccess, blockposition.south()))).set(BlockFire.WEST, Boolean.valueOf(this.c(iblockaccess, blockposition.west()))).set(BlockFire.UPPER, Boolean.valueOf(this.c(iblockaccess, blockposition.up()))) : this.getBlockData();
     }
 
     protected BlockFire() {
@@ -33,43 +33,43 @@ public class BlockFire extends Block {
     }
 
     public static void e() {
-        Blocks.FIRE.a(Blocks.PLANKS, 5, 20);
-        Blocks.FIRE.a(Blocks.DOUBLE_WOODEN_SLAB, 5, 20);
-        Blocks.FIRE.a(Blocks.WOODEN_SLAB, 5, 20);
-        Blocks.FIRE.a(Blocks.FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.SPRUCE_FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.BIRCH_FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.JUNGLE_FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.DARK_OAK_FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.ACACIA_FENCE_GATE, 5, 20);
-        Blocks.FIRE.a(Blocks.FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.SPRUCE_FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.BIRCH_FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.JUNGLE_FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.DARK_OAK_FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.ACACIA_FENCE, 5, 20);
-        Blocks.FIRE.a(Blocks.OAK_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.BIRCH_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.SPRUCE_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.JUNGLE_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.ACACIA_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.DARK_OAK_STAIRS, 5, 20);
-        Blocks.FIRE.a(Blocks.LOG, 5, 5);
-        Blocks.FIRE.a(Blocks.LOG2, 5, 5);
-        Blocks.FIRE.a(Blocks.LEAVES, 30, 60);
-        Blocks.FIRE.a(Blocks.LEAVES2, 30, 60);
-        Blocks.FIRE.a(Blocks.BOOKSHELF, 30, 20);
-        Blocks.FIRE.a(Blocks.TNT, 15, 100);
-        Blocks.FIRE.a(Blocks.TALLGRASS, 60, 100);
-        Blocks.FIRE.a(Blocks.DOUBLE_PLANT, 60, 100);
-        Blocks.FIRE.a(Blocks.YELLOW_FLOWER, 60, 100);
-        Blocks.FIRE.a(Blocks.RED_FLOWER, 60, 100);
-        Blocks.FIRE.a(Blocks.DEADBUSH, 60, 100);
-        Blocks.FIRE.a(Blocks.WOOL, 30, 60);
-        Blocks.FIRE.a(Blocks.VINE, 15, 100);
-        Blocks.FIRE.a(Blocks.COAL_BLOCK, 5, 5);
-        Blocks.FIRE.a(Blocks.HAY_BLOCK, 60, 20);
-        Blocks.FIRE.a(Blocks.CARPET, 60, 20);
+        blocks.FIRE.a(blocks.PLANKS, 5, 20);
+        blocks.FIRE.a(blocks.DOUBLE_WOODEN_SLAB, 5, 20);
+        blocks.FIRE.a(blocks.WOODEN_SLAB, 5, 20);
+        blocks.FIRE.a(blocks.FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.SPRUCE_FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.BIRCH_FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.JUNGLE_FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.DARK_OAK_FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.ACACIA_FENCE_GATE, 5, 20);
+        blocks.FIRE.a(blocks.FENCE, 5, 20);
+        blocks.FIRE.a(blocks.SPRUCE_FENCE, 5, 20);
+        blocks.FIRE.a(blocks.BIRCH_FENCE, 5, 20);
+        blocks.FIRE.a(blocks.JUNGLE_FENCE, 5, 20);
+        blocks.FIRE.a(blocks.DARK_OAK_FENCE, 5, 20);
+        blocks.FIRE.a(blocks.ACACIA_FENCE, 5, 20);
+        blocks.FIRE.a(blocks.OAK_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.BIRCH_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.SPRUCE_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.JUNGLE_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.ACACIA_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.DARK_OAK_STAIRS, 5, 20);
+        blocks.FIRE.a(blocks.LOG, 5, 5);
+        blocks.FIRE.a(blocks.LOG2, 5, 5);
+        blocks.FIRE.a(blocks.LEAVES, 30, 60);
+        blocks.FIRE.a(blocks.LEAVES2, 30, 60);
+        blocks.FIRE.a(blocks.BOOKSHELF, 30, 20);
+        blocks.FIRE.a(blocks.TNT, 15, 100);
+        blocks.FIRE.a(blocks.TALLGRASS, 60, 100);
+        blocks.FIRE.a(blocks.DOUBLE_PLANT, 60, 100);
+        blocks.FIRE.a(blocks.YELLOW_FLOWER, 60, 100);
+        blocks.FIRE.a(blocks.RED_FLOWER, 60, 100);
+        blocks.FIRE.a(blocks.DEADBUSH, 60, 100);
+        blocks.FIRE.a(blocks.WOOL, 30, 60);
+        blocks.FIRE.a(blocks.VINE, 15, 100);
+        blocks.FIRE.a(blocks.COAL_BLOCK, 5, 5);
+        blocks.FIRE.a(blocks.HAY_BLOCK, 60, 20);
+        blocks.FIRE.a(blocks.CARPET, 60, 20);
     }
 
     public void a(Block block, int i, int j) {
@@ -105,9 +105,9 @@ public class BlockFire extends Block {
             }
 
             Block block = world.getType(blockposition.down()).getBlock();
-            boolean flag = block == Blocks.NETHERRACK || block == Blocks.df;
+            boolean flag = block == blocks.NETHERRACK || block == blocks.df;
 
-            if (world.worldProvider instanceof WorldProviderTheEnd && block == Blocks.BEDROCK) {
+            if (world.worldProvider instanceof WorldProviderTheEnd && block == blocks.BEDROCK) {
                 flag = true;
             }
 
@@ -181,7 +181,7 @@ public class BlockFire extends Block {
                                         }
 
                                         // CraftBukkit start - Call to stop spread of fire
-                                        if (world.getType(blockposition1) != Blocks.FIRE) {
+                                        if (world.getType(blockposition1) != blocks.FIRE) {
                                             if (CraftEventFactory.callBlockIgniteEvent(world, blockposition1.getX(), blockposition1.getY(), blockposition1.getZ(), blockposition.getX(), blockposition.getY(), blockposition.getZ()).isCancelled()) {
                                                 continue;
                                             }
@@ -261,8 +261,8 @@ public class BlockFire extends Block {
                 world.setAir(blockposition);
             }
 
-            if (iblockdata.getBlock() == Blocks.TNT) {
-                Blocks.TNT.postBreak(world, blockposition, iblockdata.set(BlockTNT.EXPLODE, Boolean.valueOf(true)));
+            if (iblockdata.getBlock() == blocks.TNT) {
+                blocks.TNT.postBreak(world, blockposition, iblockdata.set(BlockTNT.EXPLODE, Boolean.valueOf(true)));
             }
         }
 
@@ -321,7 +321,7 @@ public class BlockFire extends Block {
     }
 
     public void onPlace(World world, BlockPosition blockposition, IBlockData iblockdata) {
-        if (world.worldProvider.getDimensionManager().getDimensionID() > 0 || !Blocks.PORTAL.b(world, blockposition)) {
+        if (world.worldProvider.getDimensionManager().getDimensionID() > 0 || !blocks.PORTAL.b(world, blockposition)) {
             if (!world.getType(blockposition.down()).q() && !this.c(world, blockposition)) {
                 fireExtinguished(world, blockposition); // CraftBukkit - fuel block broke
             } else {
@@ -352,7 +352,7 @@ public class BlockFire extends Block {
 
     // CraftBukkit start
     private void fireExtinguished(World world, BlockPosition position) {
-        if (!CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(position.getX(), position.getY(), position.getZ()), Blocks.AIR).isCancelled()) {
+		if (!CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(position.getX(), position.getY(), position.getZ()), blocks.AIR).isCancelled()) {
             world.setAir(position);
         }
     }

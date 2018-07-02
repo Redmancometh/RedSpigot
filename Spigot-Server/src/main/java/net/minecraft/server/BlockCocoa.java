@@ -38,7 +38,7 @@ public class BlockCocoa extends BlockFacingHorizontal implements IBlockFragilePl
         blockposition = blockposition.shift((EnumDirection) iblockdata.get(BlockCocoa.FACING));
         IBlockData iblockdata1 = world.getType(blockposition);
 
-        return iblockdata1.getBlock() == Blocks.LOG && iblockdata1.get(BlockLog1.VARIANT) == BlockWood.EnumLogVariant.JUNGLE;
+        return iblockdata1.getBlock() == blocks.LOG && iblockdata1.get(BlockLog1.VARIANT) == BlockWood.EnumLogVariant.JUNGLE;
     }
 
     public boolean c(IBlockData iblockdata) {
@@ -98,7 +98,7 @@ public class BlockCocoa extends BlockFacingHorizontal implements IBlockFragilePl
     }
 
     private void f(World world, BlockPosition blockposition, IBlockData iblockdata) {
-        world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 3);
+		world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 3);
         this.b(world, blockposition, iblockdata, 0);
     }
 
