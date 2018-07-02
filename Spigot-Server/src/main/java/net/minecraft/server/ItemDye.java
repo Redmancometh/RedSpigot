@@ -38,14 +38,14 @@ public class ItemDye extends Item {
                 IBlockData iblockdata = world.getType(blockposition);
                 Block block = iblockdata.getBlock();
 
-                if (block == Blocks.LOG && iblockdata.get(BlockLog1.VARIANT) == BlockWood.EnumLogVariant.JUNGLE) {
+                if (block == blocks.LOG && iblockdata.get(BlockLog1.VARIANT) == BlockWood.EnumLogVariant.JUNGLE) {
                     if (enumdirection == EnumDirection.DOWN || enumdirection == EnumDirection.UP) {
                         return EnumInteractionResult.FAIL;
                     }
 
                     blockposition = blockposition.shift(enumdirection);
                     if (world.isEmpty(blockposition)) {
-                        IBlockData iblockdata1 = Blocks.COCOA.getPlacedState(world, blockposition, enumdirection, f, f1, f2, 0, entityhuman);
+						IBlockData iblockdata1 = blocks.COCOA.getPlacedState(world, blockposition, enumdirection, f, f1, f2, 0, entityhuman);
 
                         world.setTypeAndData(blockposition, iblockdata1, 10);
                         if (!entityhuman.abilities.canInstantlyBuild) {

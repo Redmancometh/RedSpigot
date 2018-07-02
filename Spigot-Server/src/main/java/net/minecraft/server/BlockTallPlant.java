@@ -64,11 +64,11 @@ public class BlockTallPlant extends BlockPlant implements IBlockFragilePlantElem
 			Object object1 = flag ? world.getType(blockposition2).getBlock() : this;
 
 			if (object == this) {
-				world.setTypeAndData(blockposition1, Blocks.AIR.getBlockData(), 2);
+				world.setTypeAndData(blockposition1, blocks.AIR.getBlockData(), 2);
 			}
 
 			if (object1 == this) {
-				world.setTypeAndData(blockposition2, Blocks.AIR.getBlockData(), 3);
+				world.setTypeAndData(blockposition2, blocks.AIR.getBlockData(), 3);
 				if (!flag) {
 					this.b(world, blockposition2, iblockdata, 0);
 				}
@@ -151,7 +151,7 @@ public class BlockTallPlant extends BlockPlant implements IBlockFragilePlantElem
 				}
 			}
 		} else if (world.getType(blockposition.up()).getBlock() == this) {
-			world.setTypeAndData(blockposition.up(), Blocks.AIR.getBlockData(), 2);
+			world.setTypeAndData(blockposition.up(), blocks.AIR.getBlockData(), 2);
 		}
 
 		super.a(world, blockposition, iblockdata, entityhuman);
@@ -170,7 +170,7 @@ public class BlockTallPlant extends BlockPlant implements IBlockFragilePlantElem
 					? BlockLongGrass.EnumTallGrassType.GRASS
 					: BlockLongGrass.EnumTallGrassType.FERN).a();
 
-			a(world, blockposition, new ItemStack(Blocks.TALLGRASS, 2, i));
+			a(world, blockposition, new ItemStack(blocks.TALLGRASS, 2, i));
 			return true;
 		}
 	}

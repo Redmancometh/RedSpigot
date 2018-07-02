@@ -684,7 +684,7 @@ public abstract class EntityMinecartAbstract extends Entity implements INamableT
 
 			int i = nbttagcompound.getInt("DisplayData");
 
-			this.setDisplayBlock(block == null ? Blocks.AIR.getBlockData() : block.fromLegacyData(i));
+			this.setDisplayBlock(block == null ? blocks.AIR.getBlockData() : block.fromLegacyData(i));
 			this.setDisplayBlockOffset(nbttagcompound.getInt("DisplayOffset"));
 		}
 
@@ -694,7 +694,7 @@ public abstract class EntityMinecartAbstract extends Entity implements INamableT
 		if (this.A()) {
 			nbttagcompound.setBoolean("CustomDisplayTile", true);
 			IBlockData iblockdata = this.getDisplayBlock();
-			MinecraftKey minecraftkey = (MinecraftKey) Block.REGISTRY.b(iblockdata.getBlock());
+			MinecraftKey minecraftkey = (MinecraftKey) blockRegistry.b(iblockdata.getBlock());
 
 			nbttagcompound.setString("DisplayTile", minecraftkey == null ? "" : minecraftkey.toString());
 			nbttagcompound.setInt("DisplayData", iblockdata.getBlock().toLegacyData(iblockdata));
@@ -819,7 +819,7 @@ public abstract class EntityMinecartAbstract extends Entity implements INamableT
 	}
 
 	public IBlockData x() {
-		return Blocks.AIR.getBlockData();
+		return blocks.AIR.getBlockData();
 	}
 
 	public int getDisplayBlockOffset() {

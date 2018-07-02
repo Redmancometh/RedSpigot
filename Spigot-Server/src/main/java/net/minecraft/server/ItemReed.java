@@ -13,7 +13,7 @@ public class ItemReed extends Item {
 		IBlockData iblockdata = world.getType(blockposition);
 		Block block = iblockdata.getBlock();
 
-		if (block == Blocks.SNOW_LAYER && ((Integer) iblockdata.get(BlockSnow.LAYERS)).intValue() < 1) {
+		if (block == blocks.SNOW_LAYER && ((Integer) iblockdata.get(BlockSnow.LAYERS)).intValue() < 1) {
 			enumdirection = EnumDirection.UP;
 		} else if (!block.a((IBlockAccess) world, blockposition)) {
 			blockposition = blockposition.shift(enumdirection);

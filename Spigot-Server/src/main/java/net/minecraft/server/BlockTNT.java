@@ -57,7 +57,7 @@ public class BlockTNT extends Block {
 
         if (!itemstack.isEmpty() && (itemstack.getItem() == Items.FLINT_AND_STEEL || itemstack.getItem() == Items.FIRE_CHARGE)) {
             this.a(world, blockposition, iblockdata.set(BlockTNT.EXPLODE, Boolean.valueOf(true)), (EntityLiving) entityhuman);
-            world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 11);
+            world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 11);
             if (itemstack.getItem() == Items.FLINT_AND_STEEL) {
                 itemstack.damage(1, entityhuman);
             } else if (!entityhuman.abilities.canInstantlyBuild) {
@@ -76,7 +76,7 @@ public class BlockTNT extends Block {
 
             if (entityarrow.isBurning()) {
                 // CraftBukkit start
-                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entityarrow, blockposition, Blocks.AIR, 0).isCancelled()) {
+				if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entityarrow, blockposition, blocks.AIR, 0).isCancelled()) {
                     return;
                 }
                 // CraftBukkit end

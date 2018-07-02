@@ -3,6 +3,9 @@ package net.minecraft.server;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.ItemRegistry;
+
 import java.text.DecimalFormat;
 import java.util.Random;
 import javax.annotation.Nullable;
@@ -38,16 +41,24 @@ public final class ItemStack {
 	private boolean m;
 	@Autowired
 	protected GenericAttributes attr;
+	@Autowired
+	private Blocks blocks;
+	@Autowired
+	private ItemRegistry items;
+	@Autowired
+	private BlockRegistry blockRegistry;
 	public ItemStack(Block block) {
 		this(block, 1);
 	}
 
+	// TODON: This may not work, and it's a mess
 	public ItemStack(Block block, int i) {
-		this(block, i, 0);
+		this(block, i, 0, null);
 	}
 
-	public ItemStack(Block block, int i, int j) {
-		this(Item.getItemOf(block), i, j);
+	// TODON: This may not work, and it's a mess
+	public ItemStack(Block block, int i, int j, @Autowired ItemRegistry items) {
+		this(items.getItemOf(block), i, j);
 	}
 
 	public ItemStack(Item item) {
@@ -109,7 +120,7 @@ public final class ItemStack {
 
 	// CraftBukkit - break into own method
 	public void load(NBTTagCompound nbttagcompound) {
-		this.item = Item.b(nbttagcompound.getString("id"));
+		this.item = items.b(nbttagcompound.getString("id"));
 		this.count = nbttagcompound.getByte("Count");
 		// CraftBukkit start - Route through setData for filtering
 		// this.damage = Math.max(0, nbttagcompound.getShort("Damage"));
@@ -136,7 +147,7 @@ public final class ItemStack {
 	public boolean isEmpty() {
 		return this == ItemStack.a
 				? true
-				: (this.item != null && this.item != Item.getItemOf(Blocks.AIR)
+				: (this.item != null && this.item != items.getItemOf(blocks.AIR)
 						? (this.count <= 0 ? true : this.damage < -32768 || this.damage > '\uffff')
 						: true);
 	}
@@ -156,7 +167,7 @@ public final class ItemStack {
 	}
 
 	public Item getItem() {
-		return this.g ? Item.getItemOf(Blocks.AIR) : this.item;
+		return this.g ? items.getItemOf(blocks.AIR) : this.item;
 	}
 
 	public EnumInteractionResult placeItem(EntityHuman entityhuman, World world, BlockPosition blockposition, EnumHand enumhand,
@@ -170,7 +181,7 @@ public final class ItemStack {
 			// special case bonemeal
 			if (this.getItem() instanceof ItemDye && this.getData() == 15) {
 				Block block = world.getType(blockposition).getBlock();
-				if (block == Blocks.SAPLING || block instanceof BlockMushroom) {
+				if (block == blocks.SAPLING || block instanceof BlockMushroom) {
 					world.captureTreeGeneration = true;
 				}
 			}
@@ -276,8 +287,8 @@ public final class ItemStack {
 				// Copied from ItemRecord.
 				// PAIL: checkme on updates.
 				if (this.item instanceof ItemRecord) {
-					((BlockJukeBox) Blocks.JUKEBOX).a(world, blockposition, world.getType(blockposition), this);
-					world.a((EntityHuman) null, 1010, blockposition, Item.getId(this.item));
+					((BlockJukeBox) this.blocks.JUKEBOX).a(world, blockposition, world.getType(blockposition), this);
+					world.a((EntityHuman) null, 1010, blockposition, items.getId(this.item));
 					this.subtract(1);
 					entityhuman.b(StatisticList.Z);
 				}
@@ -295,7 +306,7 @@ public final class ItemStack {
 					if (bp != null) {
 						TileEntity te = world.getTileEntity(bp);
 						if (te instanceof TileEntitySkull) {
-							Blocks.SKULL.a(world, bp, (TileEntitySkull) te);
+							this.blocks.SKULL.a(world, bp, (TileEntitySkull) te);
 						}
 					}
 				}
@@ -330,7 +341,7 @@ public final class ItemStack {
 	}
 
 	public NBTTagCompound save(NBTTagCompound nbttagcompound) {
-		MinecraftKey minecraftkey = (MinecraftKey) Item.REGISTRY.b(this.item);
+		MinecraftKey minecraftkey = (MinecraftKey) items.b(this.item);
 
 		nbttagcompound.setString("id", minecraftkey == null ? "minecraft:air" : minecraftkey.toString());
 		nbttagcompound.setByte("Count", (byte) this.count);
@@ -383,7 +394,7 @@ public final class ItemStack {
 		}
 
 		// Is this a block?
-		if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) != Blocks.AIR) {
+		if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) != blocks.AIR) {
 			// If vanilla doesn't use data on it don't allow any
 			if (!(this.usesData() || this.getItem().usesDurability())) {
 				i = 0;
@@ -391,7 +402,7 @@ public final class ItemStack {
 		}
 
 		// Filter invalid plant data
-		if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) == Blocks.DOUBLE_PLANT && (i > 5 || i < 0)) {
+		if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) == blocks.DOUBLE_PLANT && (i > 5 || i < 0)) {
 			i = 0;
 		}
 		// CraftBukkit end
@@ -837,7 +848,7 @@ public final class ItemStack {
 				NBTTagList nbttaglist = this.tag.getList("CanDestroy", 8);
 
 				for (int i = 0; i < nbttaglist.size(); ++i) {
-					Block block1 = Block.getByName(nbttaglist.getString(i));
+					Block block1 = blockRegistry.getByName(nbttaglist.getString(i));
 
 					if (block1 == block) {
 						this.k = true;
@@ -860,7 +871,7 @@ public final class ItemStack {
 				NBTTagList nbttaglist = this.tag.getList("CanPlaceOn", 8);
 
 				for (int i = 0; i < nbttaglist.size(); ++i) {
-					Block block1 = Block.getByName(nbttaglist.getString(i));
+					Block block1 = blockRegistry.getByName(nbttaglist.getString(i));
 
 					if (block1 == block) {
 						this.m = true;

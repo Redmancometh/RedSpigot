@@ -1,14 +1,11 @@
 package net.minecraft.server;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 import net.mcavenue.redspigot.registries.BlockItemRegistry;
 import net.mcavenue.redspigot.registries.BlockRegistry;
 import net.mcavenue.redspigot.registries.ItemRegistry;
-
-import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import javax.annotation.Nullable;
@@ -18,13 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Item {
 
 	@Autowired
-	public ItemRegistry items;
+	protected ItemRegistry items;
 	@Autowired
-	private Blocks blocks;
+	protected Blocks blocks;
 	@Autowired
-	private BlockRegistry blockRegistry;
+	protected BlockRegistry blockRegistry;
 	@Autowired
-	private BlockItemRegistry blockItems;
+	protected BlockItemRegistry blockItems;
 	private static final IDynamicTexture b = new IDynamicTexture() {
 	};
 	private static final IDynamicTexture c = new IDynamicTexture() {
@@ -33,7 +30,6 @@ public class Item {
 	};
 	private static final IDynamicTexture e = new IDynamicTexture() {
 	};
-	private final IRegistry<MinecraftKey, IDynamicTexture> f = new RegistrySimple();
 	protected static final UUID h = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
 	protected static final UUID i = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 	private CreativeModeTab n;
@@ -50,8 +46,8 @@ public class Item {
 	}
 
 	public Item() {
-		this.a(new MinecraftKey("lefthanded"), Item.d);
-		this.a(new MinecraftKey("cooldown"), Item.e);
+		items.a(new MinecraftKey("lefthanded"), Item.d);
+		items.a(new MinecraftKey("cooldown"), Item.e);
 	}
 
 	public Item d(int i) {
@@ -100,8 +96,8 @@ public class Item {
 	protected Item setMaxDurability(int i) {
 		this.durability = i;
 		if (i > 0) {
-			this.a(new MinecraftKey("damaged"), Item.b);
-			this.a(new MinecraftKey("damage"), Item.c);
+			items.a(new MinecraftKey("damaged"), Item.b);
+			items.a(new MinecraftKey("damage"), Item.c);
 		}
 
 		return this;
@@ -256,14 +252,6 @@ public class Item {
 
 	public Multimap<String, AttributeModifier> a(EnumItemSlot enumitemslot) {
 		return HashMultimap.create();
-	}
-
-	private void a(int i, String s, Item item) {
-		a(i, new MinecraftKey(s), item);
-	}
-
-	private void a(int i, MinecraftKey minecraftkey, Item item) {
-		items.a(i, minecraftkey, item);
 	}
 
 	public static class EnumToolMaterial {

@@ -14,6 +14,9 @@ public class ItemRegistry extends RegistryMaterials<MinecraftKey, Item> {
 	private Blocks blocks;
 	@Autowired
 	private BlockRegistry blockRegistry;
+	// TODON: Autowire/Bean
+	private final IRegistry<MinecraftKey, IDynamicTexture> textureMap = new RegistrySimple();
+
 	public int getId(Item item) {
 		return item == null ? 0 : a(item);
 	}
@@ -530,12 +533,20 @@ public class ItemRegistry extends RegistryMaterials<MinecraftKey, Item> {
 		a(2267, "record_wait", (new ItemRecord("wait", SoundEffects.gk)).c("record"));
 	}
 
+	private void a(int i, String s, Item item) {
+		a(i, new MinecraftKey(s), item);
+	}
+
+	public void a(int i, MinecraftKey minecraftkey, Item item) {
+		a(i, minecraftkey, item);
+	}
+
 	private void b(Block block) {
 		a(block, (Item) (new ItemBlock(block)));
 	}
 
 	public final void a(MinecraftKey minecraftkey, IDynamicTexture idynamictexture) {
-		this.f.a(minecraftkey, idynamictexture);
+		this.textureMap.a(minecraftkey, idynamictexture);
 	}
 
 	protected void a(Block block, Item item) {

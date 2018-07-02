@@ -103,9 +103,9 @@ public class ItemWorldMap extends ItemWorldMapBase {
 
                                     l3 = l3 * l3 * 31287121 + l3 * 11;
                                     if ((l3 >> 20 & 1) == 0) {
-                                        hashmultiset.add(Blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT).a((IBlockAccess) world, BlockPosition.ZERO), 10);
+                                        hashmultiset.add(blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT).a((IBlockAccess) world, BlockPosition.ZERO), 10);
                                     } else {
-                                        hashmultiset.add(Blocks.STONE.getBlockData().set(BlockStone.VARIANT, BlockStone.EnumStoneVariant.STONE).a((IBlockAccess) world, BlockPosition.ZERO), 100);
+                                        hashmultiset.add(blocks.STONE.getBlockData().set(BlockStone.VARIANT, BlockStone.EnumStoneVariant.STONE).a((IBlockAccess) world, BlockPosition.ZERO), 100);
                                     }
 
                                     d1 = 100.0D;
@@ -115,7 +115,7 @@ public class ItemWorldMap extends ItemWorldMapBase {
                                     for (int i4 = 0; i4 < i; ++i4) {
                                         for (int j4 = 0; j4 < i; ++j4) {
                                             int k4 = chunk.b(i4 + i3, j4 + j3) + 1;
-                                            IBlockData iblockdata = Blocks.AIR.getBlockData();
+                                            IBlockData iblockdata = blocks.AIR.getBlockData();
 
                                             if (k4 > 1) {
                                                 do {
@@ -135,7 +135,7 @@ public class ItemWorldMap extends ItemWorldMapBase {
                                                     } while (l4 > 0 && iblockdata1.getMaterial().isLiquid());
                                                 }
                                             } else {
-                                                iblockdata = Blocks.BEDROCK.getBlockData();
+												iblockdata = blocks.BEDROCK.getBlockData();
                                             }
 
                                             d1 += (double) k4 / (double) (i * i);

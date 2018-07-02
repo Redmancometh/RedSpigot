@@ -26,7 +26,7 @@ public class ItemFireball extends Item {
                     }
                     // CraftBukkit end
                     world.a((EntityHuman) null, blockposition, SoundEffects.bD, SoundCategory.BLOCKS, 1.0F, (ItemFireball.j.nextFloat() - ItemFireball.j.nextFloat()) * 0.2F + 1.0F);
-                    world.setTypeUpdate(blockposition, Blocks.FIRE.getBlockData());
+					world.setTypeUpdate(blockposition, blocks.FIRE.getBlockData());
                 }
 
                 if (!entityhuman.abilities.canInstantlyBuild) {
