@@ -43,7 +43,7 @@ public class BlockStem extends BlockPlant implements IBlockFragilePlantElement {
     }
 
     protected boolean x(IBlockData iblockdata) {
-        return iblockdata.getBlock() == Blocks.FARMLAND;
+        return iblockdata.getBlock() == blocks.FARMLAND;
     }
 
     public void b(World world, BlockPosition blockposition, IBlockData iblockdata, Random random) {
@@ -51,7 +51,7 @@ public class BlockStem extends BlockPlant implements IBlockFragilePlantElement {
         if (world.getLightLevel(blockposition.up()) >= 9) {
             float f = BlockCrops.a((Block) this, world, blockposition);
 
-            if (random.nextInt((int) ((100.0F / (this == Blocks.PUMPKIN_STEM ? world.spigotConfig.pumpkinModifier : world.spigotConfig.melonModifier)) * (25.0F / f)) + 1) == 0) { // Spigot
+            if (random.nextInt((int) ((100.0F / (this == blocks.PUMPKIN_STEM ? world.spigotConfig.pumpkinModifier : world.spigotConfig.melonModifier)) * (25.0F / f)) + 1) == 0) { // Spigot
                 int i = ((Integer) iblockdata.get(BlockStem.AGE)).intValue();
 
                 if (i < 7) {
@@ -72,7 +72,7 @@ public class BlockStem extends BlockPlant implements IBlockFragilePlantElement {
                     blockposition = blockposition.shift(EnumDirection.EnumDirectionLimit.HORIZONTAL.a(random));
                     Block block = world.getType(blockposition.down()).getBlock();
 
-                    if (world.getType(blockposition).getBlock().material == Material.AIR && (block == Blocks.FARMLAND || block == Blocks.DIRT || block == Blocks.GRASS)) {
+                    if (world.getType(blockposition).getBlock().material == Material.AIR && (block == blocks.FARMLAND || block == blocks.DIRT || block == blocks.GRASS)) {
                         // world.setTypeUpdate(blockposition, this.blockFruit.getBlockData()); // CraftBukkit
                         CraftEventFactory.handleBlockGrowEvent(world, blockposition.getX(), blockposition.getY(), blockposition.getZ(), this.blockFruit, 0); // CraftBukkit
                     }
@@ -109,7 +109,7 @@ public class BlockStem extends BlockPlant implements IBlockFragilePlantElement {
 
     @Nullable
     protected Item e() {
-        return this.blockFruit == Blocks.PUMPKIN ? Items.PUMPKIN_SEEDS : (this.blockFruit == Blocks.MELON_BLOCK ? Items.MELON_SEEDS : null);
+		return this.blockFruit == blocks.PUMPKIN ? Items.PUMPKIN_SEEDS : (this.blockFruit == blocks.MELON_BLOCK ? Items.MELON_SEEDS : null);
     }
 
     public Item getDropType(IBlockData iblockdata, Random random, int i) {

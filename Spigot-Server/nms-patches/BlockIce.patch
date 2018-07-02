@@ -5,7 +5,7 @@
  
      protected void b(World world, BlockPosition blockposition) {
 +        // CraftBukkit start
-+        if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), world.worldProvider.l() ? Blocks.AIR : Blocks.WATER).isCancelled()) {
++        if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), world.worldProvider.l() ? blocks.AIR : Blocks.WATER).isCancelled()) {
 +            return;
 +        }
 +        // CraftBukkit end

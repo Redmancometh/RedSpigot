@@ -85,11 +85,11 @@
                      for (int j = 0; j < shapedetector.b(); ++j) {
                          ShapeDetectorBlock shapedetectorblock1 = shapedetector_shapedetectorcollection.a(i, j, 0);
  
--                        world.setTypeAndData(shapedetectorblock1.getPosition(), Blocks.AIR.getBlockData(), 2);
+-                        world.setTypeAndData(shapedetectorblock1.getPosition(), blocks.AIR.getBlockData(), 2);
 +                        // CraftBukkit start
-+                        // world.setTypeAndData(shapedetectorblock1.getPosition(), Blocks.AIR.getBlockData(), 2);
++                        // world.setTypeAndData(shapedetectorblock1.getPosition(), blocks.AIR.getBlockData(), 2);
 +                        BlockPosition pos = shapedetectorblock1.getPosition();
-+                        blockList.setTypeAndData(pos.getX(), pos.getY(), pos.getZ(), Blocks.AIR, 0, 2);
++                        blockList.setTypeAndData(pos.getX(), pos.getY(), pos.getZ(), blocks.AIR, 0, 2);
 +                        // CraftBukkit end
                      }
                  }
@@ -114,7 +114,7 @@
  
                  for (k = 0; k < 120; ++k) {
 @@ -178,6 +222,7 @@
-                         world.update(shapedetectorblock2.getPosition(), Blocks.AIR, false);
+                         world.update(shapedetectorblock2.getPosition(), blocks.AIR, false);
                      }
                  }
 +                } // CraftBukkit end

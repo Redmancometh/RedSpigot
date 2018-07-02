@@ -5,7 +5,7 @@
  
                  if (BlockMonsterEggs.x(iblockdata)) {
 +                    // CraftBukkit start
-+                    if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.a, blockposition, Blocks.MONSTER_EGG, Block.getId(BlockMonsterEggs.getById(iblockdata.getBlock().toLegacyData(iblockdata)))).isCancelled()) {
++                    if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.a, blockposition, Blocks.MONSTER_EGG, blockRegistry.getId(BlockMonsterEggs.getById(iblockdata.getBlock().toLegacyData(iblockdata)))).isCancelled()) {
 +                        return;
 +                    }
 +                    // CraftBukkit end
@@ -17,7 +17,7 @@
  
                              if (iblockdata.getBlock() == Blocks.MONSTER_EGG) {
 +                                // CraftBukkit start
-+                                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.silverfish, blockposition1, Blocks.AIR, 0).isCancelled()) {
++                                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.silverfish, blockposition1, blocks.AIR, 0).isCancelled()) {
 +                                    continue;
 +                                }
 +                                // CraftBukkit end

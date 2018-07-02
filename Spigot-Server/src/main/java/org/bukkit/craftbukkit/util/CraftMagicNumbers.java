@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.mcavenue.redspigot.registries.BlockRegistry;
 import net.mcavenue.redspigot.registries.ItemRegistry;
 import net.minecraft.server.AdvancementDataWorld;
 
@@ -47,50 +48,54 @@ public final class CraftMagicNumbers implements UnsafeValues {
 	public static final UnsafeValues INSTANCE = new CraftMagicNumbers();
 	@Autowired
 	private ItemRegistry items;
+	@Autowired
+	private Blocks blocks;
+	@Autowired
+	private BlockRegistry blockRegistry;
 	private CraftMagicNumbers() {
 	}
 
-	public static Block getBlock(org.bukkit.block.Block block) {
+	public Block getBlock(org.bukkit.block.Block block) {
 		return getBlock(block.getType());
 	}
 
 	@Deprecated
 	// A bad method for bad magic.
-	public static Block getBlock(int id) {
+	public Block getBlock(int id) {
 		return getBlock(Material.getMaterial(id));
 	}
 
 	@Deprecated
 	// A bad method for bad magic.
-	public static int getId(Block block) {
-		return Block.getId(block);
+	public int getId(Block block) {
+		return blockRegistry.getId(block);
 	}
 
-	public static Material getMaterial(Block block) {
-		return Material.getMaterial(Block.getId(block));
+	public Material getMaterial(Block block) {
+		return Material.getMaterial(blockRegistry.getId(block));
 	}
 
-	public static Item getItem(Material material) {
+	public Item getItem(Material material) {
 		// TODO: Don't use ID
-		Item item = Item.getById(material.getId());
+		Item item = items.getById(material.getId());
 		return item;
 	}
 
 	@Deprecated
 	// A bad method for bad magic.
-	public static Item getItem(int id) {
-		return Item.getById(id);
+	public Item getItem(int id) {
+		return items.getById(id);
 	}
 
 	@Deprecated
 	// A bad method for bad magic.
-	public static int getId(Item item) {
-		return Item.getId(item);
+	public int getId(Item item) {
+		return items.getId(item);
 	}
 
-	public static Material getMaterial(Item item) {
+	public Material getMaterial(Item item) {
 		// TODO: Don't use ID
-		Material material = Material.getMaterial(Item.getId(item));
+		Material material = Material.getMaterial(items.getId(item));
 
 		if (material == null) {
 			return Material.AIR;
@@ -99,15 +104,15 @@ public final class CraftMagicNumbers implements UnsafeValues {
 		return material;
 	}
 
-	public static Block getBlock(Material material) {
+	public Block getBlock(Material material) {
 		if (material == null) {
 			return null;
 		}
 		// TODO: Don't use ID
-		Block block = Block.getById(material.getId());
+		Block block = blockRegistry.getById(material.getId());
 
 		if (block == null) {
-			return Blocks.AIR;
+			return blocks.AIR;
 		}
 
 		return block;

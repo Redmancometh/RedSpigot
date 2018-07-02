@@ -24,10 +24,10 @@ public class EntityLightning extends EntityWeather {
         BlockPosition blockposition = new BlockPosition(this);
 
         if (!flag && !world.isClientSide && world.getGameRules().getBoolean("doFireTick") && (world.getDifficulty() == EnumDifficulty.NORMAL || world.getDifficulty() == EnumDifficulty.HARD) && world.areChunksLoaded(blockposition, 10)) {
-            if (world.getType(blockposition).getMaterial() == Material.AIR && Blocks.FIRE.canPlace(world, blockposition)) {
+            if (world.getType(blockposition).getMaterial() == Material.AIR && blocks.FIRE.canPlace(world, blockposition)) {
                 // CraftBukkit start
                 if (!CraftEventFactory.callBlockIgniteEvent(world, blockposition.getX(), blockposition.getY(), blockposition.getZ(), this).isCancelled()) {
-                    world.setTypeUpdate(blockposition, Blocks.FIRE.getBlockData());
+                    world.setTypeUpdate(blockposition, blocks.FIRE.getBlockData());
                 }
                 // CraftBukkit end
             }
@@ -35,10 +35,10 @@ public class EntityLightning extends EntityWeather {
             for (int i = 0; i < 4; ++i) {
                 BlockPosition blockposition1 = blockposition.a(this.random.nextInt(3) - 1, this.random.nextInt(3) - 1, this.random.nextInt(3) - 1);
 
-                if (world.getType(blockposition1).getMaterial() == Material.AIR && Blocks.FIRE.canPlace(world, blockposition1)) {
+                if (world.getType(blockposition1).getMaterial() == Material.AIR && blocks.FIRE.canPlace(world, blockposition1)) {
                     // CraftBukkit start
                     if (!CraftEventFactory.callBlockIgniteEvent(world, blockposition1.getX(), blockposition1.getY(), blockposition1.getZ(), this).isCancelled()) {
-                        world.setTypeUpdate(blockposition1, Blocks.FIRE.getBlockData());
+                        world.setTypeUpdate(blockposition1, blocks.FIRE.getBlockData());
                     }
                     // CraftBukkit end
                 }
@@ -94,10 +94,10 @@ public class EntityLightning extends EntityWeather {
                     this.a = this.random.nextLong();
                     BlockPosition blockposition = new BlockPosition(this);
 
-                    if (this.world.getGameRules().getBoolean("doFireTick") && this.world.areChunksLoaded(blockposition, 10) && this.world.getType(blockposition).getMaterial() == Material.AIR && Blocks.FIRE.canPlace(this.world, blockposition)) {
+                    if (this.world.getGameRules().getBoolean("doFireTick") && this.world.areChunksLoaded(blockposition, 10) && this.world.getType(blockposition).getMaterial() == Material.AIR && blocks.FIRE.canPlace(this.world, blockposition)) {
                         // CraftBukkit start - add "!isEffect"
                         if (!isEffect && !CraftEventFactory.callBlockIgniteEvent(world, blockposition.getX(), blockposition.getY(), blockposition.getZ(), this).isCancelled()) {
-                            this.world.setTypeUpdate(blockposition, Blocks.FIRE.getBlockData());
+							this.world.setTypeUpdate(blockposition, blocks.FIRE.getBlockData());
                         }
                         // CraftBukkit end
                     }

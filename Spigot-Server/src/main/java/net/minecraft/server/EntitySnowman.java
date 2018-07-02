@@ -81,8 +81,8 @@ public class EntitySnowman extends EntityGolem implements IRangedEntity {
 				BlockPosition blockposition = new BlockPosition(i, j, k);
 
 				if (this.world.getType(blockposition).getMaterial() == Material.AIR && this.world.getBiome(blockposition).a(blockposition) < 0.8F
-						&& Blocks.SNOW_LAYER.canPlace(this.world, blockposition)) {
-					org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this.world, blockposition, Blocks.SNOW_LAYER.getBlockData(),
+						&& blocks.SNOW_LAYER.canPlace(this.world, blockposition)) {
+					org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this.world, blockposition, blocks.SNOW_LAYER.getBlockData(),
 							this); // CraftBukkit
 				}
 			}

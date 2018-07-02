@@ -40,12 +40,12 @@
                          IBlockData iblockdata2 = world.getType(blockposition1);
  
                          if (iblockdata2.getBlock() == Blocks.DIRT && iblockdata2.get(BlockDirt.VARIANT) == BlockDirt.EnumDirtVariant.DIRT && world.getLightLevel(blockposition1.up()) >= 4 && iblockdata1.c() <= 2) {
--                            world.setTypeUpdate(blockposition1, Blocks.GRASS.getBlockData());
+-                            world.setTypeUpdate(blockposition1, blocks.GRASS.getBlockData());
 +                            // CraftBukkit start
-+                            // world.setTypeUpdate(blockposition1, Blocks.GRASS.getBlockData());
++                            // world.setTypeUpdate(blockposition1, blocks.GRASS.getBlockData());
 +                            org.bukkit.World bworld = world.getWorld();
 +                            BlockState blockState = bworld.getBlockAt(blockposition1.getX(), blockposition1.getY(), blockposition1.getZ()).getState();
-+                            blockState.setType(CraftMagicNumbers.getMaterial(Blocks.GRASS));
++                            blockState.setType(CraftMagicNumbers.getMaterial(blocks.GRASS));
 +
 +                            BlockSpreadEvent event = new BlockSpreadEvent(blockState.getBlock(), bworld.getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), blockState);
 +                            world.getServer().getPluginManager().callEvent(event);

@@ -32,11 +32,11 @@ public class CraftJukebox extends CraftBlockEntityState<TileEntityRecordPlayer> 
             Material record = this.getPlaying();
             if (record == Material.AIR) {
                 world.getHandle().setTypeAndData(new BlockPosition(this.getX(), this.getY(), this.getZ()),
-                    Blocks.JUKEBOX.getBlockData()
+                    blocks.JUKEBOX.getBlockData()
                         .set(BlockJukeBox.HAS_RECORD, false), 3);
             } else {
                 world.getHandle().setTypeAndData(new BlockPosition(this.getX(), this.getY(), this.getZ()),
-                    Blocks.JUKEBOX.getBlockData()
+                    blocks.JUKEBOX.getBlockData()
                         .set(BlockJukeBox.HAS_RECORD, true), 3);
             }
             world.playEffect(this.getLocation(), Effect.RECORD_PLAY, record.getId());
@@ -82,7 +82,7 @@ public class CraftJukebox extends CraftBlockEntityState<TileEntityRecordPlayer> 
         TileEntityRecordPlayer jukebox = (TileEntityRecordPlayer) tileEntity;
         boolean result = !jukebox.getRecord().isEmpty();
         CraftWorld world = (CraftWorld) this.getWorld();
-        ((BlockJukeBox) Blocks.JUKEBOX).dropRecord(world.getHandle(), new BlockPosition(getX(), getY(), getZ()), null);
+        ((BlockJukeBox) blocks.JUKEBOX).dropRecord(world.getHandle(), new BlockPosition(getX(), getY(), getZ()), null);
         return result;
     }
 }

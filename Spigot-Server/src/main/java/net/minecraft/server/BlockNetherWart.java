@@ -19,7 +19,7 @@ public class BlockNetherWart extends BlockPlant {
     }
 
     protected boolean x(IBlockData iblockdata) {
-        return iblockdata.getBlock() == Blocks.SOUL_SAND;
+		return iblockdata.getBlock() == blocks.SOUL_SAND;
     }
 
     public boolean f(World world, BlockPosition blockposition, IBlockData iblockdata) {

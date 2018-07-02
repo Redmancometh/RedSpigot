@@ -24,7 +24,7 @@
 +    // CraftBukkit end
 +
      public void registerRecipe(Block block, ItemStack itemstack, float f) {
-         this.a(Item.getItemOf(block), itemstack, f);
+         this.a(items.getItemOf(block), itemstack, f);
      }
 @@ -108,13 +117,23 @@
      }

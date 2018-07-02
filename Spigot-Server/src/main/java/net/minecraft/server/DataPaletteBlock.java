@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 public class DataPaletteBlock implements DataPaletteExpandable {
 
     private static final DataPalette d = new DataPaletteGlobal();
-    protected static final IBlockData a = Blocks.AIR.getBlockData();
+    protected static final IBlockData a = blocks.AIR.getBlockData();
     protected DataBits b;
     protected DataPalette c;
     private int e;

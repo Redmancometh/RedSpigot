@@ -25,10 +25,10 @@
 @@ -59,7 +65,8 @@
                  BlockPosition blockposition1 = blockposition.down();
  
-                 if (this.d.getType(blockposition1).getBlock() == Blocks.GRASS) {
+                 if (this.d.getType(blockposition1).getBlock() == blocks.GRASS) {
 -                    if (this.d.getGameRules().getBoolean("mobGriefing")) {
 +                    // CraftBukkit
 +                    if (!CraftEventFactory.callEntityChangeBlockEvent(this.c, this.c.world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), Material.AIR, !this.d.getGameRules().getBoolean("mobGriefing")).isCancelled()) {
-                         this.d.triggerEffect(2001, blockposition1, Block.getId(Blocks.GRASS));
+                         this.d.triggerEffect(2001, blockposition1, blockRegistry.getId(blocks.GRASS));
                          this.d.setTypeAndData(blockposition1, Blocks.DIRT.getBlockData(), 2);
                      }

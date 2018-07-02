@@ -118,8 +118,8 @@ public class BlockSapling extends BlockPlant implements IBlockFragilePlantElemen
             break;
 
         case JUNGLE:
-            iblockdata1 = Blocks.LOG.getBlockData().set(BlockLog1.VARIANT, BlockWood.EnumLogVariant.JUNGLE);
-            IBlockData iblockdata2 = Blocks.LEAVES.getBlockData().set(BlockLeaves1.VARIANT, BlockWood.EnumLogVariant.JUNGLE).set(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
+            iblockdata1 = blocks.LOG.getBlockData().set(BlockLog1.VARIANT, BlockWood.EnumLogVariant.JUNGLE);
+            IBlockData iblockdata2 = blocks.LEAVES.getBlockData().set(BlockLeaves1.VARIANT, BlockWood.EnumLogVariant.JUNGLE).set(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 
             label78:
             for (i = 0; i >= -1; --i) {
@@ -166,7 +166,7 @@ public class BlockSapling extends BlockPlant implements IBlockFragilePlantElemen
         case OAK:
         }
 
-        iblockdata1 = Blocks.AIR.getBlockData();
+		iblockdata1 = blocks.AIR.getBlockData();
         if (flag) {
             world.setTypeAndData(blockposition.a(i, 0, j), iblockdata1, 4);
             world.setTypeAndData(blockposition.a(i + 1, 0, j), iblockdata1, 4);

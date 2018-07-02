@@ -22,7 +22,7 @@
 @@ -70,7 +73,8 @@
                      Block block = world.getType(blockposition.down()).getBlock();
  
-                     if (world.getType(blockposition).getBlock().material == Material.AIR && (block == Blocks.FARMLAND || block == Blocks.DIRT || block == Blocks.GRASS)) {
+                     if (world.getType(blockposition).getBlock().material == Material.AIR && (block == Blocks.FARMLAND || block == Blocks.DIRT || block == blocks.GRASS)) {
 -                        world.setTypeUpdate(blockposition, this.blockFruit.getBlockData());
 +                        // world.setTypeUpdate(blockposition, this.blockFruit.getBlockData()); // CraftBukkit
 +                        CraftEventFactory.handleBlockGrowEvent(world, blockposition.getX(), blockposition.getY(), blockposition.getZ(), this.blockFruit, 0); // CraftBukkit

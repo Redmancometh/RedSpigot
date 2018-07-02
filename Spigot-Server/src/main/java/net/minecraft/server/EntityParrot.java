@@ -84,7 +84,7 @@ public class EntityParrot extends EntityPerchable implements EntityBird {
 	public void n() {
 		b(this.world, (Entity) this);
 		if (this.bM == null || this.bM.distanceSquared(this.locX, this.locY, this.locZ) > 12.0D
-				|| this.world.getType(this.bM).getBlock() != Blocks.JUKEBOX) {
+				|| this.world.getType(this.bM).getBlock() != blocks.JUKEBOX) {
 			this.bL = false;
 			this.bM = null;
 		}
@@ -191,8 +191,8 @@ public class EntityParrot extends EntityPerchable implements EntityBird {
 		BlockPosition blockposition = new BlockPosition(i, j, k);
 		Block block = this.world.getType(blockposition.down()).getBlock();
 
-		return block instanceof BlockLeaves || block == Blocks.GRASS || block instanceof BlockLogAbstract
-				|| block == Blocks.AIR && this.world.j(blockposition) > 8 && super.P();
+		return block instanceof BlockLeaves || block == blocks.GRASS || block instanceof BlockLogAbstract
+				|| block == blocks.AIR && this.world.j(blockposition) > 8 && super.P();
 	}
 
 	public void e(float f, float f1) {

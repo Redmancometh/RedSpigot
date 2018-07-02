@@ -2,9 +2,13 @@ package net.minecraft.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import net.mcavenue.redspigot.registries.BlockRegistry;
+
 public abstract class PathfinderGoal {
 	@Autowired
-	protected GenericAttributes attr;
+	protected Blocks blocks;
+	@Autowired
+	protected BlockRegistry blockRegistry;
 	private int a;
 
 	public PathfinderGoal() {

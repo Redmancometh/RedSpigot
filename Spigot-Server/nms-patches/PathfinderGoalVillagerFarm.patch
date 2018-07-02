@@ -6,7 +6,7 @@
              if (this.f == 0 && block instanceof BlockCrops && ((BlockCrops) block).z(iblockdata)) {
 -                world.setAir(blockposition, true);
 +                // CraftBukkit start
-+                if (!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.c, blockposition, Blocks.AIR, 0).isCancelled()) {
++                if (!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.c, blockposition, blocks.AIR, 0).isCancelled()) {
 +                    world.setAir(blockposition, true);
 +                }
 +                // CraftBukkit end

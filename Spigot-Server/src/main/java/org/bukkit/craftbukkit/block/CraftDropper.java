@@ -11,40 +11,41 @@ import org.bukkit.block.Dropper;
 import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.craftbukkit.inventory.CraftInventory;
 import org.bukkit.inventory.Inventory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CraftDropper extends CraftLootable<TileEntityDropper> implements Dropper {
+	@Autowired
+	private Blocks blocks;
+	public CraftDropper(final Block block) {
+		super(block, TileEntityDropper.class);
+	}
 
-    public CraftDropper(final Block block) {
-        super(block, TileEntityDropper.class);
-    }
+	public CraftDropper(final Material material, TileEntityDropper te) {
+		super(material, te);
+	}
 
-    public CraftDropper(final Material material, TileEntityDropper te) {
-        super(material, te);
-    }
+	@Override
+	public Inventory getSnapshotInventory() {
+		return new CraftInventory(this.getSnapshot());
+	}
 
-    @Override
-    public Inventory getSnapshotInventory() {
-        return new CraftInventory(this.getSnapshot());
-    }
+	@Override
+	public Inventory getInventory() {
+		if (!this.isPlaced()) {
+			return this.getSnapshotInventory();
+		}
 
-    @Override
-    public Inventory getInventory() {
-        if (!this.isPlaced()) {
-            return this.getSnapshotInventory();
-        }
+		return new CraftInventory(this.getTileEntity());
+	}
 
-        return new CraftInventory(this.getTileEntity());
-    }
+	@Override
+	public void drop() {
+		Block block = getBlock();
 
-    @Override
-    public void drop() {
-        Block block = getBlock();
-
-        if (block.getType() == Material.DROPPER) {
-            CraftWorld world = (CraftWorld) this.getWorld();
-            BlockDropper drop = (BlockDropper) Blocks.DROPPER;
-
-            drop.dispense(world.getHandle(), new BlockPosition(getX(), getY(), getZ()));
-        }
-    }
+		if (block.getType() == Material.DROPPER) {
+			CraftWorld world = (CraftWorld) this.getWorld();
+			BlockDropper drop = (BlockDropper) this.blocks.DROPPER;
+			drop.dispense(world.getHandle(), new BlockPosition(getX(), getY(), getZ()));
+		}
+	}
 }

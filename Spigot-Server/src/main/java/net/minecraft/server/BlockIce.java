@@ -29,7 +29,7 @@ public class BlockIce extends BlockHalfTransparent {
             Material material = world.getType(blockposition.down()).getMaterial();
 
             if (material.isSolid() || material.isLiquid()) {
-                world.setTypeUpdate(blockposition, Blocks.FLOWING_WATER.getBlockData());
+                world.setTypeUpdate(blockposition, blocks.FLOWING_WATER.getBlockData());
             }
         }
 
@@ -48,7 +48,7 @@ public class BlockIce extends BlockHalfTransparent {
 
     protected void b(World world, BlockPosition blockposition) {
         // CraftBukkit start
-        if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), world.worldProvider.l() ? Blocks.AIR : Blocks.WATER).isCancelled()) {
+        if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), world.worldProvider.l() ? blocks.AIR : blocks.WATER).isCancelled()) {
             return;
         }
         // CraftBukkit end
@@ -56,8 +56,8 @@ public class BlockIce extends BlockHalfTransparent {
             world.setAir(blockposition);
         } else {
             this.b(world, blockposition, world.getType(blockposition), 0);
-            world.setTypeUpdate(blockposition, Blocks.WATER.getBlockData());
-            world.a(blockposition, (Block) Blocks.WATER, blockposition);
+            world.setTypeUpdate(blockposition, blocks.WATER.getBlockData());
+			world.a(blockposition, (Block) blocks.WATER, blockposition);
         }
     }
 

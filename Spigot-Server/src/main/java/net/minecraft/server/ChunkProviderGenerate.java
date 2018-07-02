@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public class ChunkProviderGenerate implements ChunkGenerator {
 
-    protected static final IBlockData a = Blocks.STONE.getBlockData();
+    protected static final IBlockData a = blocks.STONE.getBlockData();
     private final Random i;
     private final NoiseGeneratorOctaves j;
     private final NoiseGeneratorOctaves k;
@@ -38,7 +38,7 @@ public class ChunkProviderGenerate implements ChunkGenerator {
     double[] h;
 
     public ChunkProviderGenerate(World world, long i, boolean flag, String s) {
-        this.t = Blocks.WATER.getBlockData();
+        this.t = blocks.WATER.getBlockData();
         this.u = new double[256];
         this.v = new WorldGenCaves();
         this.w = new WorldGenStronghold();
@@ -72,7 +72,7 @@ public class ChunkProviderGenerate implements ChunkGenerator {
 
         if (s != null) {
             this.s = CustomWorldSettingsFinal.CustomWorldSettings.a(s).b();
-            this.t = this.s.F ? Blocks.LAVA.getBlockData() : Blocks.WATER.getBlockData();
+            this.t = this.s.F ? blocks.LAVA.getBlockData() : blocks.WATER.getBlockData();
             world.b(this.s.q);
         }
 
@@ -362,7 +362,7 @@ public class ChunkProviderGenerate implements ChunkGenerator {
             k1 = this.i.nextInt(16) + 8;
             l1 = this.i.nextInt(256);
             i2 = this.i.nextInt(16) + 8;
-            (new WorldGenLakes(Blocks.WATER)).generate(this.n, this.i, blockposition.a(k1, l1, i2));
+            (new WorldGenLakes(blocks.WATER)).generate(this.n, this.i, blockposition.a(k1, l1, i2));
         }
 
         if (!flag && this.i.nextInt(this.s.E / 10) == 0 && this.s.D) {
@@ -370,7 +370,7 @@ public class ChunkProviderGenerate implements ChunkGenerator {
             l1 = this.i.nextInt(this.i.nextInt(248) + 8);
             i2 = this.i.nextInt(16) + 8;
             if (l1 < this.n.getSeaLevel() || this.i.nextInt(this.s.E / 8) == 0) {
-                (new WorldGenLakes(Blocks.LAVA)).generate(this.n, this.i, blockposition.a(k1, l1, i2));
+                (new WorldGenLakes(blocks.LAVA)).generate(this.n, this.i, blockposition.a(k1, l1, i2));
             }
         }
 
@@ -394,11 +394,11 @@ public class ChunkProviderGenerate implements ChunkGenerator {
                 BlockPosition blockposition2 = blockposition1.down();
 
                 if (this.n.u(blockposition2)) {
-                    this.n.setTypeAndData(blockposition2, Blocks.ICE.getBlockData(), 2);
+                    this.n.setTypeAndData(blockposition2, blocks.ICE.getBlockData(), 2);
                 }
 
                 if (this.n.f(blockposition1, true)) {
-                    this.n.setTypeAndData(blockposition1, Blocks.SNOW_LAYER.getBlockData(), 2);
+					this.n.setTypeAndData(blockposition1, blocks.SNOW_LAYER.getBlockData(), 2);
                 }
             }
         }

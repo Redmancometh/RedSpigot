@@ -159,7 +159,7 @@ public class EntitySheep extends EntityAnimal {
 
                 for (int j = 0; j < i; ++j) {
                     this.forceDrops = true; // CraftBukkit
-                    EntityItem entityitem = this.a(new ItemStack(Item.getItemOf(Blocks.WOOL), 1, this.getColor().getColorIndex()), 1.0F);
+                    EntityItem entityitem = this.a(new ItemStack(items.getItemOf(Blocks.WOOL), 1, this.getColor().getColorIndex()), 1.0F);
                     this.forceDrops = false; // CraftBukkit
 
                     entityitem.motY += (double) (this.random.nextFloat() * 0.05F);

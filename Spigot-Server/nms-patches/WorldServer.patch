@@ -125,7 +125,7 @@
 +            if (!(result instanceof TileEntityDispenser)) {
 +                result = fixTileEntity(pos, type, result);
 +            }
-+        } else if (type == Blocks.JUKEBOX) {
++        } else if (type == blocks.JUKEBOX) {
 +            if (!(result instanceof BlockJukeBox.TileEntityRecordPlayer)) {
 +                result = fixTileEntity(pos, type, result);
 +            }
@@ -212,7 +212,7 @@
 +
 +    private TileEntity fixTileEntity(BlockPosition pos, Block type, TileEntity found) {
 +        this.getServer().getLogger().log(Level.SEVERE, "Block at {0},{1},{2} is {3} but has {4}" + ". "
-+                + "Bukkit will attempt to fix this, but there may be additional damage that we cannot recover.", new Object[]{pos.getX(), pos.getY(), pos.getZ(), org.bukkit.Material.getMaterial(Block.getId(type)).toString(), found});
++                + "Bukkit will attempt to fix this, but there may be additional damage that we cannot recover.", new Object[]{pos.getX(), pos.getY(), pos.getZ(), org.bukkit.Material.getMaterial(blockRegistry.getId(type)).toString(), found});
 +
 +        if (type instanceof ITileEntity) {
 +            TileEntity replacement = ((ITileEntity) type).a(this, type.toLegacyData(this.getType(pos)));

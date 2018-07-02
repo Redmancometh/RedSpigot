@@ -74,7 +74,7 @@ public abstract class BlockLeaves extends Block {
 								IBlockData iblockdata1 = world.getType(blockposition_mutableblockposition.c(i + l, j + i1, k + j1));
 								Block block = iblockdata1.getBlock();
 
-								if (block != Blocks.LOG && block != Blocks.LOG2) {
+								if (block != blocks.LOG && block != blocks.LOG2) {
 									if (iblockdata1.getMaterial() == Material.LEAVES) {
 										this.d[(l + 16) * 1024 + (i1 + 16) * 32 + j1 + 16] = -2;
 									} else {
@@ -152,7 +152,7 @@ public abstract class BlockLeaves extends Block {
 	}
 
 	public Item getDropType(IBlockData iblockdata, Random random, int i) {
-		return Item.getItemOf(Blocks.SAPLING);
+		return items.getItemOf(blocks.SAPLING);
 	}
 
 	public void dropNaturally(World world, BlockPosition blockposition, IBlockData iblockdata, float f, int i) {

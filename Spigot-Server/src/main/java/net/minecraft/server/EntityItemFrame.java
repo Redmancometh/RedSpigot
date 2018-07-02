@@ -128,7 +128,7 @@ public class EntityItemFrame extends EntityHanging {
         }
 
         if (flag && this.blockPosition != null) {
-            this.world.updateAdjacentComparators(this.blockPosition, Blocks.AIR);
+            this.world.updateAdjacentComparators(this.blockPosition, blocks.AIR);
         }
 
     }
@@ -155,7 +155,7 @@ public class EntityItemFrame extends EntityHanging {
     private void setRotation(int i, boolean flag) {
         this.getDataWatcher().set(EntityItemFrame.d, Integer.valueOf(i % 8));
         if (flag && this.blockPosition != null) {
-            this.world.updateAdjacentComparators(this.blockPosition, Blocks.AIR);
+			this.world.updateAdjacentComparators(this.blockPosition, blocks.AIR);
         }
 
     }

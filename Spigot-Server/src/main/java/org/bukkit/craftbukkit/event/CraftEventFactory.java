@@ -382,7 +382,7 @@ public class CraftEventFactory {
 	 */
 	public static BlockFadeEvent callBlockFadeEvent(Block block, net.minecraft.server.Block type) {
 		BlockState state = block.getState();
-		state.setTypeId(net.minecraft.server.Block.getId(type));
+		state.setTypeId(net.minecraft.server.blockRegistry.getId(type));
 
 		BlockFadeEvent event = new BlockFadeEvent(block, state);
 		Bukkit.getPluginManager().callEvent(event);
@@ -391,7 +391,7 @@ public class CraftEventFactory {
 
 	public static boolean handleBlockSpreadEvent(Block block, Block source, net.minecraft.server.Block type, int data) {
 		BlockState state = block.getState();
-		state.setTypeId(net.minecraft.server.Block.getId(type));
+		state.setTypeId(net.minecraft.server.blockRegistry.getId(type));
 		state.setRawData((byte) data);
 
 		BlockSpreadEvent event = new BlockSpreadEvent(block, source, state);
@@ -697,7 +697,7 @@ public class CraftEventFactory {
 	public static boolean handleBlockGrowEvent(World world, int x, int y, int z, net.minecraft.server.Block type, int data) {
 		Block block = world.getWorld().getBlockAt(x, y, z);
 		CraftBlockState state = (CraftBlockState) block.getState();
-		state.setTypeId(net.minecraft.server.Block.getId(type));
+		state.setTypeId(net.minecraft.server.blockRegistry.getId(type));
 		state.setRawData((byte) data);
 
 		BlockGrowEvent event = new BlockGrowEvent(block, state);

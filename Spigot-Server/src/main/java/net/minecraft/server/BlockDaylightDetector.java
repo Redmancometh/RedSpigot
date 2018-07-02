@@ -79,7 +79,7 @@ public class BlockDaylightDetector extends BlockTileEntity {
 	}
 
 	public Item getDropType(IBlockData iblockdata, Random random, int i) {
-		return Item.getItemOf(Blocks.DAYLIGHT_DETECTOR);
+		return items.getItemOf(Blocks.DAYLIGHT_DETECTOR);
 	}
 
 	public ItemStack a(World world, BlockPosition blockposition, IBlockData iblockdata) {

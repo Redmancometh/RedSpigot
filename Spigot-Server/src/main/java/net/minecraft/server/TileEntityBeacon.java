@@ -183,11 +183,11 @@ public class TileEntityBeacon extends TileEntityContainer implements ITickable, 
 			IBlockData iblockdata = this.world.getType(blockposition_mutableblockposition.c(i, i1, k));
 			float[] afloat;
 
-			if (iblockdata.getBlock() == Blocks.STAINED_GLASS) {
+			if (iblockdata.getBlock() == blocks.STAINED_GLASS) {
 				afloat = ((EnumColor) iblockdata.get(BlockStainedGlass.COLOR)).f();
 			} else {
-				if (iblockdata.getBlock() != Blocks.STAINED_GLASS_PANE) {
-					if (iblockdata.c() >= 15 && iblockdata.getBlock() != Blocks.BEDROCK) {
+				if (iblockdata.getBlock() != blocks.STAINED_GLASS_PANE) {
+					if (iblockdata.c() >= 15 && iblockdata.getBlock() != blocks.BEDROCK) {
 						this.j = false;
 						this.g.clear();
 						break;
@@ -230,8 +230,8 @@ public class TileEntityBeacon extends TileEntityContainer implements ITickable, 
 					for (int l1 = k - i1; l1 <= k + i1; ++l1) {
 						Block block = this.world.getType(new BlockPosition(k1, j1, l1)).getBlock();
 
-						if (block != Blocks.EMERALD_BLOCK && block != Blocks.GOLD_BLOCK && block != Blocks.DIAMOND_BLOCK
-								&& block != Blocks.IRON_BLOCK) {
+						if (block != blocks.EMERALD_BLOCK && block != blocks.GOLD_BLOCK && block != blocks.DIAMOND_BLOCK
+								&& block != blocks.IRON_BLOCK) {
 							flag1 = false;
 							break;
 						}

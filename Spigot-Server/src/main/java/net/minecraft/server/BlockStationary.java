@@ -48,13 +48,13 @@ public class BlockStationary extends BlockFluids {
                         if (block.material == Material.AIR) {
                             if (this.c(world, blockposition1)) {
                                  // CraftBukkit start - Prevent lava putting something on fire
-                                if (world.getType(blockposition1) != Blocks.FIRE) {
+                                if (world.getType(blockposition1) != blocks.FIRE) {
                                     if (CraftEventFactory.callBlockIgniteEvent(world, blockposition1.getX(), blockposition1.getY(), blockposition1.getZ(), blockposition.getX(), blockposition.getY(), blockposition.getZ()).isCancelled()) {
                                         continue;
                                     }
                                 }
                                 // CraftBukkit end
-                                world.setTypeUpdate(blockposition1, Blocks.FIRE.getBlockData());
+                                world.setTypeUpdate(blockposition1, blocks.FIRE.getBlockData());
                                 return;
                             }
                         } else if (block.material.isSolid()) {
@@ -72,13 +72,13 @@ public class BlockStationary extends BlockFluids {
                         if (world.isEmpty(blockposition2.up()) && this.d(world, blockposition2)) {
                             // CraftBukkit start - Prevent lava putting something on fire
                             BlockPosition up = blockposition2.up();
-                            if (world.getType(up) != Blocks.FIRE) {
+                            if (world.getType(up) != blocks.FIRE) {
                                 if (CraftEventFactory.callBlockIgniteEvent(world, up.getX(), up.getY(), up.getZ(), blockposition.getX(), blockposition.getY(), blockposition.getZ()).isCancelled()) {
                                     continue;
                                 }
                             }
                             // CraftBukkit end
-                            world.setTypeUpdate(blockposition2.up(), Blocks.FIRE.getBlockData());
+							world.setTypeUpdate(blockposition2.up(), blocks.FIRE.getBlockData());
                         }
                     }
                 }

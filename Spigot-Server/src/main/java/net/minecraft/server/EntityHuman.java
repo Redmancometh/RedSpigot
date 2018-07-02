@@ -1337,7 +1337,7 @@ public abstract class EntityHuman extends EntityLiving {
 		this.setSize(0.6F, 1.8F);
 		IBlockData iblockdata = this.world.getType(this.bedPosition);
 
-		if (this.bedPosition != null && iblockdata.getBlock() == Blocks.BED) {
+		if (this.bedPosition != null && iblockdata.getBlock() == blocks.BED) {
 			this.world.setTypeAndData(this.bedPosition, iblockdata.set(BlockBed.OCCUPIED, Boolean.valueOf(false)), 4);
 			BlockPosition blockposition = BlockBed.a(this.world, this.bedPosition, 0);
 
@@ -1376,14 +1376,14 @@ public abstract class EntityHuman extends EntityLiving {
 	}
 
 	private boolean s() {
-		return this.world.getType(this.bedPosition).getBlock() == Blocks.BED;
+		return this.world.getType(this.bedPosition).getBlock() == blocks.BED;
 	}
 
 	@Nullable
-	public static BlockPosition getBed(World world, BlockPosition blockposition, boolean flag) {
+	public BlockPosition getBed(World world, BlockPosition blockposition, boolean flag) {
 		Block block = world.getType(blockposition).getBlock();
 
-		if (block != Blocks.BED) {
+		if (block != blocks.BED) {
 			if (!flag) {
 				return null;
 			} else {

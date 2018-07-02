@@ -89,7 +89,7 @@ public class EntitySilverfish extends EntityMonster {
     }
 
     public float a(BlockPosition blockposition) {
-        return this.world.getType(blockposition.down()).getBlock() == Blocks.STONE ? 10.0F : super.a(blockposition);
+        return this.world.getType(blockposition.down()).getBlock() == blocks.STONE ? 10.0F : super.a(blockposition);
     }
 
     protected boolean s_() {
@@ -158,11 +158,11 @@ public class EntitySilverfish extends EntityMonster {
 
                 if (BlockMonsterEggs.x(iblockdata)) {
                     // CraftBukkit start
-                    if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.a, blockposition, Blocks.MONSTER_EGG, Block.getId(BlockMonsterEggs.getById(iblockdata.getBlock().toLegacyData(iblockdata)))).isCancelled()) {
+                    if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.a, blockposition, blocks.MONSTER_EGG, blockRegistry.getId(BlockMonsterEggs.getById(iblockdata.getBlock().toLegacyData(iblockdata)))).isCancelled()) {
                         return;
                     }
                     // CraftBukkit end
-                    world.setTypeAndData(blockposition, Blocks.MONSTER_EGG.getBlockData().set(BlockMonsterEggs.VARIANT, BlockMonsterEggs.EnumMonsterEggVarient.a(iblockdata)), 3);
+                    world.setTypeAndData(blockposition, blocks.MONSTER_EGG.getBlockData().set(BlockMonsterEggs.VARIANT, BlockMonsterEggs.EnumMonsterEggVarient.a(iblockdata)), 3);
                     this.a.doSpawnEffect();
                     this.a.die();
                 }
@@ -204,9 +204,9 @@ public class EntitySilverfish extends EntityMonster {
                             BlockPosition blockposition1 = blockposition.a(j, i, k);
                             IBlockData iblockdata = world.getType(blockposition1);
 
-                            if (iblockdata.getBlock() == Blocks.MONSTER_EGG) {
+							if (iblockdata.getBlock() == blocks.MONSTER_EGG) {
                                 // CraftBukkit start
-                                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.silverfish, blockposition1, Blocks.AIR, 0).isCancelled()) {
+                                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.silverfish, blockposition1, blocks.AIR, 0).isCancelled()) {
                                     continue;
                                 }
                                 // CraftBukkit end

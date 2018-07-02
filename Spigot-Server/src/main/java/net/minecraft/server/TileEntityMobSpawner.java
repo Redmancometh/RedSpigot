@@ -6,7 +6,7 @@ public class TileEntityMobSpawner extends TileEntity implements ITickable {
 
 	private final MobSpawnerAbstract a = new MobSpawnerAbstract() {
 		public void a(int i) {
-			TileEntityMobSpawner.this.world.playBlockAction(TileEntityMobSpawner.this.position, Blocks.MOB_SPAWNER, i, 0);
+			TileEntityMobSpawner.this.world.playBlockAction(TileEntityMobSpawner.this.position, blocks.MOB_SPAWNER, i, 0);
 		}
 
 		public World a() {

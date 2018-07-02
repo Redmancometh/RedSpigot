@@ -1988,7 +1988,7 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 								click = ClickType.DROP;
 								Slot slot = this.player.activeContainer.getSlot(packetplayinwindowclick.b());
 								if (slot != null && slot.hasItem() && slot.isAllowed(player) && !slot.getItem().isEmpty()
-										&& slot.getItem().getItem() != Item.getItemOf(Blocks.AIR)) {
+										&& slot.getItem().getItem() != items.getItemOf(blocks.AIR)) {
 									action = InventoryAction.DROP_ONE_SLOT;
 								} else {
 									action = InventoryAction.NOTHING;
@@ -1997,7 +1997,7 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 								click = ClickType.CONTROL_DROP;
 								Slot slot = this.player.activeContainer.getSlot(packetplayinwindowclick.b());
 								if (slot != null && slot.hasItem() && slot.isAllowed(player) && !slot.getItem().isEmpty()
-										&& slot.getItem().getItem() != Item.getItemOf(Blocks.AIR)) {
+										&& slot.getItem().getItem() != items.getItemOf(blocks.AIR)) {
 									action = InventoryAction.DROP_ALL_SLOT;
 								} else {
 									action = InventoryAction.NOTHING;

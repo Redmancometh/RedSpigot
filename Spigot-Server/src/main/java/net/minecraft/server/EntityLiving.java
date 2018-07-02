@@ -186,10 +186,10 @@ public abstract class EntityLiving extends Entity {
 				// CraftBukkit start - visiblity api
 				if (this instanceof EntityPlayer) {
 					((WorldServer) this.world).sendParticles((EntityPlayer) this, EnumParticle.BLOCK_DUST, false, this.locX, this.locY, this.locZ, i,
-							0.0D, 0.0D, 0.0D, 0.15000000596046448D, new int[]{Block.getCombinedId(iblockdata)});
+							0.0D, 0.0D, 0.0D, 0.15000000596046448D, new int[]{blockRegistry.getCombinedId(iblockdata)});
 				} else {
 					((WorldServer) this.world).a(EnumParticle.BLOCK_DUST, this.locX, this.locY, this.locZ, i, 0.0D, 0.0D, 0.0D, 0.15000000596046448D,
-							new int[]{Block.getCombinedId(iblockdata)});
+							new int[]{blockRegistry.getCombinedId(iblockdata)});
 				}
 				// CraftBukkit end
 			}
@@ -333,7 +333,8 @@ public abstract class EntityLiving extends Entity {
 		int i = EnchantmentManager.a(Enchantments.j, this);
 
 		if (i > 0) {
-			EnchantmentFrostWalker.a(this, this.world, blockposition, i);
+			// TODON: Fix this enchant.
+			// EnchantmentFrostWalker.a(this, this.world, blockposition, i);
 		}
 
 	}
@@ -1109,7 +1110,7 @@ public abstract class EntityLiving extends Entity {
 			vec3d1 = vec3d1.b(-this.yaw * 0.017453292F);
 			vec3d1 = vec3d1.add(this.locX, this.locY + (double) this.getHeadHeight(), this.locZ);
 			this.world.addParticle(EnumParticle.ITEM_CRACK, vec3d1.x, vec3d1.y, vec3d1.z, vec3d.x, vec3d.y + 0.05D, vec3d.z,
-					new int[]{Item.getId(itemstack.getItem())});
+					new int[]{items.getId(itemstack.getItem())});
 		}
 
 	}
@@ -1210,7 +1211,7 @@ public abstract class EntityLiving extends Entity {
 			IBlockData iblockdata = this.world.getType(blockposition);
 			Block block = iblockdata.getBlock();
 
-			return block != Blocks.LADDER && block != Blocks.VINE ? block instanceof BlockTrapdoor && this.a(blockposition, iblockdata) : true;
+			return block != blocks.LADDER && block != blocks.VINE ? block instanceof BlockTrapdoor && this.a(blockposition, iblockdata) : true;
 		}
 	}
 
@@ -1218,7 +1219,7 @@ public abstract class EntityLiving extends Entity {
 		if (((Boolean) iblockdata.get(BlockTrapdoor.OPEN)).booleanValue()) {
 			IBlockData iblockdata1 = this.world.getType(blockposition.down());
 
-			if (iblockdata1.getBlock() == Blocks.LADDER && iblockdata1.get(BlockLadder.FACING) == iblockdata.get(BlockTrapdoor.FACING)) {
+			if (iblockdata1.getBlock() == blocks.LADDER && iblockdata1.get(BlockLadder.FACING) == iblockdata.get(BlockTrapdoor.FACING)) {
 				return true;
 			}
 		}
@@ -2432,10 +2433,10 @@ public abstract class EntityLiving extends Entity {
 					vec3d1 = vec3d1.add(this.locX, this.locY + (double) this.getHeadHeight(), this.locZ);
 					if (itemstack.usesData()) {
 						this.world.addParticle(EnumParticle.ITEM_CRACK, vec3d1.x, vec3d1.y, vec3d1.z, vec3d.x, vec3d.y + 0.05D, vec3d.z,
-								new int[]{Item.getId(itemstack.getItem()), itemstack.getData()});
+								new int[]{items.getId(itemstack.getItem()), itemstack.getData()});
 					} else {
 						this.world.addParticle(EnumParticle.ITEM_CRACK, vec3d1.x, vec3d1.y, vec3d1.z, vec3d.x, vec3d.y + 0.05D, vec3d.z,
-								new int[]{Item.getId(itemstack.getItem())});
+								new int[]{items.getId(itemstack.getItem())});
 					}
 				}
 

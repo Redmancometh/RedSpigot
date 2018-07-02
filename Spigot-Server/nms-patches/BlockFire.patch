@@ -83,8 +83,8 @@
 +                                            org.bukkit.Server server = world.getServer();
 +                                            org.bukkit.World bworld = world.getWorld();
 +                                            org.bukkit.block.BlockState blockState = bworld.getBlockAt(blockposition1.getX(), blockposition1.getY(), blockposition1.getZ()).getState();
-+                                            blockState.setTypeId(Block.getId(this));
-+                                            blockState.setData(new org.bukkit.material.MaterialData(Block.getId(this), (byte) l1));
++                                            blockState.setTypeId(blockRegistry.getId(this));
++                                            blockState.setData(new org.bukkit.material.MaterialData(blockRegistry.getId(this), (byte) l1));
 +
 +                                            BlockSpreadEvent spreadEvent = new BlockSpreadEvent(blockState.getBlock(), bworld.getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), blockState);
 +                                            server.getPluginManager().callEvent(spreadEvent);
@@ -148,7 +148,7 @@
 +
 +    // CraftBukkit start
 +    private void fireExtinguished(World world, BlockPosition position) {
-+        if (!CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(position.getX(), position.getY(), position.getZ()), Blocks.AIR).isCancelled()) {
++        if (!CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(position.getX(), position.getY(), position.getZ()), blocks.AIR).isCancelled()) {
 +            world.setAir(position);
 +        }
 +    }

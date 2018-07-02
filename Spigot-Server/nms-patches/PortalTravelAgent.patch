@@ -64,7 +64,7 @@
 +                    int i2 = k + i1 * b1 - l * b0;
 +                    boolean flag = j1 < 0;
 +
-+                    if (this.world.getType(new BlockPosition(k1, l1, i2)).getBlock() != (flag ? Blocks.OBSIDIAN : Blocks.AIR)) {
++                    if (this.world.getType(new BlockPosition(k1, l1, i2)).getBlock() != (flag ? Blocks.OBSIDIAN : blocks.AIR)) {
 +                        return null;
 +                    }
 +                }

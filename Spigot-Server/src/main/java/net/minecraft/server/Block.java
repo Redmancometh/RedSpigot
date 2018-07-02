@@ -49,8 +49,8 @@ public class Block {
 	private IBlockData blockData;
 	private String name;
 
-	public Block asBlock(@Nullable Item item) {
-		return item instanceof ItemBlock ? ((ItemBlock) item).getBlock() : blocks.AIR;
+	public static Block asBlock(@Nullable Item item) {
+		return item instanceof ItemBlock ? ((ItemBlock) item).getBlock() : item.blocks.AIR;
 	}
 
 	@Deprecated

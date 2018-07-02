@@ -428,8 +428,9 @@ public class EntityEnderDragon extends EntityInsentient implements IComplex, IMo
                     if (iblockdata.getMaterial() != Material.AIR && iblockdata.getMaterial() != Material.FIRE) {
                         if (!this.world.getGameRules().getBoolean("mobGriefing")) {
                             flag = true;
-                        } else if (block != Blocks.BARRIER && block != Blocks.OBSIDIAN && block != Blocks.END_STONE && block != Blocks.BEDROCK && block != Blocks.END_PORTAL && block != Blocks.END_PORTAL_FRAME) {
-                            if (block != Blocks.COMMAND_BLOCK && block != Blocks.dc && block != Blocks.dd && block != Blocks.IRON_BARS && block != Blocks.END_GATEWAY) {
+                        } else if (block != blocks.BARRIER && block != blocks.OBSIDIAN && block != blocks.END_STONE && block != blocks.BEDROCK && block != blocks.END_PORTAL && block != blocks.END_PORTAL_FRAME) {
+							if (block != blocks.COMMAND_BLOCK && block != blocks.dc && block != blocks.dd && block != blocks.IRON_BARS
+									&& block != blocks.END_GATEWAY) {
                                 // CraftBukkit start - Add blocks to list rather than destroying them
                                 // flag1 = this.world.setAir(blockposition) || flag1;
                                 flag1 = true;

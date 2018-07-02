@@ -2,9 +2,9 @@
 +++ b/net/minecraft/server/ItemRecord.java
 @@ -22,6 +22,7 @@
  
-         if (iblockdata.getBlock() == Blocks.JUKEBOX && !((Boolean) iblockdata.get(BlockJukeBox.HAS_RECORD)).booleanValue()) {
+         if (iblockdata.getBlock() == blocks.JUKEBOX && !((Boolean) iblockdata.get(BlockJukeBox.HAS_RECORD)).booleanValue()) {
              if (!world.isClientSide) {
 +                if (true) return EnumInteractionResult.SUCCESS; // CraftBukkit - handled in ItemStack
                  ItemStack itemstack = entityhuman.b(enumhand);
  
-                 ((BlockJukeBox) Blocks.JUKEBOX).a(world, blockposition, iblockdata, itemstack);
+                 ((BlockJukeBox) blocks.JUKEBOX).a(world, blockposition, iblockdata, itemstack);

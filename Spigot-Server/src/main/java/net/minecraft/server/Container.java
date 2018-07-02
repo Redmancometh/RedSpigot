@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
+import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.ItemRegistry;
 
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +36,13 @@ public abstract class Container {
 	private final Set<EntityHuman> i = Sets.newHashSet();
 	private int tickCount; // Spigot
 	@Autowired
-	private SpigotConfig cfg;
+	protected SpigotConfig cfg;
+	@Autowired
+	protected Blocks blocks;
+	@Autowired
+	protected BlockRegistry blockRegistry;
+	@Autowired
+	protected ItemRegistry itemRegistry;
 	// CraftBukkit start
 	public boolean checkReachable = true;
 	public abstract InventoryView getBukkitView();

@@ -209,7 +209,7 @@
 +    // CraftBukkit end
 +
      public boolean setAir(BlockPosition blockposition) {
-         return this.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 3);
+         return this.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 3);
      }
 @@ -278,6 +429,11 @@
  
@@ -257,7 +257,7 @@
 +        }
 +        // CraftBukkit end
          if (this.E(blockposition)) {
-             return Blocks.AIR.getBlockData();
+             return blocks.AIR.getBlockData();
          } else {
 @@ -788,6 +966,42 @@
      }

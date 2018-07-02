@@ -326,8 +326,8 @@ public abstract class EntityHorseAbstract extends EntityAnimal implements IInven
 		if (!block.getBlockData().getMaterial().isLiquid()) {
 			SoundEffectType soundeffecttype = block.getStepSound();
 
-			if (this.world.getType(blockposition.up()).getBlock() == Blocks.SNOW_LAYER) {
-				soundeffecttype = Blocks.SNOW_LAYER.getStepSound();
+			if (this.world.getType(blockposition.up()).getBlock() == blocks.SNOW_LAYER) {
+				soundeffecttype = blocks.SNOW_LAYER.getStepSound();
 			}
 
 			if (this.isVehicle() && this.bF) {
@@ -398,7 +398,7 @@ public abstract class EntityHorseAbstract extends EntityAnimal implements IInven
 			f = 1.0F;
 			short0 = 30;
 			b0 = 3;
-		} else if (item == Item.getItemOf(Blocks.HAY_BLOCK)) {
+		} else if (item == items.getItemOf(blocks.HAY_BLOCK)) {
 			f = 20.0F;
 			short0 = 180;
 		} else if (item == Items.APPLE) {
@@ -507,7 +507,7 @@ public abstract class EntityHorseAbstract extends EntityAnimal implements IInven
 				if (!this.dy() && !this.isVehicle() && this.random.nextInt(300) == 0
 						&& this.world
 								.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(this.locY) - 1, MathHelper.floor(this.locZ)))
-								.getBlock() == Blocks.GRASS) {
+								.getBlock() == blocks.GRASS) {
 					this.v(true);
 				}
 

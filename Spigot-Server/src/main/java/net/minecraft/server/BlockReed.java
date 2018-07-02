@@ -20,7 +20,7 @@ public class BlockReed extends Block {
     }
 
     public void b(World world, BlockPosition blockposition, IBlockData iblockdata, Random random) {
-        if (world.getType(blockposition.down()).getBlock() == Blocks.REEDS || this.e(world, blockposition, iblockdata)) {
+        if (world.getType(blockposition.down()).getBlock() == blocks.REEDS || this.e(world, blockposition, iblockdata)) {
             if (world.isEmpty(blockposition.up())) {
                 int i;
 
@@ -52,7 +52,7 @@ public class BlockReed extends Block {
 
         if (block == this) {
             return true;
-        } else if (block != Blocks.GRASS && block != Blocks.DIRT && block != Blocks.SAND) {
+        } else if (block != blocks.GRASS && block != blocks.DIRT && block != blocks.SAND) {
             return false;
         } else {
             BlockPosition blockposition1 = blockposition.down();
@@ -68,7 +68,7 @@ public class BlockReed extends Block {
                 EnumDirection enumdirection = (EnumDirection) iterator.next();
 
                 iblockdata = world.getType(blockposition1.shift(enumdirection));
-            } while (iblockdata.getMaterial() != Material.WATER && iblockdata.getBlock() != Blocks.FROSTED_ICE);
+			} while (iblockdata.getMaterial() != Material.WATER && iblockdata.getBlock() != blocks.FROSTED_ICE);
 
             return true;
         }

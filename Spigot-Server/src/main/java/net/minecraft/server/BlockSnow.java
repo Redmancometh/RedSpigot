@@ -52,7 +52,7 @@ public class BlockSnow extends Block {
         IBlockData iblockdata = world.getType(blockposition.down());
         Block block = iblockdata.getBlock();
 
-        if (block != Blocks.ICE && block != Blocks.PACKED_ICE && block != Blocks.BARRIER) {
+        if (block != blocks.ICE && block != blocks.PACKED_ICE && block != blocks.BARRIER) {
             EnumBlockFaceShape enumblockfaceshape = iblockdata.d(world, blockposition.down(), EnumDirection.UP);
 
             return enumblockfaceshape == EnumBlockFaceShape.SOLID || iblockdata.getMaterial() == Material.LEAVES || block == this && ((Integer) iblockdata.get(BlockSnow.LAYERS)).intValue() == 8;
@@ -92,7 +92,8 @@ public class BlockSnow extends Block {
     public void b(World world, BlockPosition blockposition, IBlockData iblockdata, Random random) {
         if (world.getBrightness(EnumSkyBlock.BLOCK, blockposition) > 11) {
             // CraftBukkit start
-            if (org.bukkit.craftbukkit.event.CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), Blocks.AIR).isCancelled()) {
+			if (org.bukkit.craftbukkit.event.CraftEventFactory
+					.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), blocks.AIR).isCancelled()) {
                 return;
             }
             // CraftBukkit end

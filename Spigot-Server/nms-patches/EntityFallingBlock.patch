@@ -14,7 +14,7 @@
              if (this.ticksLived++ == 0) {
                  blockposition = new BlockPosition(this);
 -                if (this.world.getType(blockposition).getBlock() == block) {
-+                if (this.world.getType(blockposition).getBlock() == block && !CraftEventFactory.callEntityChangeBlockEvent(this, blockposition, Blocks.AIR, 0).isCancelled()) {
++                if (this.world.getType(blockposition).getBlock() == block && !CraftEventFactory.callEntityChangeBlockEvent(this, blockposition, blocks.AIR, 0).isCancelled()) {
                      this.world.setAir(blockposition);
                  } else if (!this.world.isClientSide) {
                      this.die();

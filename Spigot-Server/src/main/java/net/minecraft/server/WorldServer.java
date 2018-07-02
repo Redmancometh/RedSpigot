@@ -148,99 +148,99 @@ public class WorldServer extends World implements IAsyncTaskHandler {
 		TileEntity result = super.getTileEntity(pos);
 		Block type = getType(pos).getBlock();
 
-		if (type == Blocks.CHEST || type == Blocks.TRAPPED_CHEST) { // Spigot
+		if (type == blocks.CHEST || type == blocks.TRAPPED_CHEST) { // Spigot
 			if (!(result instanceof TileEntityChest)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.FURNACE) {
+		} else if (type == blocks.FURNACE) {
 			if (!(result instanceof TileEntityFurnace)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.DROPPER) {
+		} else if (type == blocks.DROPPER) {
 			if (!(result instanceof TileEntityDropper)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.DISPENSER) {
+		} else if (type == blocks.DISPENSER) {
 			if (!(result instanceof TileEntityDispenser)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.JUKEBOX) {
+		} else if (type == blocks.JUKEBOX) {
 			if (!(result instanceof BlockJukeBox.TileEntityRecordPlayer)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.NOTEBLOCK) {
+		} else if (type == blocks.NOTEBLOCK) {
 			if (!(result instanceof TileEntityNote)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.MOB_SPAWNER) {
+		} else if (type == blocks.MOB_SPAWNER) {
 			if (!(result instanceof TileEntityMobSpawner)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if ((type == Blocks.STANDING_SIGN) || (type == Blocks.WALL_SIGN)) {
+		} else if ((type == blocks.STANDING_SIGN) || (type == blocks.WALL_SIGN)) {
 			if (!(result instanceof TileEntitySign)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.ENDER_CHEST) {
+		} else if (type == blocks.ENDER_CHEST) {
 			if (!(result instanceof TileEntityEnderChest)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.BREWING_STAND) {
+		} else if (type == blocks.BREWING_STAND) {
 			if (!(result instanceof TileEntityBrewingStand)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.BEACON) {
+		} else if (type == blocks.BEACON) {
 			if (!(result instanceof TileEntityBeacon)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.HOPPER) {
+		} else if (type == blocks.HOPPER) {
 			if (!(result instanceof TileEntityHopper)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.ENCHANTING_TABLE) {
+		} else if (type == blocks.ENCHANTING_TABLE) {
 			if (!(result instanceof TileEntityEnchantTable)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.END_PORTAL) {
+		} else if (type == blocks.END_PORTAL) {
 			if (!(result instanceof TileEntityEnderPortal)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.SKULL) {
+		} else if (type == blocks.SKULL) {
 			if (!(result instanceof TileEntitySkull)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.DAYLIGHT_DETECTOR || type == Blocks.DAYLIGHT_DETECTOR_INVERTED) {
+		} else if (type == blocks.DAYLIGHT_DETECTOR || type == blocks.DAYLIGHT_DETECTOR_INVERTED) {
 			if (!(result instanceof TileEntityLightDetector)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.POWERED_COMPARATOR || type == Blocks.UNPOWERED_COMPARATOR) {
+		} else if (type == blocks.POWERED_COMPARATOR || type == blocks.UNPOWERED_COMPARATOR) {
 			if (!(result instanceof TileEntityComparator)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.FLOWER_POT) {
+		} else if (type == blocks.FLOWER_POT) {
 			if (!(result instanceof TileEntityFlowerPot)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.STANDING_BANNER || type == Blocks.WALL_BANNER) {
+		} else if (type == blocks.STANDING_BANNER || type == blocks.WALL_BANNER) {
 			if (!(result instanceof TileEntityBanner)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.STRUCTURE_BLOCK) {
+		} else if (type == blocks.STRUCTURE_BLOCK) {
 			if (!(result instanceof TileEntityStructure)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.END_GATEWAY) {
+		} else if (type == blocks.END_GATEWAY) {
 			if (!(result instanceof TileEntityEndGateway)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.COMMAND_BLOCK) {
+		} else if (type == blocks.COMMAND_BLOCK) {
 			if (!(result instanceof TileEntityCommand)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.STRUCTURE_BLOCK) {
+		} else if (type == blocks.STRUCTURE_BLOCK) {
 			if (!(result instanceof TileEntityStructure)) {
 				result = fixTileEntity(pos, type, result);
 			}
-		} else if (type == Blocks.BED) {
+		} else if (type == blocks.BED) {
 			if (!(result instanceof TileEntityBed)) {
 				result = fixTileEntity(pos, type, result);
 			}
@@ -253,7 +253,7 @@ public class WorldServer extends World implements IAsyncTaskHandler {
 		this.getServer().getLogger().log(Level.SEVERE,
 				"Block at {0},{1},{2} is {3} but has {4}" + ". "
 						+ "Bukkit will attempt to fix this, but there may be additional damage that we cannot recover.",
-				new Object[]{pos.getX(), pos.getY(), pos.getZ(), org.bukkit.Material.getMaterial(Block.getId(type)).toString(), found});
+				new Object[]{pos.getX(), pos.getY(), pos.getZ(), org.bukkit.Material.getMaterial(blockRegistry.getId(type)).toString(), found});
 
 		if (type instanceof ITileEntity) {
 			TileEntity replacement = ((ITileEntity) type).a(this, type.toLegacyData(this.getType(pos)));
@@ -493,11 +493,11 @@ public class WorldServer extends World implements IAsyncTaskHandler {
 					BlockPosition blockposition1 = blockposition.down();
 
 					if (this.v(blockposition1)) {
-						org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this, blockposition1, Blocks.ICE.getBlockData(), null); // CraftBukkit
+						org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this, blockposition1, blocks.ICE.getBlockData(), null); // CraftBukkit
 					}
 
 					if (flag && this.f(blockposition, true)) {
-						org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this, blockposition, Blocks.SNOW_LAYER.getBlockData(),
+						org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(this, blockposition, blocks.SNOW_LAYER.getBlockData(),
 								null); // CraftBukkit
 					}
 

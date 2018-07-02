@@ -202,7 +202,7 @@
 +                // Special case juke boxes as they update their tile entity. Copied from ItemRecord.
 +                // PAIL: checkme on updates.
 +                if (this.item instanceof ItemRecord) {
-+                    ((BlockJukeBox) Blocks.JUKEBOX).a(world, blockposition, world.getType(blockposition), this);
++                    ((BlockJukeBox) blocks.JUKEBOX).a(world, blockposition, world.getType(blockposition), this);
 +                    world.a((EntityHuman) null, 1010, blockposition, Item.getId(this.item));
 +                    this.subtract(1);
 +                    entityhuman.b(StatisticList.Z);
@@ -261,7 +261,7 @@
 +        }
 +
 +        // Is this a block?
-+        if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) != Blocks.AIR) {
++        if (CraftMagicNumbers.getBlock(CraftMagicNumbers.getId(this.getItem())) != blocks.AIR) {
 +            // If vanilla doesn't use data on it don't allow any
 +            if (!(this.usesData() || this.getItem().usesDurability())) {
 +                i = 0;

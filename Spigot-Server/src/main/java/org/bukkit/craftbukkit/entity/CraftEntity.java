@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.ItemRegistry;
 import net.mcavenue.redspigot.registries.MobEffectRegistry;
 import net.minecraft.server.*;
 
@@ -38,6 +40,12 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 	protected MobEffectRegistry effectRegistry;
 	@Autowired
 	protected CraftPotionUtil potions;
+	@Autowired
+	protected ItemRegistry items;
+	@Autowired
+	protected BlockRegistry blockRegistry;
+	@Autowired
+	protected Blocks blocks;
 	protected final CraftServer server;
 	protected Entity entity;
 	private EntityDamageEvent lastDamageEvent;

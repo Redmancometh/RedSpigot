@@ -57,7 +57,7 @@ public final class ItemStack {
 	}
 
 	// TODON: This may not work, and it's a mess
-	public ItemStack(Block block, int i, int j, @Autowired ItemRegistry items) {
+	public ItemStack(Block block, int i, int j) {
 		this(items.getItemOf(block), i, j);
 	}
 

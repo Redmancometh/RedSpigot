@@ -154,7 +154,7 @@ public class TileEntityFurnace extends TileEntityContainer implements ITickable,
     }
 
     public void e() {
-        boolean flag = (this.getBlock() == Blocks.LIT_FURNACE); // CraftBukkit - SPIGOT-844 - Check if furnace block is lit using the block instead of burn time
+        boolean flag = (this.getBlock() == blocks.LIT_FURNACE); // CraftBukkit - SPIGOT-844 - Check if furnace block is lit using the block instead of burn time
         boolean flag1 = false;
 
         // CraftBukkit start - Use wall time instead of ticks for cooking
@@ -304,7 +304,7 @@ public class TileEntityFurnace extends TileEntityContainer implements ITickable,
             */
             // CraftBukkit end
 
-            if (itemstack.getItem() == Item.getItemOf(Blocks.SPONGE) && itemstack.getData() == 1 && !((ItemStack) this.items.get(1)).isEmpty() && ((ItemStack) this.items.get(1)).getItem() == Items.BUCKET) {
+            if (itemstack.getItem() == itemRegistry.getItemOf(blocks.SPONGE) && itemstack.getData() == 1 && !((ItemStack) this.items.get(1)).isEmpty() && ((ItemStack) this.items.get(1)).getItem() == Items.BUCKET) {
                 this.items.set(1, new ItemStack(Items.WATER_BUCKET));
             }
 
@@ -312,17 +312,27 @@ public class TileEntityFurnace extends TileEntityContainer implements ITickable,
         }
     }
 
-    public static int fuelTime(ItemStack itemstack) {
+    public int fuelTime(ItemStack itemstack) {
         if (itemstack.isEmpty()) {
             return 0;
         } else {
             Item item = itemstack.getItem();
 
-            return item == Item.getItemOf(Blocks.WOODEN_SLAB) ? 150 : (item == Item.getItemOf(Blocks.WOOL) ? 100 : (item == Item.getItemOf(Blocks.CARPET) ? 67 : (item == Item.getItemOf(Blocks.LADDER) ? 300 : (item == Item.getItemOf(Blocks.WOODEN_BUTTON) ? 100 : (Block.asBlock(item).getBlockData().getMaterial() == Material.WOOD ? 300 : (item == Item.getItemOf(Blocks.COAL_BLOCK) ? 16000 : (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).h()) ? 200 : (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).h()) ? 200 : (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).g()) ? 200 : (item == Items.STICK ? 100 : (item != Items.BOW && item != Items.FISHING_ROD ? (item == Items.SIGN ? 200 : (item == Items.COAL ? 1600 : (item == Items.LAVA_BUCKET ? 20000 : (item != Item.getItemOf(Blocks.SAPLING) && item != Items.BOWL ? (item == Items.BLAZE_ROD ? 2400 : (item instanceof ItemDoor && item != Items.IRON_DOOR ? 200 : (item instanceof ItemBoat ? 400 : 0))) : 100)))) : 300)))))))))));
+			return item == itemRegistry.getItemOf(blocks.WOODEN_SLAB)
+					? 150
+					: (item == itemRegistry.getItemOf(blocks.WOOL)
+							? 100
+							: (item == itemRegistry.getItemOf(blocks.CARPET)
+									? 67
+									: (item == itemRegistry.getItemOf(blocks.LADDER)
+											? 300
+											: (item == itemRegistry.getItemOf(blocks.WOODEN_BUTTON)
+													? 100
+													: (Block.asBlock(item).getBlockData().getMaterial() == Material.WOOD ? 300 : (item == itemRegistry.getItemOf(blocks.COAL_BLOCK) ? 16000 : (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).h()) ? 200 : (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).h()) ? 200 : (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).g()) ? 200 : (item == Items.STICK ? 100 : (item != Items.BOW && item != Items.FISHING_ROD ? (item == Items.SIGN ? 200 : (item == Items.COAL ? 1600 : (item == Items.LAVA_BUCKET ? 20000 : (item != itemRegistry.getItemOf(blocks.SAPLING) && item != Items.BOWL ? (item == Items.BLAZE_ROD ? 2400 : (item instanceof ItemDoor && item != Items.IRON_DOOR ? 200 : (item instanceof ItemBoat ? 400 : 0))) : 100)))) : 300)))))))))));
         }
     }
 
-    public static boolean isFuel(ItemStack itemstack) {
+    public boolean isFuel(ItemStack itemstack) {
         return fuelTime(itemstack) > 0;
     }
 

@@ -10,5 +10,5 @@
 +            }
 +            // CraftBukkit end
              this.b(world, blockposition, iblockdata, 0);
-             world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 3);
+             world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 3);
          }

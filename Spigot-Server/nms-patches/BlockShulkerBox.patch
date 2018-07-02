@@ -13,7 +13,7 @@
 +            TileEntityShulkerBox tileentityshulkerbox = (TileEntityShulkerBox) tileentity;
 +
 +            if (!tileentityshulkerbox.r() && tileentityshulkerbox.F()) {
-+                ItemStack itemstack = new ItemStack(Item.getItemOf(this));
++                ItemStack itemstack = new ItemStack(items.getItemOf(this));
 +                NBTTagCompound nbttagcompound = new NBTTagCompound();
 +                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 +

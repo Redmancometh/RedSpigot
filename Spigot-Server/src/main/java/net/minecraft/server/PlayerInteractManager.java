@@ -261,7 +261,7 @@ public class PlayerInteractManager {
             // Don't tell the client if its a creative sword break because its not broken!
             if (world.getTileEntity(blockposition) == null && !isSwordNoBreak) {
                 PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(this.world, blockposition);
-                packet.block = Blocks.AIR.getBlockData();
+                packet.block = blocks.AIR.getBlockData();
                 ((EntityPlayer) this.player).playerConnection.sendPacket(packet);
             }
 
@@ -311,7 +311,7 @@ public class PlayerInteractManager {
             return false;
         } else {
             IBlockData iblockdata = this.world.getType(blockposition);
-            if (iblockdata.getBlock() == Blocks.AIR) return false; // CraftBukkit - A plugin set block to air without cancelling
+            if (iblockdata.getBlock() == blocks.AIR) return false; // CraftBukkit - A plugin set block to air without cancelling
             TileEntity tileentity = this.world.getTileEntity(blockposition);
             Block block = iblockdata.getBlock();
 
@@ -434,7 +434,7 @@ public class PlayerInteractManager {
     public EnumInteractionResult a(EntityHuman entityhuman, World world, ItemStack itemstack, EnumHand enumhand, BlockPosition blockposition, EnumDirection enumdirection, float f, float f1, float f2) {
         IBlockData blockdata = world.getType(blockposition);
         EnumInteractionResult enuminteractionresult = EnumInteractionResult.FAIL;
-        if (blockdata.getBlock() != Blocks.AIR) {
+        if (blockdata.getBlock() != blocks.AIR) {
             boolean cancelledBlock = false;
 
             if (this.gamemode == EnumGamemode.SPECTATOR) {

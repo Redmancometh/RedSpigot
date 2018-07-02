@@ -81,7 +81,7 @@ public class EntityMinecartCommandBlock extends EntityMinecartAbstract {
     }
 
     public IBlockData x() {
-        return Blocks.COMMAND_BLOCK.getBlockData();
+        return blocks.COMMAND_BLOCK.getBlockData();
     }
 
     public CommandBlockListenerAbstract getCommandBlock() {

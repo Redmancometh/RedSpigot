@@ -16,7 +16,7 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimal {
 
 	public EntityAnimal(World world) {
 		super(world);
-		this.bA = Blocks.GRASS;
+		this.bA = blocks.GRASS;
 	}
 
 	protected void M() {

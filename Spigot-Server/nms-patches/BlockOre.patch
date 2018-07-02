@@ -5,7 +5,7 @@
      public void dropNaturally(World world, BlockPosition blockposition, IBlockData iblockdata, float f, int i) {
          super.dropNaturally(world, blockposition, iblockdata, f, i);
 +        /* CraftBukkit start - Delegated to getExpDrop
-         if (this.getDropType(iblockdata, world.random, i) != Item.getItemOf(this)) {
+         if (this.getDropType(iblockdata, world.random, i) != items.getItemOf(this)) {
              int j = 0;
  
 @@ -54,9 +55,34 @@
@@ -18,7 +18,7 @@
  
 +    @Override
 +    public int getExpDrop(World world, IBlockData iblockdata, int i) {
-+        if (this.getDropType(iblockdata, world.random, i) != Item.getItemOf(this)) {
++        if (this.getDropType(iblockdata, world.random, i) != items.getItemOf(this)) {
 +            int j = 0;
 +
 +            if (this == Blocks.COAL_ORE) {

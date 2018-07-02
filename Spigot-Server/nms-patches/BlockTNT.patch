@@ -5,7 +5,7 @@
  
              if (entityarrow.isBurning()) {
 +                // CraftBukkit start
-+                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entityarrow, blockposition, Blocks.AIR, 0).isCancelled()) {
++                if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entityarrow, blockposition, blocks.AIR, 0).isCancelled()) {
 +                    return;
 +                }
 +                // CraftBukkit end

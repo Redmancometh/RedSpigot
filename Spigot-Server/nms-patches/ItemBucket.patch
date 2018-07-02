@@ -24,7 +24,7 @@
 +                            return new InteractionResultWrapper(EnumInteractionResult.FAIL, itemstack);
 +                        }
 +                        // CraftBukkit end
-                         world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 11);
+                         world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 11);
                          entityhuman.b(StatisticList.b((Item) this));
                          entityhuman.a(SoundEffects.S, 1.0F, 1.0F);
 -                        return new InteractionResultWrapper(EnumInteractionResult.SUCCESS, this.a(itemstack, entityhuman, Items.WATER_BUCKET));
@@ -38,7 +38,7 @@
 +                        }
 +                        // CraftBukkit end
                          entityhuman.a(SoundEffects.T, 1.0F, 1.0F);
-                         world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 11);
+                         world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 11);
                          entityhuman.b(StatisticList.b((Item) this));
 -                        return new InteractionResultWrapper(EnumInteractionResult.SUCCESS, this.a(itemstack, entityhuman, Items.LAVA_BUCKET));
 +                        return new InteractionResultWrapper(EnumInteractionResult.SUCCESS, this.a(itemstack, entityhuman, Items.LAVA_BUCKET, event.getItemStack())); // CraftBukkit
@@ -89,7 +89,7 @@
 +
 +    public boolean a(EntityHuman entityhuman, World world, BlockPosition blockposition, EnumDirection enumdirection, BlockPosition clicked, ItemStack itemstack) {
 +        // CraftBukkit end
-         if (this.a == Blocks.AIR) {
+         if (this.a == blocks.AIR) {
              return false;
          } else {
 @@ -96,6 +125,15 @@

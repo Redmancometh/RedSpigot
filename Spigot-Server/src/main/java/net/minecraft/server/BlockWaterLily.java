@@ -20,7 +20,7 @@ public class BlockWaterLily extends BlockPlant {
 
     public void a(World world, BlockPosition blockposition, IBlockData iblockdata, Entity entity) {
         super.a(world, blockposition, iblockdata, entity);
-        if (entity instanceof EntityBoat && !org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entity, blockposition, Blocks.AIR, 0).isCancelled()) { // CraftBukkit
+        if (entity instanceof EntityBoat && !org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(entity, blockposition, blocks.AIR, 0).isCancelled()) { // CraftBukkit
             world.setAir(new BlockPosition(blockposition), true);
         }
 
@@ -31,7 +31,7 @@ public class BlockWaterLily extends BlockPlant {
     }
 
     protected boolean x(IBlockData iblockdata) {
-        return iblockdata.getBlock() == Blocks.WATER || iblockdata.getMaterial() == Material.ICE;
+		return iblockdata.getBlock() == blocks.WATER || iblockdata.getMaterial() == Material.ICE;
     }
 
     public boolean f(World world, BlockPosition blockposition, IBlockData iblockdata) {

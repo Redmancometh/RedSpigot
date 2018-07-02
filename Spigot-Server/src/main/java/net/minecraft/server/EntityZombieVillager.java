@@ -154,7 +154,7 @@ public class EntityZombieVillager extends EntityZombie {
                     for (int i1 = (int) this.locZ - 4; i1 < (int) this.locZ + 4 && j < 14; ++i1) {
                         Block block = this.world.getType(blockposition_mutableblockposition.c(k, l, i1)).getBlock();
 
-                        if (block == Blocks.IRON_BARS || block == Blocks.BED) {
+						if (block == blocks.IRON_BARS || block == blocks.BED) {
                             if (this.random.nextFloat() < 0.3F) {
                                 ++i;
                             }

@@ -23,17 +23,17 @@ public class BlockMycel extends Block {
     public IBlockData updateState(IBlockData iblockdata, IBlockAccess iblockaccess, BlockPosition blockposition) {
         Block block = iblockaccess.getType(blockposition.up()).getBlock();
 
-        return iblockdata.set(BlockMycel.SNOWY, Boolean.valueOf(block == Blocks.SNOW || block == Blocks.SNOW_LAYER));
+        return iblockdata.set(BlockMycel.SNOWY, Boolean.valueOf(block == blocks.SNOW || block == blocks.SNOW_LAYER));
     }
 
     public void b(World world, BlockPosition blockposition, IBlockData iblockdata, Random random) {
         if (!world.isClientSide) {
             if (world.getLightLevel(blockposition.up()) < 4 && world.getType(blockposition.up()).c() > 2) {
                 // CraftBukkit start
-                // world.setTypeUpdate(blockposition, Blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT));
+                // world.setTypeUpdate(blockposition, blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT));
                 org.bukkit.World bworld = world.getWorld();
                 BlockState blockState = bworld.getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()).getState();
-                blockState.setType(CraftMagicNumbers.getMaterial(Blocks.DIRT));
+                blockState.setType(CraftMagicNumbers.getMaterial(blocks.DIRT));
 
                 BlockFadeEvent event = new BlockFadeEvent(blockState.getBlock(), blockState);
                 world.getServer().getPluginManager().callEvent(event);
@@ -49,7 +49,7 @@ public class BlockMycel extends Block {
                         IBlockData iblockdata1 = world.getType(blockposition1);
                         IBlockData iblockdata2 = world.getType(blockposition1.up());
 
-                        if (iblockdata1.getBlock() == Blocks.DIRT && iblockdata1.get(BlockDirt.VARIANT) == BlockDirt.EnumDirtVariant.DIRT && world.getLightLevel(blockposition1.up()) >= 4 && iblockdata2.c() <= 2) {
+                        if (iblockdata1.getBlock() == blocks.DIRT && iblockdata1.get(BlockDirt.VARIANT) == BlockDirt.EnumDirtVariant.DIRT && world.getLightLevel(blockposition1.up()) >= 4 && iblockdata2.c() <= 2) {
                             // CraftBukkit start
                             // world.setTypeUpdate(blockposition1, this.getBlockData());
                             org.bukkit.World bworld = world.getWorld();
@@ -72,7 +72,7 @@ public class BlockMycel extends Block {
     }
 
     public Item getDropType(IBlockData iblockdata, Random random, int i) {
-        return Blocks.DIRT.getDropType(Blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT), random, i);
+		return blocks.DIRT.getDropType(blocks.DIRT.getBlockData().set(BlockDirt.VARIANT, BlockDirt.EnumDirtVariant.DIRT), random, i);
     }
 
     public int toLegacyData(IBlockData iblockdata) {

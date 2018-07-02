@@ -127,7 +127,7 @@
 +                        block.dropNaturally(this.world, blockposition, this.world.getType(blockposition), yield, 0);
                      }
  
-                     this.world.setTypeAndData(blockposition, Blocks.AIR.getBlockData(), 3);
+                     this.world.setTypeAndData(blockposition, blocks.AIR.getBlockData(), 3);
 @@ -195,7 +262,11 @@
              while (iterator.hasNext()) {
                  blockposition = (BlockPosition) iterator.next();

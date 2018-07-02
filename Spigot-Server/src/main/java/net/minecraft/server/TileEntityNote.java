@@ -50,30 +50,30 @@ public class TileEntityNote extends TileEntity {
 
             Block block = iblockdata.getBlock();
 
-            if (block == Blocks.CLAY) {
+            if (block == blocks.CLAY) {
                 b0 = 5;
             }
 
-            if (block == Blocks.GOLD_BLOCK) {
+            if (block == blocks.GOLD_BLOCK) {
                 b0 = 6;
             }
 
-            if (block == Blocks.WOOL) {
+            if (block == blocks.WOOL) {
                 b0 = 7;
             }
 
-            if (block == Blocks.PACKED_ICE) {
+            if (block == blocks.PACKED_ICE) {
                 b0 = 8;
             }
 
-            if (block == Blocks.di) {
+            if (block == blocks.di) {
                 b0 = 9;
             }
 
             // CraftBukkit start
             org.bukkit.event.block.NotePlayEvent event = org.bukkit.craftbukkit.event.CraftEventFactory.callNotePlayEvent(this.world, blockposition.getX(), blockposition.getY(), blockposition.getZ(), b0, this.note);
             if (!event.isCancelled()) {
-                world.playBlockAction(blockposition, Blocks.NOTEBLOCK, event.getInstrument().getType(), event.getNote().getId());
+				world.playBlockAction(blockposition, blocks.NOTEBLOCK, event.getInstrument().getType(), event.getNote().getId());
             }
             // CraftBukkit end
         }

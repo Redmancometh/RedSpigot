@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.ItemRegistry;
 import net.mcavenue.redspigot.registries.MobEffectRegistry;
 
 import java.util.Arrays;
@@ -63,7 +64,8 @@ public abstract class Entity implements ICommandListener {
 	protected Blocks blocks;
 	@Autowired
 	protected BlockRegistry blockRegistry;
-
+	@Autowired
+	protected ItemRegistry items;
 	protected CraftEntity bukkitEntity;
 
 	public CraftEntity getBukkitEntity() {
@@ -1190,7 +1192,7 @@ public abstract class Entity implements ICommandListener {
 		if (iblockdata.i() != EnumRenderType.INVISIBLE) {
 			this.world.addParticle(EnumParticle.BLOCK_CRACK, this.locX + ((double) this.random.nextFloat() - 0.5D) * (double) this.width,
 					this.getBoundingBox().b + 0.1D, this.locZ + ((double) this.random.nextFloat() - 0.5D) * (double) this.width, -this.motX * 4.0D,
-					1.5D, -this.motZ * 4.0D, new int[]{Block.getCombinedId(iblockdata)});
+					1.5D, -this.motZ * 4.0D, new int[]{blockRegistry.getCombinedId(iblockdata)});
 		}
 
 	}

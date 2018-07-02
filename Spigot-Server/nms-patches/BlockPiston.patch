@@ -83,12 +83,12 @@
 +
 +            if (event.isCancelled()) {
 +                for (BlockPosition b : broken) {
-+                    world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
++                    world.notify(b, blocks.AIR.getBlockData(), world.getType(b), 3);
 +                }
 +                for (BlockPosition b : moved) {
-+                    world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
++                    world.notify(b, blocks.AIR.getBlockData(), world.getType(b), 3);
 +                    b = b.shift(enumdirection1);
-+                    world.notify(b, Blocks.AIR.getBlockData(), world.getType(b), 3);
++                    world.notify(b, blocks.AIR.getBlockData(), world.getType(b), 3);
 +                }
 +                return false;
 +            }

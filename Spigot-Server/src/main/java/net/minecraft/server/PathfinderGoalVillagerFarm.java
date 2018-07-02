@@ -41,7 +41,7 @@ public class PathfinderGoalVillagerFarm extends PathfinderGoalGotoTarget {
 
             if (this.f == 0 && block instanceof BlockCrops && ((BlockCrops) block).z(iblockdata)) {
                 // CraftBukkit start
-                if (!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.c, blockposition, Blocks.AIR, 0).isCancelled()) {
+                if (!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.c, blockposition, blocks.AIR, 0).isCancelled()) {
                     world.setAir(blockposition, true);
                 }
                 // CraftBukkit end
@@ -56,16 +56,16 @@ public class PathfinderGoalVillagerFarm extends PathfinderGoalGotoTarget {
                         // CraftBukkit start
                         Block planted = null;
                         if (itemstack.getItem() == Items.WHEAT_SEEDS) {
-                            planted = Blocks.WHEAT;
+                            planted = blocks.WHEAT;
                             flag = true;
                         } else if (itemstack.getItem() == Items.POTATO) {
-                            planted = Blocks.POTATOES;
+                            planted = blocks.POTATOES;
                             flag = true;
                         } else if (itemstack.getItem() == Items.CARROT) {
-                            planted = Blocks.CARROTS;
+                            planted = blocks.CARROTS;
                             flag = true;
                         } else if (itemstack.getItem() == Items.BEETROOT_SEEDS) {
-                            planted = Blocks.BEETROOT;
+                            planted = blocks.BEETROOT;
                             flag = true;
                         }
 
@@ -96,7 +96,7 @@ public class PathfinderGoalVillagerFarm extends PathfinderGoalGotoTarget {
     protected boolean a(World world, BlockPosition blockposition) {
         Block block = world.getType(blockposition).getBlock();
 
-        if (block == Blocks.FARMLAND) {
+		if (block == blocks.FARMLAND) {
             blockposition = blockposition.up();
             IBlockData iblockdata = world.getType(blockposition);
 

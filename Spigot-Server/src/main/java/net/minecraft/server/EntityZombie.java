@@ -368,7 +368,7 @@ public class EntityZombie extends EntityMonster {
             Calendar calendar = this.world.ae();
 
             if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31 && this.random.nextFloat() < 0.25F) {
-                this.setSlot(EnumItemSlot.HEAD, new ItemStack(this.random.nextFloat() < 0.1F ? Blocks.LIT_PUMPKIN : Blocks.PUMPKIN));
+				this.setSlot(EnumItemSlot.HEAD, new ItemStack(this.random.nextFloat() < 0.1F ? blocks.LIT_PUMPKIN : blocks.PUMPKIN));
                 this.dropChanceArmor[EnumItemSlot.HEAD.b()] = 0.0F;
             }
         }

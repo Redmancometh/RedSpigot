@@ -58,25 +58,25 @@ public class BlockRedstoneOre extends Block {
 
     private void interact(World world, BlockPosition blockposition, Entity entity) { // CraftBukkit - add Entity
         this.playEffect(world, blockposition);
-        if (this == Blocks.REDSTONE_ORE) {
+        if (this == blocks.REDSTONE_ORE) {
             // CraftBukkit start
-            if (CraftEventFactory.callEntityChangeBlockEvent(entity, blockposition, Blocks.LIT_REDSTONE_ORE, 0).isCancelled()) {
+            if (CraftEventFactory.callEntityChangeBlockEvent(entity, blockposition, blocks.LIT_REDSTONE_ORE, 0).isCancelled()) {
                 return;
             }
             // CraftBukkit end
-            world.setTypeUpdate(blockposition, Blocks.LIT_REDSTONE_ORE.getBlockData());
+            world.setTypeUpdate(blockposition, blocks.LIT_REDSTONE_ORE.getBlockData());
         }
 
     }
 
     public void b(World world, BlockPosition blockposition, IBlockData iblockdata, Random random) {
-        if (this == Blocks.LIT_REDSTONE_ORE) {
+        if (this == blocks.LIT_REDSTONE_ORE) {
             // CraftBukkit start
-            if (CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), Blocks.REDSTONE_ORE).isCancelled()) {
+            if (CraftEventFactory.callBlockFadeEvent(world.getWorld().getBlockAt(blockposition.getX(), blockposition.getY(), blockposition.getZ()), blocks.REDSTONE_ORE).isCancelled()) {
                 return;
             }
             // CraftBukkit end
-            world.setTypeUpdate(blockposition, Blocks.REDSTONE_ORE.getBlockData());
+            world.setTypeUpdate(blockposition, blocks.REDSTONE_ORE.getBlockData());
         }
 
     }
@@ -96,7 +96,7 @@ public class BlockRedstoneOre extends Block {
     public void dropNaturally(World world, BlockPosition blockposition, IBlockData iblockdata, float f, int i) {
         super.dropNaturally(world, blockposition, iblockdata, f, i);
         /* CraftBukkit start - Delegated to getExpDrop
-        if (this.getDropType(iblockdata, world.random, i) != Item.getItemOf(this)) {
+        if (this.getDropType(iblockdata, world.random, i) != items.getItemOf(this)) {
             int j = 1 + world.random.nextInt(5);
 
             this.dropExperience(world, blockposition, j);
@@ -107,7 +107,7 @@ public class BlockRedstoneOre extends Block {
 
     @Override
     public int getExpDrop(World world, IBlockData data, int i) {
-        if (this.getDropType(data, world.random, i) != Item.getItemOf(this)) {
+        if (this.getDropType(data, world.random, i) != items.getItemOf(this)) {
             int j = 1 + world.random.nextInt(5);
 
             return j;
@@ -157,10 +157,10 @@ public class BlockRedstoneOre extends Block {
     }
 
     protected ItemStack u(IBlockData iblockdata) {
-        return new ItemStack(Blocks.REDSTONE_ORE);
+        return new ItemStack(blocks.REDSTONE_ORE);
     }
 
     public ItemStack a(World world, BlockPosition blockposition, IBlockData iblockdata) {
-        return new ItemStack(Item.getItemOf(Blocks.REDSTONE_ORE), 1, this.getDropData(iblockdata));
+		return new ItemStack(items.getItemOf(blocks.REDSTONE_ORE), 1, this.getDropData(iblockdata));
     }
 }

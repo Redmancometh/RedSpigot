@@ -105,7 +105,7 @@ public class BlockFlowing extends BlockFluids {
 
             if (this.material == Material.LAVA && world.getType(blockposition.down()).getMaterial() == Material.WATER) {
                 // CraftBukkit start
-                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(world, blockposition.down(), Blocks.STONE.getBlockData(), null)) {
+                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(world, blockposition.down(), blocks.STONE.getBlockData(), null)) {
                     this.fizz(world, blockposition.down());
                 }
                 // CraftBukkit end
@@ -232,7 +232,7 @@ public class BlockFlowing extends BlockFluids {
     private boolean g(World world, BlockPosition blockposition, IBlockData iblockdata) {
         Block block = world.getType(blockposition).getBlock();
 
-        return !(block instanceof BlockDoor) && block != Blocks.STANDING_SIGN && block != Blocks.LADDER && block != Blocks.REEDS ? (block.material != Material.PORTAL && block.material != Material.J ? block.material.isSolid() : true) : true;
+		return !(block instanceof BlockDoor) && block != blocks.STANDING_SIGN && block != blocks.LADDER && block != blocks.REEDS ? (block.material != Material.PORTAL && block.material != Material.J ? block.material.isSolid() : true) : true;
     }
 
     protected int a(World world, BlockPosition blockposition, int i) {

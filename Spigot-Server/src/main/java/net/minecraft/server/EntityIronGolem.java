@@ -102,7 +102,7 @@ public class EntityIronGolem extends EntityGolem {
 				this.world.addParticle(EnumParticle.BLOCK_CRACK, this.locX + ((double) this.random.nextFloat() - 0.5D) * (double) this.width,
 						this.getBoundingBox().b + 0.1D, this.locZ + ((double) this.random.nextFloat() - 0.5D) * (double) this.width,
 						4.0D * ((double) this.random.nextFloat() - 0.5D), 0.5D, ((double) this.random.nextFloat() - 0.5D) * 4.0D,
-						new int[]{Block.getCombinedId(iblockdata)});
+						new int[]{blockRegistry.getCombinedId(iblockdata)});
 			}
 		}
 

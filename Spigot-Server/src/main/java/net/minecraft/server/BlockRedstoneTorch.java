@@ -117,7 +117,7 @@ public class BlockRedstoneTorch extends BlockTorch {
                     }
                 }
                 // CraftBukkit end
-                world.setTypeAndData(blockposition, Blocks.UNLIT_REDSTONE_TORCH.getBlockData().set(BlockRedstoneTorch.FACING, iblockdata.get(BlockRedstoneTorch.FACING)), 3);
+                world.setTypeAndData(blockposition, blocks.UNLIT_REDSTONE_TORCH.getBlockData().set(BlockRedstoneTorch.FACING, iblockdata.get(BlockRedstoneTorch.FACING)), 3);
                 if (this.a(world, blockposition, true)) {
                     world.a((EntityHuman) null, blockposition, SoundEffects.gm, SoundCategory.BLOCKS, 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F);
 
@@ -142,7 +142,7 @@ public class BlockRedstoneTorch extends BlockTorch {
                 }
             }
             // CraftBukkit end
-            world.setTypeAndData(blockposition, Blocks.REDSTONE_TORCH.getBlockData().set(BlockRedstoneTorch.FACING, iblockdata.get(BlockRedstoneTorch.FACING)), 3);
+            world.setTypeAndData(blockposition, blocks.REDSTONE_TORCH.getBlockData().set(BlockRedstoneTorch.FACING, iblockdata.get(BlockRedstoneTorch.FACING)), 3);
         }
 
     }
@@ -161,7 +161,7 @@ public class BlockRedstoneTorch extends BlockTorch {
     }
 
     public Item getDropType(IBlockData iblockdata, Random random, int i) {
-        return Item.getItemOf(Blocks.REDSTONE_TORCH);
+        return items.getItemOf(blocks.REDSTONE_TORCH);
     }
 
     public boolean isPowerSource(IBlockData iblockdata) {
@@ -169,11 +169,11 @@ public class BlockRedstoneTorch extends BlockTorch {
     }
 
     public ItemStack a(World world, BlockPosition blockposition, IBlockData iblockdata) {
-        return new ItemStack(Blocks.REDSTONE_TORCH);
+        return new ItemStack(blocks.REDSTONE_TORCH);
     }
 
     public boolean d(Block block) {
-        return block == Blocks.UNLIT_REDSTONE_TORCH || block == Blocks.REDSTONE_TORCH;
+		return block == blocks.UNLIT_REDSTONE_TORCH || block == blocks.REDSTONE_TORCH;
     }
 
     static class RedstoneUpdateInfo {
