@@ -886,11 +886,14 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
 
 	@Override
 	public int getFoodLevel() {
+		System.out.println("GET FOOD LEVEL: " + getHandle().getFoodData().foodLevel);
 		return getHandle().getFoodData().foodLevel;
 	}
 
 	@Override
 	public void setFoodLevel(int value) {
+		System.out.println("FOOD");
+		new Throwable().printStackTrace();
 		getHandle().getFoodData().foodLevel = value;
 	}
 

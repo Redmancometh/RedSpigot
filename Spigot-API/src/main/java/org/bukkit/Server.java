@@ -42,6 +42,9 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.util.CachedServerIcon;
 
 import com.google.common.collect.ImmutableList;
+
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
+
 import org.bukkit.advancement.Advancement;
 import org.bukkit.generator.ChunkGenerator;
 
@@ -125,7 +128,6 @@ public interface Server extends PluginMessageRecipient {
 	 * @return the amount of players this server allows
 	 */
 	public int getMaxPlayers();
-
 
 	/**
 	 * Get the game port that the server runs on.
@@ -1002,7 +1004,7 @@ public interface Server extends PluginMessageRecipient {
 	// Spigot start
 	public class Spigot {
 
-		public org.bukkit.configuration.file.YamlConfiguration getConfig() {
+		public SpigotConfig getConfig() {
 			throw new UnsupportedOperationException("Not supported yet.");
 		}
 

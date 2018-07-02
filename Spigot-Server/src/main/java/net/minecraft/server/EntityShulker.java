@@ -93,7 +93,7 @@ public class EntityShulker extends EntityGolem implements IMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(30.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(30.0D);
     }
 
     protected EntityAIBodyControl s() {
@@ -450,9 +450,9 @@ public class EntityShulker extends EntityGolem implements IMonster {
 
     public void a(int i) {
         if (!this.world.isClientSide) {
-            this.getAttributeInstance(GenericAttributes.h).c(EntityShulker.bA);
+            this.getAttributeInstance(attr.h).c(EntityShulker.bA);
             if (i == 0) {
-                this.getAttributeInstance(GenericAttributes.h).b(EntityShulker.bA);
+                this.getAttributeInstance(attr.h).b(EntityShulker.bA);
                 this.a(SoundEffects.gF, 1.0F, 1.0F);
             } else {
                 this.a(SoundEffects.gJ, 1.0F, 1.0F);

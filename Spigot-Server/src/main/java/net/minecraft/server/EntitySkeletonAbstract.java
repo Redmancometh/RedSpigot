@@ -41,7 +41,7 @@ public abstract class EntitySkeletonAbstract extends EntityMonster implements IR
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.25D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.25D);
     }
 
     protected void i() {

@@ -50,10 +50,10 @@ public class EntityZombie extends EntityMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.FOLLOW_RANGE).setValue(35.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.23000000417232513D);
-        this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(3.0D);
-        this.getAttributeInstance(GenericAttributes.h).setValue(2.0D);
+        this.getAttributeInstance(attr.FOLLOW_RANGE).setValue(35.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.23000000417232513D);
+        this.getAttributeInstance(attr.ATTACK_DAMAGE).setValue(3.0D);
+        this.getAttributeInstance(attr.h).setValue(2.0D);
         this.getAttributeMap().b(EntityZombie.a).setValue(this.random.nextDouble() * 0.10000000149011612D);
     }
 
@@ -100,7 +100,7 @@ public class EntityZombie extends EntityMonster {
     public void setBaby(boolean flag) {
         this.getDataWatcher().set(EntityZombie.bx, Boolean.valueOf(flag));
         if (this.world != null && !this.world.isClientSide) {
-            AttributeInstance attributeinstance = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+            AttributeInstance attributeinstance = this.getAttributeInstance(attr.MOVEMENT_SPEED);
 
             attributeinstance.c(EntityZombie.c);
             if (flag) {
@@ -373,16 +373,16 @@ public class EntityZombie extends EntityMonster {
             }
         }
 
-        this.getAttributeInstance(GenericAttributes.c).b(new AttributeModifier("Random spawn bonus", this.random.nextDouble() * 0.05000000074505806D, 0));
+        this.getAttributeInstance(attr.c).b(new AttributeModifier("Random spawn bonus", this.random.nextDouble() * 0.05000000074505806D, 0));
         double d0 = this.random.nextDouble() * 1.5D * (double) f;
 
         if (d0 > 1.0D) {
-            this.getAttributeInstance(GenericAttributes.FOLLOW_RANGE).b(new AttributeModifier("Random zombie-spawn bonus", d0, 2));
+            this.getAttributeInstance(attr.FOLLOW_RANGE).b(new AttributeModifier("Random zombie-spawn bonus", d0, 2));
         }
 
         if (this.random.nextFloat() < f * 0.05F) {
             this.getAttributeInstance(EntityZombie.a).b(new AttributeModifier("Leader zombie bonus", this.random.nextDouble() * 0.25D + 0.5D, 0));
-            this.getAttributeInstance(GenericAttributes.maxHealth).b(new AttributeModifier("Leader zombie bonus", this.random.nextDouble() * 3.0D + 1.0D, 2));
+            this.getAttributeInstance(attr.maxHealth).b(new AttributeModifier("Leader zombie bonus", this.random.nextDouble() * 3.0D + 1.0D, 2));
             this.p(true);
         }
 

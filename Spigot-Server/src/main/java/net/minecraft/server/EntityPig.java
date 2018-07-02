@@ -34,8 +34,8 @@ public class EntityPig extends EntityAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(10.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.25D);
+        this.getAttributeInstance(attr.maxHealth).setValue(10.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.25D);
     }
 
     @Nullable
@@ -195,7 +195,7 @@ public class EntityPig extends EntityAnimal {
             }
 
             if (this.bI()) {
-                float f3 = (float) this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue() * 0.225F;
+                float f3 = (float) this.getAttributeInstance(attr.MOVEMENT_SPEED).getValue() * 0.225F;
 
                 if (this.bB) {
                     f3 += f3 * 1.15F * MathHelper.sin((float) this.bC / (float) this.bD * 3.1415927F);

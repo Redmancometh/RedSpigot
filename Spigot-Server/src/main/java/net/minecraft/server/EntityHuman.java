@@ -104,10 +104,10 @@ public abstract class EntityHuman extends EntityLiving {
 
 	protected void initAttributes() {
 		super.initAttributes();
-		this.getAttributeMap().b(GenericAttributes.ATTACK_DAMAGE).setValue(1.0D);
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.10000000149011612D);
-		this.getAttributeMap().b(GenericAttributes.g);
-		this.getAttributeMap().b(GenericAttributes.j);
+		this.getAttributeMap().b(attr.ATTACK_DAMAGE).setValue(1.0D);
+		this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.10000000149011612D);
+		this.getAttributeMap().b(attr.g);
+		this.getAttributeMap().b(attr.j);
 	}
 
 	protected void i() {
@@ -356,7 +356,7 @@ public abstract class EntityHuman extends EntityLiving {
 		this.inventory.n();
 		this.bB = this.bC;
 		super.n();
-		AttributeInstance attributeinstance = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+		AttributeInstance attributeinstance = this.getAttributeInstance(attr.MOVEMENT_SPEED);
 
 		if (!this.world.isClientSide) {
 			attributeinstance.setValue((double) this.abilities.b());
@@ -964,7 +964,7 @@ public abstract class EntityHuman extends EntityLiving {
 	public void attack(Entity entity) {
 		if (entity.bd()) {
 			if (!entity.t(this)) {
-				float f = (float) this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue();
+				float f = (float) this.getAttributeInstance(attr.ATTACK_DAMAGE).getValue();
 				float f1;
 
 				if (entity instanceof EntityLiving) {
@@ -1498,7 +1498,7 @@ public abstract class EntityHuman extends EntityLiving {
 	}
 
 	public float cy() {
-		return (float) this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue();
+		return (float) this.getAttributeInstance(attr.MOVEMENT_SPEED).getValue();
 	}
 
 	public void checkMovement(double d0, double d1, double d2) {
@@ -1964,7 +1964,7 @@ public abstract class EntityHuman extends EntityLiving {
 	}
 
 	public float dr() {
-		return (float) (1.0D / this.getAttributeInstance(GenericAttributes.g).getValue() * 20.0D);
+		return (float) (1.0D / this.getAttributeInstance(attr.g).getValue() * 20.0D);
 	}
 
 	public float n(float f) {
@@ -1987,7 +1987,7 @@ public abstract class EntityHuman extends EntityLiving {
 	}
 
 	public float du() {
-		return (float) this.getAttributeInstance(GenericAttributes.j).getValue();
+		return (float) this.getAttributeInstance(attr.j).getValue();
 	}
 
 	public boolean isCreativeAndOp() {

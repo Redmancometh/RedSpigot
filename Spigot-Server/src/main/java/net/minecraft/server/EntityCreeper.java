@@ -38,7 +38,7 @@ public class EntityCreeper extends EntityMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.25D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.25D);
     }
 
     public int bg() {

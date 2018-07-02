@@ -25,7 +25,7 @@
 +        }
 +        entityliving = getGoalTarget();
 +        // CraftBukkit end
-         AttributeInstance attributeinstance = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+         AttributeInstance attributeinstance = this.getAttributeInstance(attr.MOVEMENT_SPEED);
  
          if (entityliving == null) {
 @@ -70,6 +82,7 @@

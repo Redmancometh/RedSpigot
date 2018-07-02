@@ -1,64 +1,66 @@
-[23:37:44] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@611889f4: startup date [Wed Jun 20 23:37:44 CDT 2018]; root of context hierarchy
-[23:37:45] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
-[23:37:45] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
-[23:37:45] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
+[15:21:20] [main/INFO]: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@58d75e99: startup date [Sun Jul 01 15:21:20 CDT 2018]; root of context hierarchy
+[15:21:21] [main/INFO]: Overriding bean definition for bean 'commands' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=craftContext; factoryMethodName=commands; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [net/mcavenue/redspigot/configuration/context/CraftContext.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=spigotContext; factoryMethodName=commands; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [net/mcavenue/redspigot/configuration/context/SpigotContext.class]]
+[15:21:21] [main/INFO]: Loaded JDBC driver: com.mysql.jdbc.Driver
+[15:21:22] [main/INFO]: Building JPA container EntityManagerFactory for persistence unit 'default'
+[15:21:22] [main/INFO]: HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-[23:37:45] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
-[23:37:45] [main/INFO]: HHH000206: hibernate.properties not found
-[23:37:45] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
-[23:37:45] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
-[23:37:46] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
-[23:37:48] [main/INFO]: [STDOUT]: HB FILE: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server\db\permissions\hibernate.cfg.xml
-[23:37:48] [main/WARN]: HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
-[23:37:48] [main/INFO]: HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
-[23:37:48] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-[23:37:48] [main/INFO]: HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6ee1ddcf'
-[23:37:48] [main/INFO]: [STDOUT]: GETTING PLAYER
-[23:37:48] [main/INFO]: [STDOUT]: RESULT IS NULL
-[23:37:48] [pool-3-thread-1/INFO]: [STDOUT]: RESULT IS NULL
-[23:37:48] [main/INFO]: [STDOUT]: INIT CS
-[23:37:48] [main/INFO]: [STDOUT]: INIT NMS
-[23:37:48] [pool-3-thread-2/INFO]: [STDOUT]: RP RECORD
-[23:37:48] [main/INFO]: Application context: C:\Users\Redmancometh\minecraft\Spigot\Spigot-Server
-[23:37:48] [main/INFO]: Server Ping Player Sample Count: 12
-[23:37:48] [main/INFO]: MCS: false
-[23:37:48] [main/INFO]: MCSS: false
-[23:37:48] [main/INFO]: MCS: false
-[23:37:48] [main/INFO]: MCSS: false
-[23:37:48] [main/INFO]: MCS: false
-[23:37:48] [main/INFO]: MCSS: false
-[23:37:48] [main/INFO]: Line 162
-[23:37:48] [main/INFO]: About to call an() a
-[23:37:48] [main/INFO]: Using default channel type
-[23:37:48] [main/INFO]: Finished an.a
-[23:37:49] [main/INFO]: Preparing start region for level 0 (Seed: 6798676197357855542)
-[23:37:50] [main/INFO]: Preparing spawn area: 80%
-[23:37:50] [main/INFO]: Preparing start region for level 1 (Seed: 6798676197357855542)
-[23:37:51] [main/INFO]: Preparing start region for level 2 (Seed: 6798676197357855542)
-[23:37:51] [main/INFO]: Context setup complete...Redspigot is now starting...
-[23:37:51] [main/INFO]: GETTING COLOURED CONSOLE SENDER
-[23:37:51] [main/INFO]: Converter: false
-[23:37:51] [main/INFO]: CFG: 
-
-[23:37:51] [main/INFO]: ServerConfig(debug=false, whitelist=false, snooperEnabled=false, useNativeTransport=false, enableQuery=false, enableRcon=false, enableCommandBlock=false, announceAchievements=false, announceAdvancements=false, broadcastConsoleToOps=true, broadcastRconToOps=false, onlineMode=true, preventProxyConnections=false, resourcePack=, serverName=Redmans Server, serverId=unnamed, motd=Welcome to my server!, serverIp=localhost, spigotConfigDir=directory, viewDistance=6, maxPlayers=20, playerIdleTimeout=0, opPermissionLevel=4, networkCompressionThreshold=256, serverPort=25565, maxTickTime=5, worldConfig=WorldConfiguration(maxWorldSize=10000, maxBuildHeight=256, generateStructures=true, allowNether=true, allowEnd=true, levelType=DEFAULT, levelSeed=, levelName=world, generatorSettings=), gameplayConfig=GameplayConfiguration(hardcore=false, forceGamemode=true, allowFlight=false, pvp=true, spawnNpcs=true, spawnAnimals=true, spawnMonsters=true, spawnProtection=0, gamemode=0, difficulty=0))
-[23:37:51] [main/INFO]: Welcome to my server!
-[23:37:51] [main/INFO]: INITIALIZING CONFIG: spring.json
-[23:37:51] [main/INFO]: CLASS: class net.mcavenue.redspigot.configuration.pojo.SpringConfig
-[23:37:51] [main/INFO]: 1
-[23:37:51] [main/INFO]: false
-[23:37:51] [main/INFO]: 1
-[23:38:12] [User Authenticator #1/INFO]: UUID of player Redmancometh is c060be9e-43b6-4deb-884d-6fab2e11682b
-[23:38:13] [Server thread/INFO]: LOGIN: CraftPlayer{name=Redmancometh}
-[23:38:13] [Server thread/INFO]: Redmancometh[/127.0.0.1:53784] logged in with entity id 174 at ([world]252.85350638646386, 70.0, 442.30000001192093)
-[23:38:24] [Server thread/INFO]: Redmancometh issued server command: /timings on
-[23:38:33] [Server thread/INFO]: 
-[23:38:37] [Server thread/INFO]: Redmancometh issued server command: /timings on
-[23:38:40] [Server thread/INFO]: Redmancometh issued server command: /timings paste
-[23:39:01] [Server thread/INFO]: Redmancometh issued server command: /burn
-[23:39:03] [Server thread/INFO]: Redmancometh issued server command: /fire
-[23:39:05] [Server thread/INFO]: Redmancometh issued server command: /gm 1
-[23:39:06] [Server thread/INFO]: Redmancometh issued server command: /gamemode 1
-[23:39:06] [Server thread/INFO]: 
-[23:39:15] [Server thread/INFO]: Redmancometh lost connection: 
-[23:39:15] [Server thread/INFO]: 
+[15:21:22] [main/INFO]: HHH000412: Hibernate Core {5.3.1.Final}
+[15:21:22] [main/INFO]: HHH000206: hibernate.properties not found
+[15:21:22] [main/INFO]: HCANN000001: Hibernate Commons Annotations {5.0.3.Final}
+[15:21:22] [main/INFO]: HHH000400: Using dialect: org.hibernate.dialect.SQLServerDialect
+[15:21:23] [main/INFO]: Initialized JPA EntityManagerFactory for persistence unit 'default'
+[15:21:23] [main/WARN]: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'initializationController': Unsatisfied dependency expressed through field 'nmsServer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dedi-server' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.DedicatedServer]: Factory method 'server' threw exception; nested exception is java.lang.NoSuchFieldError: REGISTRY
+[15:21:23] [main/INFO]: Closing JPA EntityManagerFactory for persistence unit 'default'
+[15:21:23] [main/INFO]: [STDERR]: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'initializationController': Unsatisfied dependency expressed through field 'nmsServer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dedi-server' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.DedicatedServer]: Factory method 'server' threw exception; nested exception is java.lang.NoSuchFieldError: REGISTRY
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:88)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.RedSpigot.main(RedSpigot.java:18)
+[15:21:23] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dedi-server' defined in class path resource [net/mcavenue/redspigot/configuration/context/NMSContext.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.DedicatedServer]: Factory method 'server' threw exception; nested exception is java.lang.NoSuchFieldError: REGISTRY
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:587)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1254)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1103)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:541)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+[15:21:23] [main/INFO]: [STDERR]: 	... 14 more
+[15:21:23] [main/INFO]: [STDERR]: Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.minecraft.server.DedicatedServer]: Factory method 'server' threw exception; nested exception is java.lang.NoSuchFieldError: REGISTRY
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:579)
+[15:21:23] [main/INFO]: [STDERR]: 	... 26 more
+[15:21:23] [main/INFO]: [STDERR]: Caused by: java.lang.NoSuchFieldError: REGISTRY
+[15:21:23] [main/INFO]: [STDERR]: 	at net.minecraft.server.MobEffects.a(SourceFile:45)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.minecraft.server.MobEffects.<clinit>(SourceFile:15)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.minecraft.server.Item.t(Item.java:664)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.minecraft.server.DispenserRegistry.c(DispenserRegistry.java:753)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext.server(NMSContext.java:146)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$ac021427.CGLIB$server$1(<generated>)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$ac021427$$FastClassBySpringCGLIB$$c3c83c9d.invoke(<generated>)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:361)
+[15:21:23] [main/INFO]: [STDERR]: 	at net.mcavenue.redspigot.configuration.context.NMSContext$$EnhancerBySpringCGLIB$$ac021427.server(<generated>)
+[15:21:23] [main/INFO]: [STDERR]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[15:21:23] [main/INFO]: [STDERR]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[15:21:23] [main/INFO]: [STDERR]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[15:21:23] [main/INFO]: [STDERR]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[15:21:23] [main/INFO]: [STDERR]: 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[15:21:23] [main/INFO]: [STDERR]: 	... 27 more

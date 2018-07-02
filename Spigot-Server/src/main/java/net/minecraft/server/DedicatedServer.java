@@ -3,6 +3,7 @@ package net.minecraft.server;
 import com.google.common.collect.Lists;
 
 import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.mcavenue.redspigot.event.EventManager;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
 
@@ -45,6 +46,8 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 	@Autowired
 	@Qualifier("mc-logger")
 	private Logger LOGGER;
+	@Autowired
+	private SpigotConfig spigotCfg;
 	private boolean generateStructures;
 	private EnumGamemode t;
 	private boolean u;
@@ -103,9 +106,9 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		if (this.P() < 0) {
 			this.setPort(srvCfg.getServerPort());
 		}
-		// Spigot start
-		org.spigotmc.SpigotConfig.init((File) getOptions().valueOf("spigot-settings"));
-		org.spigotmc.SpigotConfig.registerCommands();
+		// TODON: This could have been important
+		// server.getCommandMap().register(entry.getKey(), "Spigot",
+		// entry.getValue());
 		// Spigot end
 		LOGGER.info("Generating keypair");
 		this.a(MinecraftEncryption.b());
@@ -113,11 +116,9 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		int port = srvCfg.getServerPort();
 		LOGGER.info("Starting Minecraft server on " + ip + ":" + port);
 		java.util.logging.Logger.getLogger(this.getClass().getName()).info("Line 162");
-		if (!org.spigotmc.SpigotConfig.lateBind) {
+		if (!spigotCfg.isLateBind()) {
 			try {
-				java.util.logging.Logger.getLogger(this.getClass().getName()).info("About to call an() a");
 				this.an().a(inetaddress, this.P());
-				java.util.logging.Logger.getLogger(this.getClass().getName()).info("Finished an.a");
 			} catch (IOException ioexception) {
 				ioexception.printStackTrace();
 				LOGGER.severe("**** FAILED TO BIND TO PORT!");
@@ -184,7 +185,7 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 		handleProperties();
 		// CraftBukkit end
 
-		if (org.spigotmc.SpigotConfig.lateBind) {
+		if (spigotCfg.isLateBind()) {
 			try {
 				this.an().a(inetaddress, this.P());
 			} catch (IOException ioexception) {

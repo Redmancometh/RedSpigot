@@ -59,7 +59,7 @@ public class EntitySkeletonWither extends EntitySkeletonAbstract {
     public GroupDataEntity prepare(DifficultyDamageScaler difficultydamagescaler, @Nullable GroupDataEntity groupdataentity) {
         GroupDataEntity groupdataentity1 = super.prepare(difficultydamagescaler, groupdataentity);
 
-        this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(4.0D);
+        this.getAttributeInstance(attr.ATTACK_DAMAGE).setValue(4.0D);
         this.dm();
         return groupdataentity1;
     }

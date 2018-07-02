@@ -32,7 +32,7 @@
         "spawn-animals": true,
         "spawn-monsters": true,
         "gamemode": 0,
-        "difficulty": 0,
+        "difficulty": 3,
         "spawn-protection": 0
     },
     "world-config": {

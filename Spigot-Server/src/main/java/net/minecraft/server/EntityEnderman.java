@@ -51,10 +51,10 @@ public class EntityEnderman extends EntityMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(40.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.30000001192092896D);
-        this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(7.0D);
-        this.getAttributeInstance(GenericAttributes.FOLLOW_RANGE).setValue(64.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(40.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.30000001192092896D);
+        this.getAttributeInstance(attr.ATTACK_DAMAGE).setValue(7.0D);
+        this.getAttributeInstance(attr.FOLLOW_RANGE).setValue(64.0D);
     }
 
     public void setGoalTarget(@Nullable EntityLiving entityliving) {
@@ -69,7 +69,7 @@ public class EntityEnderman extends EntityMonster {
         }
         entityliving = getGoalTarget();
         // CraftBukkit end
-        AttributeInstance attributeinstance = this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+        AttributeInstance attributeinstance = this.getAttributeInstance(attr.MOVEMENT_SPEED);
 
         if (entityliving == null) {
             this.bA = 0;

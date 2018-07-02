@@ -51,8 +51,8 @@ public class EntityVex extends EntityMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(14.0D);
-        this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(4.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(14.0D);
+        this.getAttributeInstance(attr.ATTACK_DAMAGE).setValue(4.0D);
     }
 
     protected void i() {

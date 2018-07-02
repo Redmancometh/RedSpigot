@@ -63,8 +63,8 @@ public class EntityOcelot extends EntityTameableAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(10.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.30000001192092896D);
+        this.getAttributeInstance(attr.maxHealth).setValue(10.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.30000001192092896D);
     }
 
     public void e(float f, float f1) {}

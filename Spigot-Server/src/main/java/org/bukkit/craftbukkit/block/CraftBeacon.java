@@ -3,7 +3,6 @@ package org.bukkit.craftbukkit.block;
 import java.util.ArrayList;
 import java.util.Collection;
 import net.minecraft.server.EntityHuman;
-import net.minecraft.server.MobEffectList;
 import net.minecraft.server.TileEntity;
 import net.minecraft.server.TileEntityBeacon;
 import org.bukkit.Material;
@@ -17,81 +16,81 @@ import org.bukkit.potion.PotionEffectType;
 
 public class CraftBeacon extends CraftContainer<TileEntityBeacon> implements Beacon {
 
-    public CraftBeacon(final Block block) {
-        super(block, TileEntityBeacon.class);
-    }
+	public CraftBeacon(final Block block) {
+		super(block, TileEntityBeacon.class);
+	}
 
-    public CraftBeacon(final Material material, final TileEntityBeacon te) {
-        super(material, te);
-    }
+	public CraftBeacon(final Material material, final TileEntityBeacon te) {
+		super(material, te);
+	}
 
-    @Override
-    public BeaconInventory getSnapshotInventory() {
-        return new CraftInventoryBeacon(this.getSnapshot());
-    }
+	@Override
+	public BeaconInventory getSnapshotInventory() {
+		return new CraftInventoryBeacon(this.getSnapshot());
+	}
 
-    @Override
-    public BeaconInventory getInventory() {
-        if (!this.isPlaced()) {
-            return this.getSnapshotInventory();
-        }
+	@Override
+	public BeaconInventory getInventory() {
+		if (!this.isPlaced()) {
+			return this.getSnapshotInventory();
+		}
 
-        return new CraftInventoryBeacon(this.getTileEntity());
-    }
+		return new CraftInventoryBeacon(this.getTileEntity());
+	}
 
-    @Override
-    public Collection<LivingEntity> getEntitiesInRange() {
-        TileEntity tileEntity = this.getTileEntityFromWorld();
-        if (tileEntity instanceof TileEntityBeacon) {
-            TileEntityBeacon beacon = (TileEntityBeacon) tileEntity;
+	@Override
+	public Collection<LivingEntity> getEntitiesInRange() {
+		TileEntity tileEntity = this.getTileEntityFromWorld();
+		if (tileEntity instanceof TileEntityBeacon) {
+			TileEntityBeacon beacon = (TileEntityBeacon) tileEntity;
 
-            Collection<EntityHuman> nms = beacon.getHumansInRange();
-            Collection<LivingEntity> bukkit = new ArrayList<LivingEntity>(nms.size());
+			Collection<EntityHuman> nms = beacon.getHumansInRange();
+			Collection<LivingEntity> bukkit = new ArrayList<LivingEntity>(nms.size());
 
-            for (EntityHuman human : nms) {
-                bukkit.add(human.getBukkitEntity());
-            }
+			for (EntityHuman human : nms) {
+				bukkit.add(human.getBukkitEntity());
+			}
 
-            return bukkit;
-        }
+			return bukkit;
+		}
 
-        // block is no longer a beacon
-        return new ArrayList<LivingEntity>();
-    }
+		// block is no longer a beacon
+		return new ArrayList<LivingEntity>();
+	}
 
-    @Override
-    public int getTier() {
-        return this.getSnapshot().levels;
-    }
+	@Override
+	public int getTier() {
+		return this.getSnapshot().levels;
+	}
 
-    @Override
-    public PotionEffect getPrimaryEffect() {
-        return this.getSnapshot().getPrimaryEffect();
-    }
+	@Override
+	public PotionEffect getPrimaryEffect() {
+		return this.getSnapshot().getPrimaryEffect();
+	}
 
-    @Override
-    public void setPrimaryEffect(PotionEffectType effect) {
-        this.getSnapshot().primaryEffect = (effect != null) ? MobEffectList.fromId(effect.getId()) : null;
-    }
+	@Override
+	public void setPrimaryEffect(PotionEffectType effect) {
+		this.getSnapshot().primaryEffect = (effect != null) ? effectRegistry.getId(effect.getId()) : null;
+	}
 
-    @Override
-    public PotionEffect getSecondaryEffect() {
-        return this.getSnapshot().getSecondaryEffect();
-    }
+	@Override
+	public PotionEffect getSecondaryEffect() {
+		return this.getSnapshot().getSecondaryEffect();
+	}
 
-    @Override
-    public void setSecondaryEffect(PotionEffectType effect) {
-        this.getSnapshot().secondaryEffect = (effect != null) ? MobEffectList.fromId(effect.getId()) : null;
-    }
+	@Override
+	public void setSecondaryEffect(PotionEffectType effect) {
+		this.getSnapshot().secondaryEffect = (effect != null) ? effectRegistry.getId(effect.getId()) : null;
+	}
 
-    @Override
-    public String getCustomName() {
-        TileEntityBeacon beacon = this.getSnapshot();
-        return beacon.hasCustomName() ? beacon.getName() : null;
-    }
+	@Override
+	public String getCustomName() {
+		TileEntityBeacon beacon = this.getSnapshot();
+		return beacon.hasCustomName() ? beacon.getName() : null;
+	}
 
-    @Override
-    public void setCustomName(String name) {
-        this.getSnapshot().setCustomName(name);
-    }
+	@Override
+	public void setCustomName(String name) {
+		this.getSnapshot().setCustomName(name);
+	}
 }

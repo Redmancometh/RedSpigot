@@ -2,6 +2,7 @@ package net.minecraft.server;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+
 import java.text.DecimalFormat;
 import java.util.Random;
 import javax.annotation.Nullable;
@@ -18,6 +19,7 @@ import org.bukkit.craftbukkit.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
 import org.bukkit.event.world.StructureGrowEvent;
 // CraftBukkit end
+import org.springframework.beans.factory.annotation.Autowired;
 
 public final class ItemStack {
 
@@ -34,7 +36,8 @@ public final class ItemStack {
 	private boolean k;
 	private Block l;
 	private boolean m;
-
+	@Autowired
+	protected GenericAttributes attr;
 	public ItemStack(Block block) {
 		this(block, 1);
 	}
@@ -763,7 +766,7 @@ public final class ItemStack {
 
 			for (int i = 0; i < nbttaglist.size(); ++i) {
 				NBTTagCompound nbttagcompound = nbttaglist.get(i);
-				AttributeModifier attributemodifier = GenericAttributes.a(nbttagcompound);
+				AttributeModifier attributemodifier = attr.a(nbttagcompound);
 
 				if (attributemodifier != null
 						&& (!nbttagcompound.hasKeyOfType("Slot", 8) || nbttagcompound.getString("Slot").equals(enumitemslot.d()))
@@ -788,7 +791,7 @@ public final class ItemStack {
 		}
 
 		NBTTagList nbttaglist = this.tag.getList("AttributeModifiers", 10);
-		NBTTagCompound nbttagcompound = GenericAttributes.a(attributemodifier);
+		NBTTagCompound nbttagcompound = attr.a(attributemodifier);
 
 		nbttagcompound.setString("AttributeName", s);
 		if (enumitemslot != null) {

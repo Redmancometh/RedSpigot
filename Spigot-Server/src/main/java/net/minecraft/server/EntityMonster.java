@@ -57,7 +57,7 @@ public abstract class EntityMonster extends EntityCreature implements IMonster {
     }
 
     public boolean B(Entity entity) {
-        float f = (float) this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue();
+        float f = (float) this.getAttributeInstance(attr.ATTACK_DAMAGE).getValue();
         int i = 0;
 
         if (entity instanceof EntityLiving) {
@@ -138,7 +138,7 @@ public abstract class EntityMonster extends EntityCreature implements IMonster {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeMap().b(GenericAttributes.ATTACK_DAMAGE);
+        this.getAttributeMap().b(attr.ATTACK_DAMAGE);
     }
 
     protected boolean isDropExperience() {

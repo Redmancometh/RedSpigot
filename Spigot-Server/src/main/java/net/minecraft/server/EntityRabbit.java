@@ -193,8 +193,8 @@ public class EntityRabbit extends EntityAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(3.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.30000001192092896D);
+        this.getAttributeInstance(attr.maxHealth).setValue(3.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.30000001192092896D);
     }
 
     public static void a(DataConverterManager dataconvertermanager) {
@@ -281,7 +281,7 @@ public class EntityRabbit extends EntityAnimal {
 
     public void setRabbitType(int i) {
         if (i == 99) {
-            this.getAttributeInstance(GenericAttributes.h).setValue(8.0D);
+            this.getAttributeInstance(attr.h).setValue(8.0D);
             this.goalSelector.a(4, new EntityRabbit.PathfinderGoalKillerRabbitMeleeAttack(this));
             this.targetSelector.a(1, new PathfinderGoalHurtByTarget(this, false, new Class[0]));
             this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));

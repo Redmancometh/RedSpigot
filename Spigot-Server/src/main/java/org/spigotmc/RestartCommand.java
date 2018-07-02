@@ -1,11 +1,17 @@
 package org.spigotmc;
 
 import java.io.File;
+
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.minecraft.server.MinecraftServer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class RestartCommand extends Command {
+
+	@Autowired
+	private SpigotConfig cfg;
 
 	public RestartCommand(String name) {
 		super(name);
@@ -27,11 +33,12 @@ public class RestartCommand extends Command {
 		return true;
 	}
 
-	public static void restart() {
-		restart(new File(SpigotConfig.restartScript));
+	public void restart() {
+		// TODON: Autowire in config and make this work.
+		restart(new File(cfg.getRestartScript()));
 	}
 
 	public static void restart(final File script) {
-		// TODO: This restart command sucked dick. Make it actually work.
+
 	}
 }

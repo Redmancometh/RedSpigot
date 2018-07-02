@@ -72,6 +72,9 @@ public class CraftEnchantment extends Enchantment {
     }
 
     @Override
+    /**
+     * TODOR: This is like the worst thing anyone has ever written.
+     */
     public String getName() {
         switch (getId()) {
         case 0:

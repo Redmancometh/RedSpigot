@@ -16,8 +16,8 @@ public abstract class EntityHorseChestedAbstract extends EntityHorseAbstract {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue((double) this.dM());
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.17499999701976776D);
+        this.getAttributeInstance(attr.maxHealth).setValue((double) this.dM());
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.17499999701976776D);
         this.getAttributeInstance(EntityHorseChestedAbstract.attributeJumpStrength).setValue(0.5D);
     }
 

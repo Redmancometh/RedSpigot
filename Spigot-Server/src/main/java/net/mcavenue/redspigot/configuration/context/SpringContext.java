@@ -13,7 +13,7 @@ import net.mcavenue.redspigot.configuration.ConfigManager;
 import net.mcavenue.redspigot.configuration.pojo.SpringConfig;
 
 @Configuration
-@ComponentScan({"net.mcavenue.*"})
+@ComponentScan({"net.mcavenue.*", "net.minecraft.server"})
 public class SpringContext {
 	@Bean
 	public ScheduledExecutorService executor() {

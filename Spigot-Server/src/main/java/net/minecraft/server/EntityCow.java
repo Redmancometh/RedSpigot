@@ -30,8 +30,8 @@ public class EntityCow extends EntityAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(10.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.20000000298023224D);
+        this.getAttributeInstance(attr.maxHealth).setValue(10.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.20000000298023224D);
     }
 
     protected SoundEffect F() {

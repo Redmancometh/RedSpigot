@@ -73,8 +73,8 @@ public class EntitySheep extends EntityAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(8.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.23000000417232513D);
+        this.getAttributeInstance(attr.maxHealth).setValue(8.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.23000000417232513D);
     }
 
     protected void i() {

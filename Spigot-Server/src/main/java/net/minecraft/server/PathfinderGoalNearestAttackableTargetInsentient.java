@@ -79,7 +79,7 @@ public class PathfinderGoalNearestAttackableTargetInsentient extends PathfinderG
     }
 
     protected double f() {
-        AttributeInstance attributeinstance = this.b.getAttributeInstance(GenericAttributes.FOLLOW_RANGE);
+        AttributeInstance attributeinstance = this.b.getAttributeInstance(attr.FOLLOW_RANGE);
 
         return attributeinstance == null ? 16.0D : attributeinstance.getValue();
     }

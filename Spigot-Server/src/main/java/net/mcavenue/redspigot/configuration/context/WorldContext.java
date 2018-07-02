@@ -1,6 +1,7 @@
 package net.mcavenue.redspigot.configuration.context;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,6 +40,8 @@ public class WorldContext {
 		}
 		if (container == null) {
 			container = new File(cfg.getString("settings.world-container", "."));
+			for (int x = 0; x < 500; x++)
+				Logger.getLogger("logger").info(cfg.getString("settings.world-container", "."));
 		}
 		return container;
 	}

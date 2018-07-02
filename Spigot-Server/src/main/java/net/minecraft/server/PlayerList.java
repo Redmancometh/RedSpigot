@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
 import io.netty.buffer.Unpooled;
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.mcavenue.redspigot.event.EventManager;
 
 import java.io.File;
@@ -78,6 +79,8 @@ public abstract class PlayerList {
 	// CraftBukkit start
 	@Autowired
 	private CraftServer cserver;
+	@Autowired
+	private SpigotConfig spigotCfg;
 	private Map<String, EntityPlayer> playersByName = new org.spigotmc.CaseInsensitiveMap<EntityPlayer>();
 
 	public PlayerList() {
@@ -85,7 +88,7 @@ public abstract class PlayerList {
 	}
 
 	/**
-	 * TODO: Move to context. This is configuration, and should be in the
+	 * TODOR: Move to context. This is configuration, and should be in the
 	 * configuration side of the system.
 	 * 
 	 * @param minecraftserver
@@ -107,7 +110,9 @@ public abstract class PlayerList {
 	}
 
 	/**
-	 * TODO: Break this into a bunch of methods. Put a lot of it in configuration
+	 * TODOR: Break this into a bunch of methods. Put a lot of it in
+	 * configuration
+	 * 
 	 * @param networkmanager
 	 * @param entityplayer
 	 */
@@ -580,7 +585,7 @@ public abstract class PlayerList {
 				event.disallow(PlayerLoginEvent.Result.KICK_BANNED, s); // Spigot
 		} else if (!this.isWhitelisted(gameprofile)) {
 			// return "You are not white-listed on this server!";
-			event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, org.spigotmc.SpigotConfig.whitelistMessage); // Spigot
+			event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, spigotCfg.getMessages().getWhitelist()); // Spigot
 		} else if (getIPBans().isBanned(socketaddress) && !getIPBans().get(socketaddress).hasExpired()) {
 			IpBanEntry ipbanentry = this.l.get(socketaddress);
 
@@ -595,7 +600,7 @@ public abstract class PlayerList {
 			// return this.players.size() >= this.maxPlayers &&
 			// !this.f(gameprofile) ? "The server is full!" : null;
 			if (this.players.size() >= this.maxPlayers && !this.f(gameprofile)) {
-				event.disallow(PlayerLoginEvent.Result.KICK_FULL, org.spigotmc.SpigotConfig.serverFullMessage); // Spigot
+				event.disallow(PlayerLoginEvent.Result.KICK_FULL, spigotCfg.getMessages().getServerFull()); // Spigot
 			}
 		}
 

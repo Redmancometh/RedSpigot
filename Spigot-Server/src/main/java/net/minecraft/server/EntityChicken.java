@@ -39,8 +39,8 @@ public class EntityChicken extends EntityAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(4.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.25D);
+        this.getAttributeInstance(attr.maxHealth).setValue(4.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.25D);
     }
 
     public void n() {

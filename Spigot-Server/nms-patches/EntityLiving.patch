@@ -52,7 +52,7 @@
          this.initAttributes();
 -        this.setHealth(this.getMaxHealth());
 +        // CraftBukkit - setHealth(getMaxHealth()) inlined and simplified to skip the instanceof check for EntityPlayer, as getBukkitEntity() is not initialized in constructor
-+        this.datawatcher.set(EntityLiving.HEALTH, (float) this.getAttributeInstance(GenericAttributes.maxHealth).getValue());
++        this.datawatcher.set(EntityLiving.HEALTH, (float) this.getAttributeInstance(attr.maxHealth).getValue());
          this.i = true;
          this.aM = (float) ((Math.random() + 1.0D) * 0.009999999776482582D);
          this.setPosition(this.locX, this.locY, this.locZ);
@@ -140,9 +140,9 @@
 +        if (nbttagcompound.hasKey("Bukkit.MaxHealth")) {
 +            NBTBase nbtbase = nbttagcompound.get("Bukkit.MaxHealth");
 +            if (nbtbase.getTypeId() == 5) {
-+                this.getAttributeInstance(GenericAttributes.maxHealth).setValue(((NBTTagFloat) nbtbase).asDouble());
++                this.getAttributeInstance(attr.maxHealth).setValue(((NBTTagFloat) nbtbase).asDouble());
 +            } else if (nbtbase.getTypeId() == 3) {
-+                this.getAttributeInstance(GenericAttributes.maxHealth).setValue(((NBTTagInt) nbtbase).asDouble());
++                this.getAttributeInstance(attr.maxHealth).setValue(((NBTTagInt) nbtbase).asDouble());
 +            }
 +        }
 +        // CraftBukkit end
@@ -403,7 +403,7 @@
          if (!damagesource.ignoresArmor()) {
 -            this.damageArmor(f);
 +            // this.damageArmor(f); // CraftBukkit - Moved into damageEntity0(DamageSource, float)
-             f = CombatMath.a(f, (float) this.getArmorStrength(), (float) this.getAttributeInstance(GenericAttributes.i).getValue());
+             f = CombatMath.a(f, (float) this.getArmorStrength(), (float) this.getAttributeInstance(attr.i).getValue());
          }
  
 @@ -1074,7 +1243,8 @@

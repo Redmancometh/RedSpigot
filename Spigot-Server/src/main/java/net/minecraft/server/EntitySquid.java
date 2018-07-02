@@ -36,7 +36,7 @@ public class EntitySquid extends EntityWaterAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(10.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(10.0D);
     }
 
     public float getHeadHeight() {

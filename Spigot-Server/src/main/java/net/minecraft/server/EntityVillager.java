@@ -94,7 +94,7 @@ public class EntityVillager extends EntityAgeable implements NPC, IMerchant {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.5D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.5D);
     }
 
     // Spigot Start

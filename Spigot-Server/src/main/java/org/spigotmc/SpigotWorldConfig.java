@@ -1,317 +1,252 @@
 package org.spigotmc;
 
 import java.util.List;
+import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class SpigotWorldConfig
-{
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.world.HungerConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.world.TickTimeConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.world.TrackingRangeConfig;
 
-    private final String worldName;
-    private final YamlConfiguration config;
-    private boolean verbose;
+/**
+ * Storing all of this config as fields is pretty shit. Probably want to go
+ * ahead and not do that anymore soon.
+ * 
+ * @author Redmancometh
+ *
+ */
+public class SpigotWorldConfig {
 
-    public SpigotWorldConfig(String worldName)
-    {
-        this.worldName = worldName;
-        this.config = SpigotConfig.config;
-        init();
-    }
+	private final String worldName;
+	@Autowired
+	private SpigotConfig cfg;
+	private boolean verbose;
 
-    public void init()
-    {
-        this.verbose = getBoolean( "verbose", true );
+	public SpigotWorldConfig(String worldName) {
+		Logger.getLogger("world-config").info("Loading world: " + worldName);
+		this.worldName = worldName;
+		Logger.getLogger("world-config").info("Config: " + cfg);
+		init();
+	}
 
-        log( "-------- World Settings For [" + worldName + "] --------" );
-        SpigotConfig.readConfig( SpigotWorldConfig.class, this );
-    }
+	public net.mcavenue.redspigot.configuration.pojo.spigot.world.SpigotWorldConfig cfg() {
+		return cfg.getWorldSettings().getWorldConfigs().get(worldName);
+	}
 
-    private void log(String s)
-    {
-        if ( verbose )
-        {
-            Bukkit.getLogger().info( s );
-        }
-    }
+	public void init() {
+		this.verbose = cfg().isVerbose();
+		log("-------- World Settings For [" + worldName + "] --------");
+		initHunger();
+	}
 
-    private void set(String path, Object val)
-    {
-        config.set( "world-settings.default." + path, val );
-    }
+	private void log(String s) {
+		if (verbose) {
+			Bukkit.getLogger().info(s);
+		}
+	}
 
-    private boolean getBoolean(String path, boolean def)
-    {
-        config.addDefault( "world-settings.default." + path, def );
-        return config.getBoolean( "world-settings." + worldName + "." + path, config.getBoolean( "world-settings.default." + path ) );
-    }
+	// Crop growth rates
+	public int cactusModifier;
+	public int caneModifier;
+	public int melonModifier;
+	public int mushroomModifier;
+	public int pumpkinModifier;
+	public int saplingModifier;
+	public int wheatModifier;
+	public int wartModifier;
+	public int vineModifier;
+	public int cocoaModifier;
 
-    private double getDouble(String path, double def)
-    {
-        config.addDefault( "world-settings.default." + path, def );
-        return config.getDouble( "world-settings." + worldName + "." + path, config.getDouble( "world-settings.default." + path ) );
-    }
+	private void growthModifiers() {
+		cactusModifier = cfg().getGrowth().getCactus();
+		caneModifier = cfg().getGrowth().getCane();
+		melonModifier = cfg().getGrowth().getMelon();
+		mushroomModifier = cfg().getGrowth().getMushroom();
+		pumpkinModifier = cfg().getGrowth().getPumpkin();
+		saplingModifier = cfg().getGrowth().getSapling();
+		wheatModifier = cfg().getGrowth().getWheat();
+		wartModifier = cfg().getGrowth().getNetherwart();
+		vineModifier = cfg().getGrowth().getVine();
+		cocoaModifier = cfg().getGrowth().getCocoa();
+	}
 
-    private int getInt(String path, int def)
-    {
-        config.addDefault( "world-settings.default." + path, def );
-        return config.getInt( "world-settings." + worldName + "." + path, config.getInt( "world-settings.default." + path ) );
-    }
+	public double itemMerge;
+	private void itemMerge() {
+		itemMerge = cfg().getMerging().getItem();
+		log("Item Merge Radius: " + itemMerge);
+	}
 
-    private <T> List getList(String path, T def)
-    {
-        config.addDefault( "world-settings.default." + path, def );
-        return (List<T>) config.getList( "world-settings." + worldName + "." + path, config.getList( "world-settings.default." + path ) );
-    }
+	public double expMerge;
+	private void expMerge() {
+		expMerge = cfg().getMerging().getExp();
+		log("Experience Merge Radius: " + expMerge);
+	}
 
-    private String getString(String path, String def)
-    {
-        config.addDefault( "world-settings.default." + path, def );
-        return config.getString( "world-settings." + worldName + "." + path, config.getString( "world-settings.default." + path ) );
-    }
+	public int viewDistance;
+	private void viewDistance() {
+		viewDistance = cfg().getViewDistance();
+		log("View Distance: " + viewDistance);
+	}
 
-    // Crop growth rates
-    public int cactusModifier;
-    public int caneModifier;
-    public int melonModifier;
-    public int mushroomModifier;
-    public int pumpkinModifier;
-    public int saplingModifier;
-    public int wheatModifier;
-    public int wartModifier;
-    public int vineModifier;
-    public int cocoaModifier;
-    private int getAndValidateGrowth(String crop)
-    {
-        int modifier = getInt( "growth." + crop.toLowerCase(java.util.Locale.ENGLISH) + "-modifier", 100 );
-        if ( modifier == 0 )
-        {
-            log( "Cannot set " + crop + " growth to zero, defaulting to 100" );
-            modifier = 100;
-        }
-        log( crop + " Growth Modifier: " + modifier + "%" );
+	public byte mobSpawnRange;
+	private void mobSpawnRange() {
+		mobSpawnRange = (byte) cfg().getMobSpawnRange();
+		log("Mob Spawn Range: " + mobSpawnRange);
+	}
 
-        return modifier;
-    }
-    private void growthModifiers()
-    {
-        cactusModifier = getAndValidateGrowth( "Cactus" );
-        caneModifier = getAndValidateGrowth( "Cane" );
-        melonModifier = getAndValidateGrowth( "Melon" );
-        mushroomModifier = getAndValidateGrowth( "Mushroom" );
-        pumpkinModifier = getAndValidateGrowth( "Pumpkin" );
-        saplingModifier = getAndValidateGrowth( "Sapling" );
-        wheatModifier = getAndValidateGrowth( "Wheat" );
-        wartModifier = getAndValidateGrowth( "NetherWart" );
-        vineModifier = getAndValidateGrowth( "Vine" );
-        cocoaModifier = getAndValidateGrowth( "Cocoa" );
-    }
+	public int itemDespawnRate;
+	private void itemDespawnRate() {
+		itemDespawnRate = cfg().getItemDesspawnRate();
+		log("Item Despawn Rate: " + itemDespawnRate);
+	}
 
-    public double itemMerge;
-    private void itemMerge()
-    {
-        itemMerge = getDouble("merge-radius.item", 2.5 );
-        log( "Item Merge Radius: " + itemMerge );
-    }
+	public int animalActivationRange = 32;
+	public int monsterActivationRange = 32;
+	public int miscActivationRange = 16;
+	public boolean tickInactiveVillagers = true;
+	private void activationRange() {
+		net.mcavenue.redspigot.configuration.pojo.spigot.world.ActivationRange act = cfg().getActivationRanges();
+		animalActivationRange = act.getAnimals();
+		monsterActivationRange = act.getMonsters();
+		miscActivationRange = act.getMisc();
+		tickInactiveVillagers = act.isTickInactiveVillagers();
+		log("Entity Activation Range: An " + animalActivationRange + " / Mo " + monsterActivationRange + " / Mi " + miscActivationRange + " / Tiv "
+				+ tickInactiveVillagers);
+	}
 
-    public double expMerge;
-    private void expMerge()
-    {
-        expMerge = getDouble("merge-radius.exp", 3.0 );
-        log( "Experience Merge Radius: " + expMerge );
-    }
+	public int playerTrackingRange = 48;
+	public int animalTrackingRange = 48;
+	public int monsterTrackingRange = 48;
+	public int miscTrackingRange = 32;
+	public int otherTrackingRange = 64;
+	private void trackingRange() {
+		TrackingRangeConfig tracking = cfg().getTrackingRanges();
+		playerTrackingRange = tracking.getPlayers();
+		animalTrackingRange = tracking.getAnimals();
+		monsterTrackingRange = tracking.getMonsters();
+		miscTrackingRange = tracking.getMisc();
+		otherTrackingRange = tracking.getOther();
+		log("Entity Tracking Range: Pl " + playerTrackingRange + " / An " + animalTrackingRange + " / Mo " + monsterTrackingRange + " / Mi "
+				+ miscTrackingRange + " / Other " + otherTrackingRange);
+	}
 
-    public int viewDistance;
-    private void viewDistance()
-    {
-        viewDistance = getInt( "view-distance", Bukkit.getViewDistance() );
-        log( "View Distance: " + viewDistance );
-    }
+	public int hopperTransfer;
+	public int hopperCheck;
+	public int hopperAmount;
+	private void hoppers() {
+		TickTimeConfig transfers = cfg().getTickTimes();
+		hopperTransfer = transfers.getHopperTransfer();
+		hopperCheck = transfers.getHopperCheck();
+		hopperAmount = cfg().getHopperAmount();
+		log("Hopper Transfer: " + hopperTransfer + " Hopper Check: " + hopperCheck + " Hopper Amount: " + hopperAmount);
+	}
 
-    public byte mobSpawnRange;
-    private void mobSpawnRange()
-    {
-        mobSpawnRange = (byte) getInt( "mob-spawn-range", 4 );
-        log( "Mob Spawn Range: " + mobSpawnRange );
-    }
+	public boolean randomLightUpdates;
+	private void lightUpdates() {
+		randomLightUpdates = cfg().isRandomLightUpdates();
+		log("Random Lighting Updates: " + randomLightUpdates);
+	}
 
-    public int itemDespawnRate;
-    private void itemDespawnRate()
-    {
-        itemDespawnRate = getInt( "item-despawn-rate", 6000 );
-        log( "Item Despawn Rate: " + itemDespawnRate );
-    }
+	public boolean saveStructureInfo;
+	private void structureInfo() {
+		saveStructureInfo = cfg().isSaveStructureInfo();
+		log("Structure Info Saving: " + saveStructureInfo);
+		if (!saveStructureInfo) {
+			log("*** WARNING *** You have selected to NOT save structure info. This may cause structures such as fortresses to not spawn mobs!");
+			log("*** WARNING *** Please use this option with caution, SpigotMC is not responsible for any issues this option may cause in the future!");
+		}
+	}
 
-    public int animalActivationRange = 32;
-    public int monsterActivationRange = 32;
-    public int miscActivationRange = 16;
-    public boolean tickInactiveVillagers = true;
-    private void activationRange()
-    {
-        animalActivationRange = getInt( "entity-activation-range.animals", animalActivationRange );
-        monsterActivationRange = getInt( "entity-activation-range.monsters", monsterActivationRange );
-        miscActivationRange = getInt( "entity-activation-range.misc", miscActivationRange );
-        tickInactiveVillagers = getBoolean( "entity-activation-range.tick-inactive-villagers", tickInactiveVillagers );
-        log( "Entity Activation Range: An " + animalActivationRange + " / Mo " + monsterActivationRange + " / Mi " + miscActivationRange + " / Tiv " + tickInactiveVillagers );
-    }
+	public int arrowDespawnRate;
+	private void arrowDespawnRate() {
+		arrowDespawnRate = cfg().getArrowDespawnRate();
+		log("Arrow Despawn Rate: " + arrowDespawnRate);
+	}
 
-    public int playerTrackingRange = 48;
-    public int animalTrackingRange = 48;
-    public int monsterTrackingRange = 48;
-    public int miscTrackingRange = 32;
-    public int otherTrackingRange = 64;
-    private void trackingRange()
-    {
-        playerTrackingRange = getInt( "entity-tracking-range.players", playerTrackingRange );
-        animalTrackingRange = getInt( "entity-tracking-range.animals", animalTrackingRange );
-        monsterTrackingRange = getInt( "entity-tracking-range.monsters", monsterTrackingRange );
-        miscTrackingRange = getInt( "entity-tracking-range.misc", miscTrackingRange );
-        otherTrackingRange = getInt( "entity-tracking-range.other", otherTrackingRange );
-        log( "Entity Tracking Range: Pl " + playerTrackingRange + " / An " + animalTrackingRange + " / Mo " + monsterTrackingRange + " / Mi " + miscTrackingRange + " / Other " + otherTrackingRange );
-    }
+	public boolean zombieAggressiveTowardsVillager;
+	private void zombieAggressiveTowardsVillager() {
+		zombieAggressiveTowardsVillager = cfg().isZombieAggressiveTowardsVillager();
+		log("Zombie Aggressive Towards Villager: " + zombieAggressiveTowardsVillager);
+	}
 
-    public int hopperTransfer;
-    public int hopperCheck;
-    public int hopperAmount;
-    private void hoppers()
-    {
-        // Set the tick delay between hopper item movements
-        hopperTransfer = getInt( "ticks-per.hopper-transfer", 8 );
-        if ( SpigotConfig.version < 11 )
-        {
-            set( "ticks-per.hopper-check", 1 );
-        }
-        hopperCheck = getInt( "ticks-per.hopper-check", 1 );
-        hopperAmount = getInt( "hopper-amount", 1 );
-        log( "Hopper Transfer: " + hopperTransfer + " Hopper Check: " + hopperCheck + " Hopper Amount: " + hopperAmount );
-    }
+	public boolean nerfSpawnerMobs;
+	private void nerfSpawnerMobs() {
+		nerfSpawnerMobs = cfg().isNerfSpawnerMobs();
+		log("Nerfing mobs spawned from spawners: " + nerfSpawnerMobs);
+	}
 
-    public boolean randomLightUpdates;
-    private void lightUpdates()
-    {
-        randomLightUpdates = getBoolean( "random-light-updates", false );
-        log( "Random Lighting Updates: " + randomLightUpdates );
-    }
+	public boolean enableZombiePigmenPortalSpawns;
+	private void enableZombiePigmenPortalSpawns() {
+		enableZombiePigmenPortalSpawns = cfg().isEnableZombiePigmentPortalSpawns();
+		log("Allow Zombie Pigmen to spawn from portal blocks: " + enableZombiePigmenPortalSpawns);
+	}
 
-    public boolean saveStructureInfo;
-    private void structureInfo()
-    {
-        saveStructureInfo = getBoolean( "save-structure-info", true );
-        log( "Structure Info Saving: " + saveStructureInfo );
-        if ( !saveStructureInfo )
-        {
-            log( "*** WARNING *** You have selected to NOT save structure info. This may cause structures such as fortresses to not spawn mobs!" );
-            log( "*** WARNING *** Please use this option with caution, SpigotMC is not responsible for any issues this option may cause in the future!" );
-        }
-    }
+	public int dragonDeathSoundRadius;
+	private void keepDragonDeathPerWorld() {
+		dragonDeathSoundRadius = cfg().getDragonDeathSoundRadius();
+	}
 
-    public int arrowDespawnRate;
-    private void arrowDespawnRate()
-    {
-        arrowDespawnRate = getInt( "arrow-despawn-rate", 1200  );
-        log( "Arrow Despawn Rate: " + arrowDespawnRate );
-    }
+	public int witherSpawnSoundRadius;
+	private void witherSpawnSoundRadius() {
+		witherSpawnSoundRadius = cfg().getWitherSpawnSoundRadius();
+	}
 
-    public boolean zombieAggressiveTowardsVillager;
-    private void zombieAggressiveTowardsVillager()
-    {
-        zombieAggressiveTowardsVillager = getBoolean( "zombie-aggressive-towards-villager", true );
-        log( "Zombie Aggressive Towards Villager: " + zombieAggressiveTowardsVillager );
-    }
+	public int villageSeed;
+	public int largeFeatureSeed;
+	public int monumentSeed;
+	public int slimeSeed;
+	private void initWorldGenSeeds() {
+		villageSeed = cfg().getSeedVillage();
+		largeFeatureSeed = cfg().getSeedFeature();
+		monumentSeed = cfg().getSeedMonumen();
+		slimeSeed = cfg().getSeedSlime();
+		log("Custom Map Seeds:  Village: " + villageSeed + " Feature: " + largeFeatureSeed + " Monument: " + monumentSeed + " Slime: " + slimeSeed);
+	}
 
-    public boolean nerfSpawnerMobs;
-    private void nerfSpawnerMobs()
-    {
-        nerfSpawnerMobs = getBoolean( "nerf-spawner-mobs", false );
-        log( "Nerfing mobs spawned from spawners: " + nerfSpawnerMobs );
-    }
+	public float jumpWalkExhaustion;
+	public float jumpSprintExhaustion;
+	public float combatExhaustion;
+	public float regenExhaustion;
+	public float swimMultiplier;
+	public float sprintMultiplier;
+	public float otherMultiplier;
+	private void initHunger() {
+		HungerConfig hunger = cfg().getHunger();
+		jumpWalkExhaustion = (float) hunger.getJumpWalkExhaustion();
+		jumpSprintExhaustion = (float) hunger.getJumpSprintExhaustion();
+		combatExhaustion = (float) hunger.getCombatExhaustion();
+		regenExhaustion = (float) hunger.getRegenExhaustion();
+		swimMultiplier = (float) hunger.getSwimMultiplier();
+		sprintMultiplier = (float) hunger.getSprintMultiplier();
+		otherMultiplier = (float) hunger.getOtherMultiplier();
+	}
 
-    public boolean enableZombiePigmenPortalSpawns;
-    private void enableZombiePigmenPortalSpawns()
-    {
-        enableZombiePigmenPortalSpawns = getBoolean( "enable-zombie-pigmen-portal-spawns", true );
-        log( "Allow Zombie Pigmen to spawn from portal blocks: " + enableZombiePigmenPortalSpawns );
-    }
+	public int currentPrimedTnt = 0;
+	public int maxTntTicksPerTick;
+	private void maxTntPerTick() {
+		maxTntTicksPerTick = cfg().getMaxTntPerTick();
+		log("Max TNT Explosions: " + maxTntTicksPerTick);
+	}
 
-    public int dragonDeathSoundRadius;
-    private void keepDragonDeathPerWorld()
-    {
-        dragonDeathSoundRadius = getInt( "dragon-death-sound-radius", 0 );
-    }
+	public int hangingTickFrequency;
+	private void hangingTickFrequency() {
+		hangingTickFrequency = cfg().getHangingTickFrequency();
+	}
 
-    public int witherSpawnSoundRadius;
-    private void witherSpawnSoundRadius()
-    {
-        witherSpawnSoundRadius = getInt( "wither-spawn-sound-radius", 0 );
-    }
+	public int tileMaxTickTime;
+	public int entityMaxTickTime;
+	private void maxTickTimes() {
+		tileMaxTickTime = cfg().getMaxTicks().getTile();
+		entityMaxTickTime = cfg().getMaxTicks().getEntity();
+		log("Tile Max Tick Time: " + tileMaxTickTime + "ms Entity max Tick Time: " + entityMaxTickTime + "ms");
+	}
 
-    public int villageSeed;
-    public int largeFeatureSeed;
-    public int monumentSeed;
-    public int slimeSeed;
-    private void initWorldGenSeeds()
-    {
-        villageSeed = getInt( "seed-village", 10387312 );
-        largeFeatureSeed = getInt( "seed-feature", 14357617 );
-        monumentSeed = getInt( "seed-monument", 10387313 );
-        slimeSeed = getInt( "seed-slime", 987234911 );
-        log( "Custom Map Seeds:  Village: " + villageSeed + " Feature: " + largeFeatureSeed + " Monument: "  + monumentSeed + " Slime: " + slimeSeed );
-    }
-
-    public float jumpWalkExhaustion;
-    public float jumpSprintExhaustion;
-    public float combatExhaustion;
-    public float regenExhaustion;
-    public float swimMultiplier;
-    public float sprintMultiplier;
-    public float otherMultiplier;
-    private void initHunger()
-    {
-        if ( SpigotConfig.version < 10 )
-        {
-            set( "hunger.walk-exhaustion", null );
-            set( "hunger.sprint-exhaustion", null );
-            set( "hunger.combat-exhaustion", 0.1 );
-            set( "hunger.regen-exhaustion", 6.0 );
-        }
-
-        jumpWalkExhaustion = (float) getDouble( "hunger.jump-walk-exhaustion", 0.05 );
-        jumpSprintExhaustion = (float) getDouble( "hunger.jump-sprint-exhaustion", 0.2 );
-        combatExhaustion = (float) getDouble( "hunger.combat-exhaustion", 0.1 );
-        regenExhaustion = (float) getDouble( "hunger.regen-exhaustion", 6.0 );
-        swimMultiplier =  (float) getDouble( "hunger.swim-multiplier", 0.01 );
-        sprintMultiplier = (float) getDouble( "hunger.sprint-multiplier", 0.1 );
-        otherMultiplier = (float) getDouble( "hunger.other-multiplier", 0.0 );
-    }
-
-    public int currentPrimedTnt = 0;
-    public int maxTntTicksPerTick;
-    private void maxTntPerTick() {
-        if ( SpigotConfig.version < 7 )
-        {
-            set( "max-tnt-per-tick", 100 );
-        }
-        maxTntTicksPerTick = getInt( "max-tnt-per-tick", 100 );
-        log( "Max TNT Explosions: " + maxTntTicksPerTick );
-    }
-
-    public int hangingTickFrequency;
-    private void hangingTickFrequency()
-    {
-        hangingTickFrequency = getInt( "hanging-tick-frequency", 100 );
-    }
-
-    public int tileMaxTickTime;
-    public int entityMaxTickTime;
-    private void maxTickTimes()
-    {
-        tileMaxTickTime = getInt("max-tick-time.tile", 50);
-        entityMaxTickTime = getInt("max-tick-time.entity", 50);
-        log("Tile Max Tick Time: " + tileMaxTickTime + "ms Entity max Tick Time: " + entityMaxTickTime + "ms");
-    }
-
-    public double squidSpawnRangeMin;
-    private void squidSpawnRange()
-    {
-        squidSpawnRangeMin = getDouble("squid-spawn-range.min", 45.0D);
-    }
+	public double squidSpawnRangeMin;
+	private void squidSpawnRange() {
+		squidSpawnRangeMin = cfg().getSquidSpawning().getMin();
+	}
 }

@@ -42,6 +42,7 @@ import org.apache.logging.log4j.Logger;
 import jline.console.ConsoleReader;
 import joptsimple.OptionSet;
 import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.mcavenue.redspigot.controllers.InitializationController;
 import net.mcavenue.redspigot.world.RedWorldManager;
 
@@ -104,6 +105,8 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 	@Autowired
 	@Qualifier("world-server-array")
 	public WorldServer[] worldServer;
+	@Autowired
+	private SpigotConfig cfg;
 	private boolean isRunning = true;
 	private boolean isStopped;
 	private int ticks;
@@ -526,7 +529,7 @@ public abstract class MinecraftServer implements ICommandListener, Runnable, IAs
 		}
 
 		// Spigot start
-		if (org.spigotmc.SpigotConfig.saveUserCacheOnStopOnly) {
+		if (cfg.isSaveUserCacheOnStopOnly()) {
 			LOGGER.info("Saving usercache.json");
 			this.Y.c();
 		}

@@ -10,6 +10,7 @@ import net.minecraft.server.PotionRegistry;
 
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.bukkit.potion.PotionBrewer;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
@@ -18,31 +19,32 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 
 public class CraftPotionBrewer implements PotionBrewer {
-    private static final Map<PotionType, Collection<PotionEffect>> cache = Maps.newHashMap();
+	private static final Map<PotionType, Collection<PotionEffect>> cache = Maps.newHashMap();
+	@Autowired
+	private CraftPotionUtil potions;
+	public Collection<PotionEffect> getEffects(PotionType damage, boolean upgraded, boolean extended) {
+		if (cache.containsKey(damage))
+			return cache.get(damage);
 
-    public Collection<PotionEffect> getEffects(PotionType damage, boolean upgraded, boolean extended) {
-        if (cache.containsKey(damage))
-            return cache.get(damage);
+		List<MobEffect> mcEffects = PotionRegistry.a(potions.fromBukkit(new PotionData(damage, extended, upgraded))).a();
 
-        List<MobEffect> mcEffects = PotionRegistry.a(CraftPotionUtil.fromBukkit(new PotionData(damage, extended, upgraded))).a();
+		ImmutableList.Builder<PotionEffect> builder = new ImmutableList.Builder<PotionEffect>();
+		for (MobEffect effect : mcEffects) {
+			builder.add(potions.toBukkit(effect));
+		}
 
-        ImmutableList.Builder<PotionEffect> builder = new ImmutableList.Builder<PotionEffect>();
-        for (MobEffect effect : mcEffects) {
-            builder.add(CraftPotionUtil.toBukkit(effect));
-        }
+		cache.put(damage, builder.build());
 
-        cache.put(damage, builder.build());
+		return cache.get(damage);
+	}
 
-        return cache.get(damage);
-    }
+	@Override
+	public Collection<PotionEffect> getEffectsFromDamage(int damage) {
+		return new ArrayList<PotionEffect>();
+	}
 
-    @Override
-    public Collection<PotionEffect> getEffectsFromDamage(int damage) {
-        return new ArrayList<PotionEffect>();
-    }
-
-    @Override
-    public PotionEffect createEffect(PotionEffectType potion, int duration, int amplifier) {
-        return new PotionEffect(potion, potion.isInstant() ? 1 : (int) (duration * potion.getDurationModifier()), amplifier);
-    }
+	@Override
+	public PotionEffect createEffect(PotionEffectType potion, int duration, int amplifier) {
+		return new PotionEffect(potion, potion.isInstant() ? 1 : (int) (duration * potion.getDurationModifier()), amplifier);
+	}
 }

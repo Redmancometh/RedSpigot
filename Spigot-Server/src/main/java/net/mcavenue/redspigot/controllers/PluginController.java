@@ -30,6 +30,7 @@ import org.springframework.stereotype.Controller;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.MarkedYAMLException;
 
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.minecraft.server.CommandAbstract;
 import net.minecraft.server.CommandDispatcher;
 import net.minecraft.server.ICommand;
@@ -56,7 +57,8 @@ public class PluginController {
 	private YamlConfiguration ymlBukkit;
 	@Autowired
 	private Yaml yml;
-
+	@Autowired
+	private SpigotConfig cfg;
 	public void loadPlugins() {
 		pluginManager.registerInterface(JavaPluginLoader.class);
 		File pluginFolder = (File) console.getOptions().valueOf("plugins");
@@ -110,7 +112,7 @@ public class PluginController {
 		for (ICommand cmd : commands.values()) {
 			// Spigot start
 			VanillaCommandWrapper wrapper = new VanillaCommandWrapper((CommandAbstract) cmd, LocaleI18n.get(cmd.getUsage(null)));
-			if (org.spigotmc.SpigotConfig.replaceCommands.contains(wrapper.getName())) {
+			if (cfg.getCommands().getReplaceCommands().contains(wrapper.getName())) {
 				if (first) {
 					commandMap.register("minecraft", wrapper);
 				}

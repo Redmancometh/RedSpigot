@@ -18,24 +18,24 @@ import org.bukkit.potion.PotionEffect;
 import com.google.common.collect.ImmutableList;
 
 public abstract class CraftThrownPotion extends CraftProjectile implements ThrownPotion {
-    public CraftThrownPotion(CraftServer server, EntityPotion entity) {
-        super(server, entity);
-    }
+	public CraftThrownPotion(CraftServer server, EntityPotion entity) {
+		super(server, entity);
+	}
 
-    public Collection<PotionEffect> getEffects() {
-        ImmutableList.Builder<PotionEffect> builder = ImmutableList.builder();
-        for (MobEffect effect : PotionUtil.getEffects(getHandle().getItem())) {
-            builder.add(CraftPotionUtil.toBukkit(effect));
-        }
-        return builder.build();
-    }
+	public Collection<PotionEffect> getEffects() {
+		ImmutableList.Builder<PotionEffect> builder = ImmutableList.builder();
+		for (MobEffect effect : PotionUtil.getEffects(getHandle().getItem())) {
+			builder.add(potions.toBukkit(effect));
+		}
+		return builder.build();
+	}
 
-    public ItemStack getItem() {
-        return CraftItemStack.asBukkitCopy(getHandle().getItem());
-    }
+	public ItemStack getItem() {
+		return CraftItemStack.asBukkitCopy(getHandle().getItem());
+	}
 
-    @Override
-    public EntityPotion getHandle() {
-        return (EntityPotion) entity;
-    }
+	@Override
+	public EntityPotion getHandle() {
+		return (EntityPotion) entity;
+	}
 }

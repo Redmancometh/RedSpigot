@@ -20,7 +20,6 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
 import jline.console.ConsoleReader;
-import joptsimple.OptionSet;
 import net.mcavenue.redspigot.configuration.ConfigManager;
 import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
 import net.mcavenue.redspigot.controllers.InitializationController;
@@ -33,7 +32,6 @@ import net.minecraft.server.ITickable;
 import net.minecraft.server.MethodProfiler;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerList;
-import net.minecraft.server.PropertyManager;
 import net.minecraft.server.ServerPing;
 import net.minecraft.server.UserCache;
 import net.minecraft.server.WorldServer;
@@ -57,14 +55,14 @@ public class NMSContext {
 		return cfg;
 	}
 
-	@Bean
-	@Scope("prototype")
 	/**
 	 * Prototype scope so that it fetches every time the bean is used.
 	 * 
 	 * @param srvCfg
 	 * @return
 	 */
+	@Scope("prototype")
+	@Bean(name = "server-config")
 	public ServerConfig cfg(@Qualifier("server-config-man") ConfigManager<ServerConfig> srvCfg) {
 		return srvCfg.getConfig();
 	}
@@ -142,9 +140,10 @@ public class NMSContext {
 	 * @return
 	 */
 	@Bean(name = "dedi-server")
-	@DependsOn("property-manager")
-	public DedicatedServer server(ServerConfig cfg, @Qualifier("resource-pack-sha1") String resourcePack) {
-		DispenserRegistry.c();
+	@DependsOn("server-config")
+	public DedicatedServer server(@Qualifier("server-config") ServerConfig cfg, @Qualifier("resource-pack-sha1") String resourcePack,
+			DispenserRegistry dispensers) {
+		dispensers.c();
 		DedicatedServer server = new DedicatedServer();
 		// For some reason the property manager was not being injected property
 		// into the DedicatedServer instance
@@ -154,25 +153,25 @@ public class NMSContext {
 	}
 
 	@Bean("resource-pack-sha1")
-	public String resourcePack(PropertyManager propertyManager, Logger logger) {
-		if (propertyManager.a("resource-pack-hash")) {
-			if (propertyManager.a("resource-pack-sha1")) {
-				logger.info("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-			} else {
-				logger.info("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-				propertyManager.getString("resource-pack-sha1", propertyManager.getString("resource-pack-hash", ""));
-				propertyManager.b("resource-pack-hash");
-			}
-		}
-		String s = propertyManager.getString("resource-pack-sha1", "");
-		if (!s.isEmpty() && !DedicatedServer.l.matcher(s).matches()) {
-			logger.info("Invalid sha1 for ressource-pack-sha1");
-		}
-		if (!propertyManager.getString("resource-pack", "").isEmpty() && s.isEmpty()) {
-			logger.info(
-					"You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-		}
-		return s;
+	public String resourcePack(Logger logger) {
+		/*
+		 * if (propertyManager.a("resource-pack-hash")) { if
+		 * (propertyManager.a("resource-pack-sha1")) { logger.
+		 * info("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored."
+		 * ); } else { logger.
+		 * info("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead."
+		 * ); propertyManager.getString("resource-pack-sha1",
+		 * propertyManager.getString("resource-pack-hash", ""));
+		 * propertyManager.b("resource-pack-hash"); } } String s =
+		 * propertyManager.getString("resource-pack-sha1", ""); if (!s.isEmpty()
+		 * && !DedicatedServer.l.matcher(s).matches()) {
+		 * logger.info("Invalid sha1 for ressource-pack-sha1"); } if
+		 * (!propertyManager.getString("resource-pack", "").isEmpty() &&
+		 * s.isEmpty()) { logger.info(
+		 * "You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack."
+		 * ); }
+		 */
+		return "NOT IMPLEMENTED SORRY";
 	}
 
 	private void setConfiguration(DedicatedServer server, ServerConfig cfg, String resourcePack) {
@@ -207,12 +206,12 @@ public class NMSContext {
 		return new RedPlayerList();
 	}
 
-	@Bean(name = "property-manager")
-	public PropertyManager properties(OptionSet options) {
-		for (int x = 0; x < 500; x++)
-			System.out.println((File) options.valueOf("config"));
-		return new PropertyManager(options);
-	}
+	/*
+	 * @Bean(name = "property-manager") public PropertyManager
+	 * properties(OptionSet options) { for (int x = 0; x < 500; x++)
+	 * System.out.println((File) options.valueOf("config")); return new
+	 * PropertyManager(options); }
+	 */
 
 	@Bean(name = "tickable-list")
 	public List<ITickable> tickableList() {

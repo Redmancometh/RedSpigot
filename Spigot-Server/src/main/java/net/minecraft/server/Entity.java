@@ -3,6 +3,10 @@ package net.minecraft.server;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
+import net.mcavenue.redspigot.registries.BlockRegistry;
+import net.mcavenue.redspigot.registries.MobEffectRegistry;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,6 +30,7 @@ import org.bukkit.entity.Hanging;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Vehicle;
 import org.spigotmc.CustomTimingsHandler; // Spigot
+import org.springframework.beans.factory.annotation.Autowired;
 import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.vehicle.VehicleBlockCollisionEvent;
@@ -35,11 +40,11 @@ import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.craftbukkit.event.CraftEventFactory;
+import org.bukkit.craftbukkit.potion.CraftPotionUtil;
 import org.bukkit.event.entity.EntityAirChangeEvent;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.plugin.PluginManager;
-// CraftBukkit end
 
 public abstract class Entity implements ICommandListener {
 
@@ -48,6 +53,16 @@ public abstract class Entity implements ICommandListener {
 	static boolean isLevelAtLeast(NBTTagCompound tag, int level) {
 		return tag.hasKey("Bukkit.updateLevel") && tag.getInt("Bukkit.updateLevel") >= level;
 	}
+	@Autowired
+	protected GenericAttributes attr;
+	@Autowired
+	protected MobEffectRegistry effectRegistry;
+	@Autowired
+	protected CraftPotionUtil potions;
+	@Autowired
+	protected Blocks blocks;
+	@Autowired
+	private BlockRegistry blockRegistry;
 
 	protected CraftEntity bukkitEntity;
 
@@ -863,7 +878,7 @@ public abstract class Entity implements ICommandListener {
 				double d23 = this.locY - d5;
 
 				d11 = this.locZ - d6;
-				if (block1 != Blocks.LADDER) {
+				if (block1 != blocks.LADDER) {
 					d23 = 0.0D;
 				}
 
@@ -995,8 +1010,8 @@ public abstract class Entity implements ICommandListener {
 	protected void a(BlockPosition blockposition, Block block) {
 		SoundEffectType soundeffecttype = block.getStepSound();
 
-		if (this.world.getType(blockposition.up()).getBlock() == Blocks.SNOW_LAYER) {
-			soundeffecttype = Blocks.SNOW_LAYER.getStepSound();
+		if (this.world.getType(blockposition.up()).getBlock() == blocks.SNOW_LAYER) {
+			soundeffecttype = blocks.SNOW_LAYER.getStepSound();
 			this.a(soundeffecttype.d(), soundeffecttype.a() * 0.15F, soundeffecttype.b());
 		} else if (!block.getBlockData().getMaterial().isLiquid()) {
 			this.a(soundeffecttype.d(), soundeffecttype.a() * 0.15F, soundeffecttype.b());
@@ -1985,7 +2000,7 @@ public abstract class Entity implements ICommandListener {
 		} else {
 			if (!this.world.isClientSide && !blockposition.equals(this.an)) {
 				this.an = new BlockPosition(blockposition);
-				ShapeDetector.ShapeDetectorCollection shapedetector_shapedetectorcollection = Blocks.PORTAL.c(this.world, this.an);
+				ShapeDetector.ShapeDetectorCollection shapedetector_shapedetectorcollection = blocks.PORTAL.c(this.world, this.an);
 				double d0 = shapedetector_shapedetectorcollection.getFacing().k() == EnumDirection.EnumAxis.X
 						? (double) shapedetector_shapedetectorcollection.a().getZ()
 						: (double) shapedetector_shapedetectorcollection.a().getX();

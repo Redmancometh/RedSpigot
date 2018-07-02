@@ -60,7 +60,7 @@ public class EntityEnderDragon extends EntityInsentient implements IComplex, IMo
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(200.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(200.0D);
     }
 
     protected void i() {

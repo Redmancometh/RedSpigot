@@ -57,14 +57,14 @@ public class EntityWolf extends EntityTameableAnimal {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.30000001192092896D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.30000001192092896D);
         if (this.isTamed()) {
-            this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+            this.getAttributeInstance(attr.maxHealth).setValue(20.0D);
         } else {
-            this.getAttributeInstance(GenericAttributes.maxHealth).setValue(8.0D);
+            this.getAttributeInstance(attr.maxHealth).setValue(8.0D);
         }
 
-        this.getAttributeMap().b(GenericAttributes.ATTACK_DAMAGE).setValue(2.0D);
+        this.getAttributeMap().b(attr.ATTACK_DAMAGE).setValue(2.0D);
     }
 
     // CraftBukkit - add overriden version
@@ -233,7 +233,7 @@ public class EntityWolf extends EntityTameableAnimal {
     }
 
     public boolean B(Entity entity) {
-        boolean flag = entity.damageEntity(DamageSource.mobAttack(this), (float) ((int) this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entity.damageEntity(DamageSource.mobAttack(this), (float) ((int) this.getAttributeInstance(attr.ATTACK_DAMAGE).getValue()));
 
         if (flag) {
             this.a((EntityLiving) this, entity);
@@ -245,12 +245,12 @@ public class EntityWolf extends EntityTameableAnimal {
     public void setTamed(boolean flag) {
         super.setTamed(flag);
         if (flag) {
-            this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+            this.getAttributeInstance(attr.maxHealth).setValue(20.0D);
         } else {
-            this.getAttributeInstance(GenericAttributes.maxHealth).setValue(8.0D);
+            this.getAttributeInstance(attr.maxHealth).setValue(8.0D);
         }
 
-        this.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(4.0D);
+        this.getAttributeInstance(attr.ATTACK_DAMAGE).setValue(4.0D);
     }
 
     public boolean a(EntityHuman entityhuman, EnumHand enumhand) {

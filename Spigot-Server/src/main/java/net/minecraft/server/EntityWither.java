@@ -490,10 +490,10 @@ public class EntityWither extends EntityMonster implements IRangedEntity {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(GenericAttributes.maxHealth).setValue(300.0D);
-        this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(0.6000000238418579D);
-        this.getAttributeInstance(GenericAttributes.FOLLOW_RANGE).setValue(40.0D);
-        this.getAttributeInstance(GenericAttributes.h).setValue(4.0D);
+        this.getAttributeInstance(attr.maxHealth).setValue(300.0D);
+        this.getAttributeInstance(attr.MOVEMENT_SPEED).setValue(0.6000000238418579D);
+        this.getAttributeInstance(attr.FOLLOW_RANGE).setValue(40.0D);
+        this.getAttributeInstance(attr.h).setValue(4.0D);
     }
 
     public int dm() {

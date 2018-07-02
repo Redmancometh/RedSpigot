@@ -13,7 +13,7 @@
  
      private static final DataWatcherObject<Float> DATA_HEALTH = DataWatcher.a(EntityWolf.class, DataWatcherRegistry.c);
 @@ -62,6 +67,22 @@
-         this.getAttributeMap().b(GenericAttributes.ATTACK_DAMAGE).setValue(2.0D);
+         this.getAttributeMap().b(attr.ATTACK_DAMAGE).setValue(2.0D);
      }
  
 +    // CraftBukkit - add overriden version

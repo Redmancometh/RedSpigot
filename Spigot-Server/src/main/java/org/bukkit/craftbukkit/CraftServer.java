@@ -122,6 +122,7 @@ import org.bukkit.craftbukkit.util.CraftNamespacedKey;
 import org.bukkit.event.server.TabCompleteEvent;
 
 import net.mcavenue.redspigot.configuration.pojo.ServerConfig;
+import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
 import net.mcavenue.redspigot.controllers.PluginController;
 import net.mcavenue.redspigot.playerlist.RedPlayerList;
 import net.mcavenue.redspigot.util.BooleanWrapper;
@@ -173,6 +174,8 @@ public class CraftServer implements Server {
 	@Autowired
 	@Qualifier("bukkit-cfg")
 	private YamlConfiguration configuration;
+	@Autowired
+	private SpigotConfig spigotCfg;
 	@Autowired
 	@Qualifier("player-view")
 	private List<CraftPlayer> playerView;
@@ -471,7 +474,7 @@ public class CraftServer implements Server {
 	public long getConnectionThrottle() {
 		// Spigot Start - Automatically set connection throttle for bungee
 		// configurations
-		if (org.spigotmc.SpigotConfig.bungee) {
+		if (spigotCfg.isBungeecord()) {
 			return -1;
 		} else {
 			return this.configuration.getInt("settings.connection-throttle");
@@ -544,8 +547,8 @@ public class CraftServer implements Server {
 		}
 
 		// Spigot start
-		if (StringUtils.isNotEmpty(org.spigotmc.SpigotConfig.unknownCommandMessage)) {
-			sender.sendMessage(org.spigotmc.SpigotConfig.unknownCommandMessage);
+		if (StringUtils.isNotEmpty(spigotCfg.getMessages().getUnknownCommand())) {
+			sender.sendMessage(spigotCfg.getMessages().getUnknownCommand());
 		}
 		// Spigot end
 
@@ -1114,7 +1117,7 @@ public class CraftServer implements Server {
 			// Spigot Start
 			GameProfile profile = null;
 			// Only fetch an online UUID in online mode
-			if (MinecraftServer.getServer().getOnlineMode() || org.spigotmc.SpigotConfig.bungee) {
+			if (MinecraftServer.getServer().getOnlineMode() || spigotCfg.isBungeecord()) {
 				profile = console.getUserCache().getProfile(name);
 			}
 			// Spigot end
@@ -1408,7 +1411,8 @@ public class CraftServer implements Server {
 
 	public List<String> tabCompleteCommand(Player player, String message, BlockPosition pos) {
 		// Spigot Start
-		if ((org.spigotmc.SpigotConfig.tabComplete < 0 || message.length() <= org.spigotmc.SpigotConfig.tabComplete) && !message.contains(" ")) {
+		if ((spigotCfg.getCommands().getTabComplete() < 0 || message.length() <= spigotCfg.getCommands().getTabComplete())
+				&& !message.contains(" ")) {
 			return ImmutableList.of();
 		}
 		// Spigot End
