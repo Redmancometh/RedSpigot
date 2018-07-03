@@ -283,7 +283,7 @@ public class BlockSkull extends BlockTileEntity {
 	protected ShapeDetector g() {
 		if (this.D == null) {
 			this.D = ShapeDetectorBuilder.a().a(new String[]{"^^^", "###", "~#~"})
-					.a('#', ShapeDetectorBlock.a(BlockStatePredicate.a(blocks.SOUL_SAND))).a('^', BlockSkull.B)
+					.a('#', ShapeDetectorBlock.a(BlockStatePredicate.a(blocks.SOUL_SAND))).a('^', B)
 					.a('~', ShapeDetectorBlock.a(MaterialPredicate.a(Material.AIR))).b();
 		}
 

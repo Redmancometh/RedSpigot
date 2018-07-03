@@ -160,7 +160,7 @@ public class EntityShulker extends EntityGolem implements IMonster {
             if (iblockdata.getMaterial() != Material.AIR) {
                 EnumDirection enumdirection;
 
-                if (iblockdata.getBlock() == Blocks.PISTON_EXTENSION) {
+                if (iblockdata.getBlock() == blocks.PISTON_EXTENSION) {
                     enumdirection = (EnumDirection) iblockdata.get(BlockPiston.FACING);
                     if (this.world.isEmpty(blockposition.shift(enumdirection))) {
                         blockposition = blockposition.shift(enumdirection);
@@ -168,7 +168,7 @@ public class EntityShulker extends EntityGolem implements IMonster {
                     } else {
                         this.p();
                     }
-                } else if (iblockdata.getBlock() == Blocks.PISTON_HEAD) {
+				} else if (iblockdata.getBlock() == blocks.PISTON_HEAD) {
                     enumdirection = (EnumDirection) iblockdata.get(BlockPistonExtension.FACING);
                     if (this.world.isEmpty(blockposition.shift(enumdirection))) {
                         blockposition = blockposition.shift(enumdirection);

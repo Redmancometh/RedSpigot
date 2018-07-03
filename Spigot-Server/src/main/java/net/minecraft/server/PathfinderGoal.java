@@ -9,6 +9,8 @@ public abstract class PathfinderGoal {
 	protected Blocks blocks;
 	@Autowired
 	protected BlockRegistry blockRegistry;
+	@Autowired
+	protected GenericAttributes attr;
 	private int a;
 
 	public PathfinderGoal() {

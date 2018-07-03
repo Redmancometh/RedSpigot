@@ -10,59 +10,59 @@ import org.bukkit.entity.FallingBlock;
 
 public class CraftFallingBlock extends CraftEntity implements FallingBlock {
 
-    public CraftFallingBlock(CraftServer server, EntityFallingBlock entity) {
-        super(server, entity);
-    }
+	public CraftFallingBlock(CraftServer server, EntityFallingBlock entity) {
+		super(server, entity);
+	}
 
-    @Override
-    public EntityFallingBlock getHandle() {
-        return (EntityFallingBlock) entity;
-    }
+	@Override
+	public EntityFallingBlock getHandle() {
+		return (EntityFallingBlock) entity;
+	}
 
-    @Override
-    public String toString() {
-        return "CraftFallingBlock";
-    }
+	@Override
+	public String toString() {
+		return "CraftFallingBlock";
+	}
 
-    public EntityType getType() {
-        return EntityType.FALLING_BLOCK;
-    }
+	public EntityType getType() {
+		return EntityType.FALLING_BLOCK;
+	}
 
-    public Material getMaterial() {
-        return Material.getMaterial(getBlockId());
-    }
+	public Material getMaterial() {
+		return Material.getMaterial(getBlockId());
+	}
 
-    public int getBlockId() {
-        return CraftMagicNumbers.getId(getHandle().getBlock().getBlock());
-    }
+	public int getBlockId() {
+		return magicNumbers.getId(getHandle().getBlock().getBlock());
+	}
 
-    public byte getBlockData() {
-        return (byte) getHandle().getBlock().getBlock().toLegacyData(getHandle().getBlock());
-    }
+	public byte getBlockData() {
+		return (byte) getHandle().getBlock().getBlock().toLegacyData(getHandle().getBlock());
+	}
 
-    public boolean getDropItem() {
-        return getHandle().dropItem;
-    }
+	public boolean getDropItem() {
+		return getHandle().dropItem;
+	}
 
-    public void setDropItem(boolean drop) {
-        getHandle().dropItem = drop;
-    }
+	public void setDropItem(boolean drop) {
+		getHandle().dropItem = drop;
+	}
 
-    @Override
-    public boolean canHurtEntities() {
-        return getHandle().hurtEntities;
-    }
+	@Override
+	public boolean canHurtEntities() {
+		return getHandle().hurtEntities;
+	}
 
-    @Override
-    public void setHurtEntities(boolean hurtEntities) {
-        getHandle().hurtEntities = hurtEntities;
-    }
+	@Override
+	public void setHurtEntities(boolean hurtEntities) {
+		getHandle().hurtEntities = hurtEntities;
+	}
 
-    @Override
-    public void setTicksLived(int value) {
-        super.setTicksLived(value);
+	@Override
+	public void setTicksLived(int value) {
+		super.setTicksLived(value);
 
-        // Second field for EntityFallingBlock
-        getHandle().ticksLived = value;
-    }
+		// Second field for EntityFallingBlock
+		getHandle().ticksLived = value;
+	}
 }

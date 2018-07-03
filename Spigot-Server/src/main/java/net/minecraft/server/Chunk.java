@@ -731,9 +731,7 @@ public class Chunk {
 			// CraftBukkit start
 		} else {
 			System.out.println("Attempted to place a tile entity (" + tileentity + ") at " + tileentity.position.getX() + ","
-					+ tileentity.position.getY() + "," + tileentity.position.getZ() + " ("
-					+ org.bukkit.craftbukkit.util.CraftMagicNumbers.getMaterial(getBlockData(blockposition).getBlock())
-					+ ") where there was no entity tile!");
+					+ tileentity.position.getY() + "," + tileentity.position.getZ() + "where there was no entity tile!");
 			System.out.println("Chunk coordinates: " + (this.locX * 16) + "," + (this.locZ * 16));
 			new Exception().printStackTrace();
 			// CraftBukkit end

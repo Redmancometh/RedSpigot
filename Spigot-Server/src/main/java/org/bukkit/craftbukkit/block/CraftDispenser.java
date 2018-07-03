@@ -16,51 +16,51 @@ import org.bukkit.projectiles.BlockProjectileSource;
 
 public class CraftDispenser extends CraftLootable<TileEntityDispenser> implements Dispenser {
 
-    public CraftDispenser(final Block block) {
-        super(block, TileEntityDispenser.class);
-    }
+	public CraftDispenser(final Block block) {
+		super(block, TileEntityDispenser.class);
+	}
 
-    public CraftDispenser(final Material material, final TileEntityDispenser te) {
-        super(material, te);
-    }
+	public CraftDispenser(final Material material, final TileEntityDispenser te) {
+		super(material, te);
+	}
 
-    @Override
-    public Inventory getSnapshotInventory() {
-        return new CraftInventory(this.getSnapshot());
-    }
+	@Override
+	public Inventory getSnapshotInventory() {
+		return new CraftInventory(this.getSnapshot());
+	}
 
-    @Override
-    public Inventory getInventory() {
-        if (!this.isPlaced()) {
-            return this.getSnapshotInventory();
-        }
+	@Override
+	public Inventory getInventory() {
+		if (!this.isPlaced()) {
+			return this.getSnapshotInventory();
+		}
 
-        return new CraftInventory(this.getTileEntity());
-    }
+		return new CraftInventory(this.getTileEntity());
+	}
 
-    @Override
-    public BlockProjectileSource getBlockProjectileSource() {
-        Block block = getBlock();
+	@Override
+	public BlockProjectileSource getBlockProjectileSource() {
+		Block block = getBlock();
 
-        if (block.getType() != Material.DISPENSER) {
-            return null;
-        }
+		if (block.getType() != Material.DISPENSER) {
+			return null;
+		}
 
-        return new CraftBlockProjectileSource((TileEntityDispenser) this.getTileEntityFromWorld());
-    }
+		return new CraftBlockProjectileSource((TileEntityDispenser) this.getTileEntityFromWorld());
+	}
 
-    @Override
-    public boolean dispense() {
-        Block block = getBlock();
+	@Override
+	public boolean dispense() {
+		Block block = getBlock();
 
-        if (block.getType() == Material.DISPENSER) {
-            CraftWorld world = (CraftWorld) this.getWorld();
-            BlockDispenser dispense = (BlockDispenser) Blocks.DISPENSER;
+		if (block.getType() == Material.DISPENSER) {
+			CraftWorld world = (CraftWorld) this.getWorld();
+			BlockDispenser dispense = (BlockDispenser) blocks.DISPENSER;
 
-            dispense.dispense(world.getHandle(), new BlockPosition(getX(), getY(), getZ()));
-            return true;
-        } else {
-            return false;
-        }
-    }
+			dispense.dispense(world.getHandle(), new BlockPosition(getX(), getY(), getZ()));
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

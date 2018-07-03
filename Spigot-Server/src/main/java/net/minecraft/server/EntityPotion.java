@@ -250,7 +250,7 @@ public class EntityPotion extends EntityProjectile {
 	}
 
 	private void a(BlockPosition blockposition, EnumDirection enumdirection) {
-		if (this.world.getType(blockposition).getBlock() == Blocks.FIRE) {
+		if (this.world.getType(blockposition).getBlock() == blocks.FIRE) {
 			this.world.douseFire((EntityHuman) null, blockposition.shift(enumdirection), enumdirection.opposite());
 		}
 

@@ -181,7 +181,7 @@ public class BlockPumpkin extends BlockFacingHorizontal {
 
 	protected ShapeDetector getDetectorSnowGolem() {
 		if (this.snowGolem == null) {
-			this.snowGolem = ShapeDetectorBuilder.a().a(new String[]{"^", "#", "#"}).a('^', ShapeDetectorBlock.a(BlockPumpkin.e))
+			this.snowGolem = ShapeDetectorBuilder.a().a(new String[]{"^", "#", "#"}).a('^', ShapeDetectorBlock.a(e))
 					.a('#', ShapeDetectorBlock.a(BlockStatePredicate.a(blocks.SNOW))).b();
 		}
 
@@ -200,7 +200,7 @@ public class BlockPumpkin extends BlockFacingHorizontal {
 
 	protected ShapeDetector getDetectorIronGolem() {
 		if (this.ironGolem == null) {
-			this.ironGolem = ShapeDetectorBuilder.a().a(new String[]{"~^~", "###", "~#~"}).a('^', ShapeDetectorBlock.a(BlockPumpkin.e))
+			this.ironGolem = ShapeDetectorBuilder.a().a(new String[]{"~^~", "###", "~#~"}).a('^', ShapeDetectorBlock.a(e))
 					.a('#', ShapeDetectorBlock.a(BlockStatePredicate.a(blocks.IRON_BLOCK)))
 					.a('~', ShapeDetectorBlock.a(MaterialPredicate.a(Material.AIR))).b();
 		}

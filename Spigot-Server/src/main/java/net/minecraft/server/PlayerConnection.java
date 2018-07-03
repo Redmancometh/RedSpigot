@@ -7,6 +7,7 @@ import com.google.common.util.concurrent.Futures;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import net.mcavenue.redspigot.configuration.pojo.spigot.SpigotConfig;
+import net.mcavenue.redspigot.registries.ItemRegistry;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,6 +66,10 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 
 	@Autowired
 	private SpigotConfig cfg;
+	@Autowired
+	private Blocks blocks;
+	@Autowired
+	private ItemRegistry items;
 	private static final Logger LOGGER = LogManager.getLogger();
 	public final NetworkManager networkManager;
 	private final MinecraftServer minecraftServer;
@@ -2024,8 +2029,8 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 							ItemStack cursor = this.player.inventory.getCarried();
 							action = InventoryAction.NOTHING;
 							// Quick check for if we have any of the item
-							if (inventory.getTopInventory().contains(org.bukkit.Material.getMaterial(Item.getId(cursor.getItem())))
-									|| inventory.getBottomInventory().contains(org.bukkit.Material.getMaterial(Item.getId(cursor.getItem())))) {
+							if (inventory.getTopInventory().contains(org.bukkit.Material.getMaterial(items.getId(cursor.getItem())))
+									|| inventory.getBottomInventory().contains(org.bukkit.Material.getMaterial(items.getId(cursor.getItem())))) {
 								action = InventoryAction.COLLECT_TO_CURSOR;
 							}
 						}
@@ -2209,7 +2214,7 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 			boolean flag1 = packetplayinsetcreativeslot.a() >= 1 && packetplayinsetcreativeslot.a() <= 45;
 			// CraftBukkit - Add invalidItems check
 			boolean flag2 = itemstack.isEmpty() || itemstack.getData() >= 0 && itemstack.getCount() <= 64 && !itemstack.isEmpty()
-					&& (!invalidItems.contains(Item.getId(itemstack.getItem())) || !cfg.isFilterCreativeItems()); // Spigot
+					&& (!invalidItems.contains(items.getId(itemstack.getItem())) || !cfg.isFilterCreativeItems()); // Spigot
 			if (flag || (flag1 && !ItemStack.matches(this.player.defaultContainer.getSlot(packetplayinsetcreativeslot.a()).getItem(),
 					packetplayinsetcreativeslot.getItemStack()))) { // Insist on
 																	// valid
@@ -2594,19 +2599,19 @@ public class PlayerConnection implements PacketListenerPlayIn, ITickable {
 
 							switch (tileentitycommand_type) {
 								case SEQUENCE :
-									iblockdata = Blocks.dd.getBlockData();
+									iblockdata = blocks.dd.getBlockData();
 									this.player.world.setTypeAndData(blockposition,
 											iblockdata.set(BlockCommand.a, enumdirection).set(BlockCommand.b, Boolean.valueOf(flag2)), 2);
 									break;
 
 								case AUTO :
-									iblockdata = Blocks.dc.getBlockData();
+									iblockdata = blocks.dc.getBlockData();
 									this.player.world.setTypeAndData(blockposition,
 											iblockdata.set(BlockCommand.a, enumdirection).set(BlockCommand.b, Boolean.valueOf(flag2)), 2);
 									break;
 
 								case REDSTONE :
-									iblockdata = Blocks.COMMAND_BLOCK.getBlockData();
+									iblockdata = blocks.COMMAND_BLOCK.getBlockData();
 									this.player.world.setTypeAndData(blockposition,
 											iblockdata.set(BlockCommand.a, enumdirection).set(BlockCommand.b, Boolean.valueOf(flag2)), 2);
 							}

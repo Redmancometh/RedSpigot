@@ -11,12 +11,14 @@ import org.bukkit.craftbukkit.util.LongHash;
 import org.bukkit.craftbukkit.util.LongHashSet;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 // CraftBukkit end
+import org.springframework.beans.factory.annotation.Autowired;
 
 public final class SpawnerCreature {
 
 	private static final int a = (int) Math.pow(17.0D, 2.0D);
 	private final LongHashSet b = new LongHashSet(); // CraftBukkit
-
+	@Autowired
+	private Blocks blocks;
 	public SpawnerCreature() {
 	}
 
@@ -285,7 +287,7 @@ public final class SpawnerCreature {
 		}
 	}
 
-	public static void a(World world, BiomeBase biomebase, int i, int j, int k, int l, Random random) {
+	public void a(World world, BiomeBase biomebase, int i, int j, int k, int l, Random random) {
 		List list = biomebase.getMobs(EnumCreatureType.CREATURE);
 
 		if (!list.isEmpty()) {

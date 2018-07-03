@@ -27,7 +27,7 @@ public class BlockCrops extends BlockPlant implements IBlockFragilePlantElement 
 	}
 
 	protected boolean x(IBlockData iblockdata) {
-		return iblockdata.getBlock() == Blocks.FARMLAND;
+		return iblockdata.getBlock() == blocks.FARMLAND;
 	}
 
 	protected BlockStateInteger e() {
@@ -88,7 +88,7 @@ public class BlockCrops extends BlockPlant implements IBlockFragilePlantElement 
 		return MathHelper.nextInt(world.random, 2, 5);
 	}
 
-	protected static float a(Block block, World world, BlockPosition blockposition) {
+	protected float a(Block block, World world, BlockPosition blockposition) {
 		float f = 1.0F;
 		BlockPosition blockposition1 = blockposition.down();
 
@@ -97,7 +97,7 @@ public class BlockCrops extends BlockPlant implements IBlockFragilePlantElement 
 				float f1 = 0.0F;
 				IBlockData iblockdata = world.getType(blockposition1.a(i, 0, j));
 
-				if (iblockdata.getBlock() == Blocks.FARMLAND) {
+				if (iblockdata.getBlock() == blocks.FARMLAND) {
 					f1 = 1.0F;
 					if (((Integer) iblockdata.get(BlockSoil.MOISTURE)).intValue() > 0) {
 						f1 = 3.0F;

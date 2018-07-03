@@ -426,7 +426,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
 		PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) loc.getWorld()).getHandle(),
 				new BlockPosition(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 
-		packet.block = CraftMagicNumbers.getBlock(material).fromLegacyData(data);
+		packet.block = magicNumbers.getBlock(material).fromLegacyData(data);
 		getHandle().playerConnection.sendPacket(packet);
 	}
 
@@ -903,7 +903,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
 		BlockPosition bed = getHandle().getBed();
 
 		if (world != null && bed != null) {
-			bed = EntityHuman.getBed(((CraftWorld) world).getHandle(), bed, getHandle().isRespawnForced());
+			bed = getHandle().getBed(((CraftWorld) world).getHandle(), bed, getHandle().isRespawnForced());
 			if (bed != null) {
 				return new Location(world, bed.getX(), bed.getY(), bed.getZ());
 			}

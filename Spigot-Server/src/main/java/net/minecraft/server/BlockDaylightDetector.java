@@ -63,12 +63,12 @@ public class BlockDaylightDetector extends BlockTileEntity {
 			} else {
 				if (this.c) {
 					world.setTypeAndData(blockposition,
-							Blocks.DAYLIGHT_DETECTOR.getBlockData().set(BlockDaylightDetector.POWER, iblockdata.get(BlockDaylightDetector.POWER)), 4);
-					Blocks.DAYLIGHT_DETECTOR.c(world, blockposition);
+							blocks.DAYLIGHT_DETECTOR.getBlockData().set(BlockDaylightDetector.POWER, iblockdata.get(BlockDaylightDetector.POWER)), 4);
+					blocks.DAYLIGHT_DETECTOR.c(world, blockposition);
 				} else {
-					world.setTypeAndData(blockposition, Blocks.DAYLIGHT_DETECTOR_INVERTED.getBlockData().set(BlockDaylightDetector.POWER,
+					world.setTypeAndData(blockposition, blocks.DAYLIGHT_DETECTOR_INVERTED.getBlockData().set(BlockDaylightDetector.POWER,
 							iblockdata.get(BlockDaylightDetector.POWER)), 4);
-					Blocks.DAYLIGHT_DETECTOR_INVERTED.c(world, blockposition);
+					blocks.DAYLIGHT_DETECTOR_INVERTED.c(world, blockposition);
 				}
 
 				return true;
@@ -79,11 +79,11 @@ public class BlockDaylightDetector extends BlockTileEntity {
 	}
 
 	public Item getDropType(IBlockData iblockdata, Random random, int i) {
-		return items.getItemOf(Blocks.DAYLIGHT_DETECTOR);
+		return items.getItemOf(blocks.DAYLIGHT_DETECTOR);
 	}
 
 	public ItemStack a(World world, BlockPosition blockposition, IBlockData iblockdata) {
-		return new ItemStack(Blocks.DAYLIGHT_DETECTOR);
+		return new ItemStack(blocks.DAYLIGHT_DETECTOR);
 	}
 
 	public boolean c(IBlockData iblockdata) {

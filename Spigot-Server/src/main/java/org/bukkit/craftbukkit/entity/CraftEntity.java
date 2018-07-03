@@ -19,6 +19,7 @@ import org.bukkit.World;
 import org.bukkit.block.PistonMoveReaction;
 import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.craftbukkit.potion.CraftPotionUtil;
+import org.bukkit.craftbukkit.util.CraftMagicNumbers;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.metadata.MetadataValue;
@@ -46,6 +47,8 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 	protected BlockRegistry blockRegistry;
 	@Autowired
 	protected Blocks blocks;
+	@Autowired
+	protected CraftMagicNumbers magicNumbers;
 	protected final CraftServer server;
 	protected Entity entity;
 	private EntityDamageEvent lastDamageEvent;
